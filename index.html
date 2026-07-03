@@ -4,10 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Best of - لتصميم المواقع والتطبيقات الاحترافية</title>
-    <!-- تضمين مكتبة Tailwind CSS للتصميم العصري -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- تضمين أيقونات FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- ملفات الـ CSS الخاصة بسلايدر Swiper.js السريع -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap');
         body {
@@ -20,33 +22,35 @@
         .float-wa {
             animation: bounce-slow 3s infinite ease-in-out;
         }
+        /* تعديل مخصص لنقاط التنقل السفلية في السلايدر ليناسب هوية موقعك */
+        .swiper-pagination-bullet-active {
+            background: #4f46e5 !important;
+            width: 20px !important;
+            border-radius: 4px !important;
+        }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-900 overflow-x-hidden">
 
-    <!-- عنصر التنبيه الاحترافي الجديد (Toast) مخفي افتراضياً -->
     <div id="custom-toast" class="fixed top-24 left-1/2 -translate-x-1/2 bg-indigo-600 text-white px-6 py-3 rounded-xl shadow-2xl z-50 font-bold opacity-0 pointer-events-none transition-all duration-300 transform -translate-y-4 flex items-center gap-2">
         <i class="fa-solid fa-circle-check text-emerald-400"></i>
         <span id="toast-text">تم إضافة الخدمة بنجاح</span>
     </div>
 
-    <!-- القائمة العلوية (Navbar) -->
     <header class="bg-white/90 backdrop-blur shadow-sm sticky top-0 z-40">
         <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <!-- الشعار -->
             <a href="#" class="text-2xl font-black text-indigo-600 tracking-wider">
                 Best <span class="text-slate-800">of</span> <span class="text-sm font-semibold text-slate-500 block md:inline md:mr-1">Tech</span>
             </a>
             
-            <!-- روابط التنقل -->
             <nav class="hidden md:flex space-x-6 space-x-reverse font-medium text-slate-600">
                 <a href="#" class="hover:text-indigo-600 transition">الرئيسية</a>
                 <a href="#services" class="hover:text-indigo-600 transition">خدماتنا</a>
+                <a href="#templates-section" class="hover:text-indigo-600 transition">معرض القوالب</a>
                 <a href="#why-us" class="hover:text-indigo-600 transition">لماذا نحن؟</a>
                 <a href="#contact" class="hover:text-indigo-600 transition font-bold text-indigo-600">اطلب الآن</a>
             </nav>
 
-            <!-- زر سلة الطلبات التفاعلي -->
             <button onclick="toggleCart()" class="bg-indigo-50 text-indigo-600 hover:bg-indigo-100 px-4 py-2 rounded-xl flex items-center gap-2 font-bold relative transition">
                 <i class="fa-solid fa-laptop-code"></i>
                 <span class="hidden sm:inline">الخدمات المختارة</span>
@@ -55,7 +59,6 @@
         </div>
     </header>
 
-    <!-- الواجهة الرئيسية الإعلانية (Hero Section) -->
     <section class="relative bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 text-white py-20 md:py-32">
         <div class="container mx-auto px-4 text-center relative z-10">
             <span class="bg-indigo-500/20 text-indigo-400 border border-indigo-500/30 text-sm font-bold px-4 py-1.5 rounded-full inline-block mb-6">موقعك وتطبيقك هما واجهة نجاحك</span>
@@ -70,7 +73,6 @@
         </div>
     </section>
 
-    <!-- أقسام المشاريع المستهدفة (Services Grid) -->
     <section id="services" class="py-20 container mx-auto px-4">
         <div class="text-center mb-16">
             <h2 class="text-3xl md:text-4xl font-bold mb-4">خدمات التصميم البرمجي حسب مجالك</h2>
@@ -80,17 +82,15 @@
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             
-            <!-- 1. المطاعم -->
             <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 hover:shadow-xl transition duration-300 flex flex-col justify-between">
                 <div>
                     <div class="w-12 h-12 bg-orange-100 text-orange-600 rounded-xl flex items-center justify-center text-2xl mb-4"><i class="fa-solid fa-utensils"></i></div>
                     <h3 class="font-bold text-xl mb-2">مواقع وتطبيقات المطاعم</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed mb-4">نظام منيو تفاعلي، استقبال الطلبات مباشرة عبر الواتساب أو لوحة التحكم، وإدارة الوجبات والأسعار بسهولة تامة (مثل منصات مطاعم سوريا الاحترافية).</p>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-4">نظام منيو تفاعلي، استقبال الطلبات مباشرة عبر الواتساب أو لوحة التحكم، وإدارة الوجبات والأسعار بسهولة تامة.</p>
                 </div>
                 <button onclick="addService('موقع وتطبيق مطعم متكامل')" class="w-full bg-slate-900 hover:bg-indigo-600 text-white font-semibold py-2.5 rounded-xl transition text-sm">طلب تصميم هذا المشروع</button>
             </div>
 
-            <!-- 2. صالونات حلاقة -->
             <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 hover:shadow-xl transition duration-300 flex flex-col justify-between">
                 <div>
                     <div class="w-12 h-12 bg-amber-100 text-amber-600 rounded-xl flex items-center justify-center text-2xl mb-4"><i class="fa-solid fa-scissors"></i></div>
@@ -100,7 +100,6 @@
                 <button onclick="addService('موقع وتطبيق صالون حلاقة رجالي')" class="w-full bg-slate-900 hover:bg-indigo-600 text-white font-semibold py-2.5 rounded-xl transition text-sm">طلب تصميم هذا المشروع</button>
             </div>
 
-            <!-- 3. كوافير نسائي -->
             <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 hover:shadow-xl transition duration-300 flex flex-col justify-between">
                 <div>
                     <div class="w-12 h-12 bg-pink-100 text-pink-600 rounded-xl flex items-center justify-center text-2xl mb-4"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
@@ -110,45 +109,114 @@
                 <button onclick="addService('موقع وتطبيق كوافير نسائي')" class="w-full bg-slate-900 hover:bg-indigo-600 text-white font-semibold py-2.5 rounded-xl transition text-sm">طلب تصميم هذا المشروع</button>
             </div>
 
-            <!-- 4. المتاجر الإلكترونية -->
             <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 hover:shadow-xl transition duration-300 flex flex-col justify-between">
                 <div>
                     <div class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-xl flex items-center justify-center text-2xl mb-4"><i class="fa-solid fa-bag-shopping"></i></div>
                     <h3 class="font-bold text-xl mb-2">المتاجر الإلكترونية (E-Commerce)</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed mb-4">تطبيق وموقع لبيع أي منتج برمجياً، إضافة سلة مشتريات ذكية، إدارات الأقسام والمخزون، وتوفير تجربة تسوق فائقة السرعة والسلاسة للمستخدمين.</p>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-4">تطبيق وموقع لبيع أي منتج برمجياً، إضافة سلة مشتريات ذكية، إدارات الأقسام والمخزون، وتوفير تجربة تسوق فائقة السرعة للمستخدمين.</p>
                 </div>
                 <button onclick="addService('تصميم متجر إلكتروني متكامل')" class="w-full bg-slate-900 hover:bg-indigo-600 text-white font-semibold py-2.5 rounded-xl transition text-sm">طلب تصميم هذا المشروع</button>
             </div>
 
-            <!-- 5. الأطباء والعيادات -->
             <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 hover:shadow-xl transition duration-300 flex flex-col justify-between">
                 <div>
                     <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center text-2xl mb-4"><i class="fa-solid fa-user-doctor"></i></div>
                     <h3 class="font-bold text-xl mb-2">الأطباء والعيادات الطبية</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed mb-4">تنظيم المراجعات الطبية للمرضى، حجز الاستشارات أونلاين، عرض التخصصات والمقالات الطبية التوعوية لتعزيز ثقة المرضى وتسهيل زيارتهم.</p>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-4">تنظيم المراجعات الطبية للمرضى، حجز الاستشارات أونلاين، عرض التخصصات الطبية لتعزيز ثقة المرضى وتسهيل زيارتهم.</p>
                 </div>
-                <button onclick="addService('موقع وتطبيق لعيادة / طبيب')" class="w-full bg-slate-900 hover:bg-indigo-600 text-white font-semibold py-2.5 rounded-xl transition text-sm">طلب تصميم هذا المشروع</button>
+                <button onclick="addService('موقع وتطبيق لعيادة أو طبيب')" class="w-full bg-slate-900 hover:bg-indigo-600 text-white font-semibold py-2.5 rounded-xl transition text-sm">طلب تصميم هذا المشروع</button>
             </div>
 
-            <!-- 6. الشركات والمؤسسات -->
             <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 hover:shadow-xl transition duration-300 flex flex-col justify-between">
                 <div>
                     <div class="w-12 h-12 bg-purple-100 text-purple-600 rounded-xl flex items-center justify-center text-2xl mb-4"><i class="fa-solid fa-building"></i></div>
                     <h3 class="font-bold text-xl mb-2">مواقع الشركات التعريفية</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed mb-4">تصميم واجهات رسمية للشركات لعرض خدماتها، رؤيتها، سابقة أعمالها، وطرق التواصل معها لبناء هوية رقمية موثوقة وقوية في السوق.</p>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-4">تصميم واجهات رسمية للشركات لعرض خدماتها، رؤيتها، سابقة أعمالها، وطرق التواصل معها لبناء هوية رقمية موثوقة في السوق.</p>
                 </div>
-                <button onclick="addService('موقع وتطبيق لشركة / مؤسسة')" class="w-full bg-slate-900 hover:bg-indigo-600 text-white font-semibold py-2.5 rounded-xl transition text-sm">طلب تصميم هذا المشروع</button>
+                <button onclick="addService('موقع وتطبيق لشركة أو مؤسسة')" class="w-full bg-slate-900 hover:bg-indigo-600 text-white font-semibold py-2.5 rounded-xl transition text-sm">طلب تصميم هذا المشروع</button>
             </div>
 
         </div>
     </section>
 
-    <!-- قسم عبارة توجيهية هامة (Why us) -->
+    <!-- 🌟 قسم معرض القوالب الحية الجديد (مستوحى من تصميم لقطة الشاشة 1783121903601.jpeg ويعمل بالسحب) -->
+    <section id="templates-section" class="py-20 bg-slate-100 overflow-hidden border-t border-b border-slate-200">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <span class="bg-indigo-100 text-indigo-700 text-xs font-bold px-4 py-1.5 rounded-full inline-block mb-3">📱 اسحب يميناً ويساراً للتصفح</span>
+                <h2 class="text-3xl font-bold text-slate-900">معرض القوالب الحية الجاهزة للتجربة</h2>
+                <p class="text-slate-500 max-w-md mx-auto text-sm mt-2">اختر التصميم المفضل لديك، وأرسل لنا الاسم الذي تريده لإنشاء نسختك التجريبية المجانية فوراً.</p>
+            </div>
+
+            <!-- حاوية السلايدر الرئيسي -->
+            <div class="swiper templatesSwiper !pb-12 relative">
+                <div class="swiper-wrapper">
+                    
+                    <!-- كارت قالب المطاعم -->
+                    <div class="swiper-slide bg-white rounded-2xl p-4 border border-slate-200 shadow-sm hover:shadow-md transition duration-300 flex flex-col justify-between h-auto">
+                        <div>
+                            <div class="relative overflow-hidden rounded-xl mb-4">
+                                <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=500" class="w-full h-44 object-cover" alt="قالب مطعم تفاعلي">
+                                <span class="absolute top-2 right-2 bg-orange-600 text-white text-xs font-bold px-2.5 py-1 rounded-lg shadow-md">الأكثر مبيعاً 🔥</span>
+                            </div>
+                            <h3 class="font-bold text-lg text-slate-800 mb-1">قالب المطاعم الفوري</h3>
+                            <p class="text-xs text-slate-500 leading-relaxed mb-4">قالب منيو عصري يتيح للزبون تصفح الأقسام، واختيار الوجبات بحركات ناعمة، مع ميزة الإرسال الفوري للواتساب.</p>
+                        </div>
+                        <button onclick="addService('تجربة قالب المطاعم الفوري')" class="w-full bg-slate-900 hover:bg-indigo-600 text-white font-bold py-3 rounded-xl transition text-xs shadow-sm">تحديد هذا القالب للتجربة</button>
+                    </div>
+
+                    <!-- كارت قالب صالونات الحلاقة -->
+                    <div class="swiper-slide bg-white rounded-2xl p-4 border border-slate-200 shadow-sm hover:shadow-md transition duration-300 flex flex-col justify-between h-auto">
+                        <div>
+                            <div class="relative overflow-hidden rounded-xl mb-4">
+                                <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=500" class="w-full h-44 object-cover" alt="قالب صالون حلاقة">
+                                <span class="absolute top-2 right-2 bg-indigo-600 text-white text-xs font-bold px-2.5 py-1 rounded-lg shadow-md">تصميم عصري ✨</span>
+                            </div>
+                            <h3 class="font-bold text-lg text-slate-800 mb-1">قالب الحلاقة الرجالية (Stylish)</h3>
+                            <p class="text-xs text-slate-500 leading-relaxed mb-4">واجهة داكنة غاية في الفخامة لعرض خدمات العناية بالشعر واللحية، نظام حجز أوقات دقيق، ومعرض صور للقصات.</p>
+                        </div>
+                        <button onclick="addService('تجربة قالب الحلاقة الرجالية')" class="w-full bg-slate-900 hover:bg-indigo-600 text-white font-bold py-3 rounded-xl transition text-xs shadow-sm">تحديد هذا القالب للتجربة</button>
+                    </div>
+
+                    <!-- كارت قالب المتاجر الإلكترونية -->
+                    <div class="swiper-slide bg-white rounded-2xl p-4 border border-slate-200 shadow-sm hover:shadow-md transition duration-300 flex flex-col justify-between h-auto">
+                        <div>
+                            <div class="relative overflow-hidden rounded-xl mb-4">
+                                <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=500" class="w-full h-44 object-cover" alt="قالب متجر إلكتروني">
+                                <span class="absolute top-2 right-2 bg-emerald-600 text-white text-xs font-bold px-2.5 py-1 rounded-lg shadow-md">خفيف وسريع ⚡</span>
+                            </div>
+                            <h3 class="font-bold text-lg text-slate-800 mb-1">قالب المتجر الذكي</h3>
+                            <p class="text-xs text-slate-500 leading-relaxed mb-4">مخصص لبيع المنتجات مع إضافة سلة مشتريات منبثقة، وتصنيفات للمنتجات، ونظام فوترة ذكي ومبسط للعملاء.</p>
+                        </div>
+                        <button onclick="addService('تجربة قالب المتجر الذكي')" class="w-full bg-slate-900 hover:bg-indigo-600 text-white font-bold py-3 rounded-xl transition text-xs shadow-sm">تحديد هذا القالب للتجربة</button>
+                    </div>
+
+                    <!-- كارت قالب الشركات والمؤسسات -->
+                    <div class="swiper-slide bg-white rounded-2xl p-4 border border-slate-200 shadow-sm hover:shadow-md transition duration-300 flex flex-col justify-between h-auto">
+                        <div>
+                            <div class="relative overflow-hidden rounded-xl mb-4">
+                                <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=500" class="w-full h-44 object-cover" alt="قالب شركة تعريفية">
+                                <span class="absolute top-2 right-2 bg-purple-600 text-white text-xs font-bold px-2.5 py-1 rounded-lg shadow-md">رسمي واحترافي 💼</span>
+                            </div>
+                            <h3 class="font-bold text-lg text-slate-800 mb-1">قالب الشركات والمؤسسات</h3>
+                            <p class="text-xs text-slate-500 leading-relaxed mb-4">مناسب للشركات الطموحة التي تريد بناء حضور رقمي موثوق، يعرض رؤية الشركة، خدماتها، وسجل أعمالها الناجحة.</p>
+                        </div>
+                        <button onclick="addService('تجربة قالب الشركات والمؤسسات')" class="w-full bg-slate-900 hover:bg-indigo-600 text-white font-bold py-3 rounded-xl transition text-xs shadow-sm">تحديد هذا القالب للتجربة</button>
+                    </div>
+
+                </div>
+                
+                <!-- نقاط التمرير السفلية الدائرية -->
+                <div class="swiper-pagination !bottom-0"></div>
+            </div>
+        </div>
+    </section>
+
     <section id="why-us" class="bg-slate-900 text-white py-16">
         <div class="container mx-auto px-4 text-center max-w-3xl">
-            <h2 class="text-2xl md:text-3xl font-bold mb-6">لماذا تختار "Best of" لتصميم مشروعك?</h2>
+            <h2 class="text-2xl md:text-3xl font-bold mb-6">لماذا تختار "Best of" لتصميم مشروعك؟</h2>
             <p class="text-slate-400 leading-relaxed mb-8">
-                في العصر الحالي، العميل يبحث عن الراحة والسرعة. عدم امتلاك مشروعك لتطبيق على الهاتف أو موقع على الإنترنت يعني تفويت 80% من الزبائن المحتملين. نحن نضمن لك تصاميم جذابة خفيفة، وسرعة برمجية مذهلة تساعد مشروعك على النمو والتميز.
+                في العصر الحالي، عدم امتلاك مشروعك لتطبيق أو موقع يعني تفويت غالية الزبائن. نحن نضمن لك تصاميم جذابة خفيفة، وسرعة برمجية مذهلة تساعد مشروعك على النمو.
             </p>
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
                 <div class="p-4 bg-slate-800 rounded-xl"><h4 class="font-bold text-indigo-400 text-xl mb-1">100%</h4><p class="text-xs text-slate-400">متوافق مع الجوال</p></div>
@@ -159,7 +227,6 @@
         </div>
     </section>
 
-    <!-- سلة طلبات الخدمات الجانبية (Cart Sidebar) -->
     <div id="cart-sidebar" class="fixed inset-y-0 left-0 z-50 w-full max-w-md bg-white shadow-2xl transform -translate-x-full transition-transform duration-300 ease-in-out flex flex-col">
         <div class="p-5 border-b border-slate-200 flex justify-between items-center bg-slate-50">
             <h3 class="text-xl font-bold text-slate-800 flex items-center gap-2">
@@ -181,15 +248,12 @@
         </div>
     </div>
 
-    <!-- غطاء حماية خلفي عند فتح السلة -->
     <div id="cart-overlay" onclick="toggleCart()" class="fixed inset-0 bg-black/40 z-40 hidden"></div>
 
-    <!-- زر الواتساب العائم للتواصل الفوري المباشر -->
     <a href="https://wa.me/963985207356" target="_blank" class="float-wa fixed bottom-6 right-6 z-40 bg-green-500 text-white rounded-full w-16 h-16 shadow-2xl flex items-center justify-center text-3xl hover:bg-green-600 transition duration-300" title="تواصل مباشر عبر الواتساب">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 
-    <!-- تذييل الصفحة (Footer) -->
     <footer id="contact" class="bg-slate-950 text-slate-400 py-12 text-center border-t border-slate-900">
         <div class="container mx-auto px-4">
             <h3 class="text-white font-extrabold text-2xl mb-2">Best of for Technology</h3>
@@ -201,20 +265,43 @@
         </div>
     </footer>
 
-    <!-- الأوامر البرمجية التفاعلية للطلب والواتساب -->
+    <!-- ملف سكربت Swiper.js الرئيسي لتفعيل الحركة -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
     <script>
+        // 1. كود تهيئة وإعداد السلايدر ليكون متجاوباً بالكامل
+        var swiper = new Swiper(".templatesSwiper", {
+            slidesPerView: 1.25,       // عرض كارت وجزء بسيط من الكارت التالي على شاشة الموبايل لحث المستخدم على السحب
+            spaceBetween: 16,          // المسافة بين كل كارت وكارت
+            grabCursor: true,          // تغيير شكل المؤشر ليد ممسكة لتوضيح إمكانية السحب
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            breakpoints: {
+                // الشاشات المتوسطة (تابلت) تعرض كارتين وجزء بسيط
+                640: {
+                    slidesPerView: 2.2,
+                    spaceBetween: 20,
+                },
+                // الشاشات الكبيرة (كمبيوتر) تعرض 3 كروت وجزء بسيط
+                1024: {
+                    slidesPerView: 3.2,
+                    spaceBetween: 24,
+                },
+            },
+        });
+
+        // 2. كود العمليات والوظائف الأساسية للموقع (السلة والتنبيهات)
         let selectedServices = [];
 
-        // دالة مخصصة لعرض التنبيه الاحترافي الجديد تلقائياً وبشكل ناعم
         function showNotification(text) {
             const toast = document.getElementById('custom-toast');
             document.getElementById('toast-text').innerText = text;
             
-            // تفعيل حركة الظهور الهادئة
             toast.classList.remove('opacity-0', 'pointer-events-none', '-translate-y-4');
             toast.classList.add('opacity-100', 'translate-y-0');
             
-            // إخفاء التنبيه تلقائياً بعد 3 ثوانٍ فقط بدون إزعاج
             setTimeout(() => {
                 toast.classList.remove('opacity-100', 'translate-y-0');
                 toast.classList.add('opacity-0', 'pointer-events-none', '-translate-y-4');
@@ -226,25 +313,21 @@
             document.getElementById('cart-overlay').classList.toggle('hidden');
         }
 
-        // إضافة خدمة للسلة
         function addService(serviceName) {
             if (!selectedServices.includes(serviceName)) {
                 selectedServices.push(serviceName);
                 updateUI();
-                // استبدال الـ alert القديم بالإشعار الجديد
                 showNotification(`تم تحديد: ${serviceName}`);
             } else {
                 showNotification("هذه الخدمة مضافة بالفعل في قائمة طلباتك!");
             }
         }
 
-        // حذف خدمة من السلة
         function removeService(serviceName) {
             selectedServices = selectedServices.filter(item => item !== serviceName);
             updateUI();
         }
 
-        // تحديث واجهة السلة
         function updateUI() {
             const container = document.getElementById('cart-items-container');
             const emptyMsg = document.getElementById('empty-cart-msg');
@@ -261,6 +344,7 @@
             selectedServices.forEach(service => {
                 const itemDiv = document.createElement('div');
                 itemDiv.className = "flex justify-between items-center bg-slate-100 p-3 rounded-xl border border-slate-200";
+                
                 itemDiv.innerHTML = `
                     <span class="font-semibold text-slate-800 text-sm"><i class="fa-solid fa-check text-indigo-600 ml-1"></i> ${service}</span>
                     <button onclick="removeService('${service}')" class="text-red-500 hover:text-red-700 p-1 text-sm"><i class="fa-solid fa-trash"></i></button>
@@ -269,7 +353,6 @@
             });
         }
 
-        // إرسال الطلب بشكل منظم جداً ومفصل إلى رقم واتسابك مباشرة
         function sendOrderWhatsApp() {
             if (selectedServices.length === 0) {
                 showNotification("من فضلك اختر خدمة واحدة على الأقل لإرسال طلبك.");
