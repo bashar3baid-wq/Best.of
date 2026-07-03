@@ -32,11 +32,13 @@
 </head>
 <body class="bg-slate-50 text-slate-900 overflow-x-hidden">
 
+    <!-- التنبيه العلوي (Toast Notification) -->
     <div id="custom-toast" class="fixed top-24 left-1/2 -translate-x-1/2 bg-indigo-600 text-white px-6 py-3 rounded-xl shadow-2xl z-50 font-bold opacity-0 pointer-events-none transition-all duration-300 transform -translate-y-4 flex items-center gap-2">
         <i class="fa-solid fa-circle-check text-emerald-400"></i>
         <span id="toast-text">تم إضافة الخدمة بنجاح</span>
     </div>
 
+    <!-- الهيدر والقائمة العلوية -->
     <header class="bg-white/90 backdrop-blur shadow-sm sticky top-0 z-40">
         <div class="container mx-auto px-4 py-4 flex justify-between items-center">
             <a href="#" class="text-2xl font-black text-indigo-600 tracking-wider">
@@ -59,6 +61,7 @@
         </div>
     </header>
 
+    <!-- الهيرو سيكشن (الواجهة الرئيسية) -->
     <section class="relative bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 text-white py-20 md:py-32">
         <div class="container mx-auto px-4 text-center relative z-10">
             <span class="bg-indigo-500/20 text-indigo-400 border border-indigo-500/30 text-sm font-bold px-4 py-1.5 rounded-full inline-block mb-6">موقعك وتطبيقك هما واجهة نجاحك</span>
@@ -73,6 +76,7 @@
         </div>
     </section>
 
+    <!-- قسم الخدمات البرمجية -->
     <section id="services" class="py-20 container mx-auto px-4">
         <div class="text-center mb-16">
             <h2 class="text-3xl md:text-4xl font-bold mb-4">خدمات التصميم البرمجي حسب مجالك</h2>
@@ -88,7 +92,7 @@
                     <h3 class="font-bold text-xl mb-2">مواقع وتطبيقات المطاعم</h3>
                     <p class="text-slate-600 text-sm leading-relaxed mb-4">نظام منيو تفاعلي، استقبال الطلبات مباشرة عبر الواتساب أو لوحة التحكم، وإدارة الوجبات والأسعار بسهولة تامة.</p>
                 </div>
-                <button onclick="addService('موقع وتطبيق مطعم متكامل')" class="w-full bg-slate-900 hover:bg-indigo-600 text-white font-semibold py-2.5 rounded-xl transition text-sm">طلب تصميم this المشروع</button>
+                <button onclick="addService('موقع وتطبيق مطعم متكامل')" class="w-full bg-slate-900 hover:bg-indigo-600 text-white font-semibold py-2.5 rounded-xl transition text-sm">طلب تصميم هذا المشروع</button>
             </div>
 
             <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 hover:shadow-xl transition duration-300 flex flex-col justify-between">
@@ -139,7 +143,7 @@
         </div>
     </section>
 
-    <!-- 🌟 قسم معرض القوالب الحية الجديد -->
+    <!-- 🌟 قسم معرض القوالب الحية (يعمل بالسحب واللمس) -->
     <section id="templates-section" class="py-20 bg-slate-100 overflow-hidden border-t border-b border-slate-200">
         <div class="container mx-auto px-4">
             <div class="text-center mb-12">
@@ -206,12 +210,13 @@
 
                 </div>
                 
-                <!-- نقاط التمرير السفلية الدائرية -->
+                <!-- نقاط التمرير السفلي -->
                 <div class="swiper-pagination !bottom-0"></div>
             </div>
         </div>
     </section>
 
+    <!-- قسم مميزات الوكالة -->
     <section id="why-us" class="bg-slate-900 text-white py-16">
         <div class="container mx-auto px-4 text-center max-w-3xl">
             <h2 class="text-2xl md:text-3xl font-bold mb-6">لماذا تختار "Best of" لتصميم مشروعك؟</h2>
@@ -227,6 +232,7 @@
         </div>
     </section>
 
+    <!-- القائمة الجانبية للسلة -->
     <div id="cart-sidebar" class="fixed inset-y-0 left-0 z-50 w-full max-w-md bg-white shadow-2xl transform -translate-x-full transition-transform duration-300 ease-in-out flex flex-col">
         <div class="p-5 border-b border-slate-200 flex justify-between items-center bg-slate-50">
             <h3 class="text-xl font-bold text-slate-800 flex items-center gap-2">
@@ -237,10 +243,8 @@
             </button>
         </div>
 
-        <div id="cart-items-container" class="p-5 flex-grow overflow-y-auto space-y-4">
-            <!-- سيتم التحكم في ظهور هذه الرسالة برمجياً لمنع المشاكل عند استعادة العناصر المحفوظة -->
-            <p id="empty-cart-msg" class="text-center text-slate-400 my-8 hidden">لم تقم باختيار أي مشروع لتصميمه بعد!</p>
-        </div>
+        <!-- حاوي عناصر السلة الديناميكي الجديد -->
+        <div id="cart-items-container" class="p-5 flex-grow overflow-y-auto space-y-4"></div>
 
         <div class="p-5 border-t border-slate-200 bg-slate-50">
             <button onclick="sendOrderWhatsApp()" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3.5 rounded-xl flex items-center justify-center gap-2 text-lg shadow transition">
@@ -251,10 +255,12 @@
 
     <div id="cart-overlay" onclick="toggleCart()" class="fixed inset-0 bg-black/40 z-40 hidden"></div>
 
+    <!-- زر واتساب العائم -->
     <a href="https://wa.me/963985207356" target="_blank" class="float-wa fixed bottom-6 right-6 z-40 bg-green-500 text-white rounded-full w-16 h-16 shadow-2xl flex items-center justify-center text-3xl hover:bg-green-600 transition duration-300" title="تواصل مباشر عبر الواتساب">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 
+    <!-- الفوتر السفلي -->
     <footer id="contact" class="bg-slate-950 text-slate-400 py-12 text-center border-t border-slate-900">
         <div class="container mx-auto px-4">
             <h3 class="text-white font-extrabold text-2xl mb-2">Best of for Technology</h3>
@@ -270,7 +276,7 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
     <script>
-        // 1. كود تهيئة وإعداد السلايدر
+        // 1. كود تهيئة وإعداد السلايدر المتجاوب
         var swiper = new Swiper(".templatesSwiper", {
             slidesPerView: 1.25,
             spaceBetween: 16,
@@ -291,10 +297,19 @@
             },
         });
 
-        // 2. كود السلة المطور مع ميزة الحفظ التلقائي في الذاكرة المحلية (LocalStorage)
+        // 2. كود السلة المحمي والخالي من أخطاء الانهيار البرمجي
+        let selectedServices = [];
         
-        // جلب العناصر المحفوظة سابقاً عند تحميل الصفحة، وإذا لم تكن موجودة يتم إنشاء مصفوفة فارغة
-        let selectedServices = JSON.parse(localStorage.getItem('savedCart')) || [];
+        // جلب البيانات المحفوظة بأمان وفحصها لمنع أي تجميد للمتصفح
+        try {
+            const savedData = localStorage.getItem('savedCart');
+            selectedServices = savedData ? JSON.parse(savedData) : [];
+            if (!Array.isArray(selectedServices)) {
+                selectedServices = [];
+            }
+        } catch (error) {
+            selectedServices = [];
+        }
 
         function showNotification(text) {
             const toast = document.getElementById('custom-toast');
@@ -314,14 +329,11 @@
             document.getElementById('cart-overlay').classList.toggle('hidden');
         }
 
-        // إضافة خدمة للسلة وحفظها
+        // إضافة خدمة للسلة وحفظها فورياً
         function addService(serviceName) {
             if (!selectedServices.includes(serviceName)) {
                 selectedServices.push(serviceName);
-                
-                // حفظ المصفوفة الجديدة في ذاكرة المتصفح
                 localStorage.setItem('savedCart', JSON.stringify(selectedServices));
-                
                 updateUI();
                 showNotification(`تم تحديد: ${serviceName}`);
             } else {
@@ -329,45 +341,41 @@
             }
         }
 
-        // حذف خدمة من السلة وتحديث الحفظ
+        // حذف خدمة من السلة بأمان وتحديث الحفظ
         function removeService(serviceName) {
             selectedServices = selectedServices.filter(item => item !== serviceName);
-            
-            // تحديث ذاكرة المتصفح بعد الحذف
             localStorage.setItem('savedCart', JSON.stringify(selectedServices));
-            
             updateUI();
         }
 
-        // تحديث واجهة السلة
+        // تحديث واجهة السلة (تم إصلاحها بالكامل وتوليد الرسائل برمجياً لمنع الاختفاء)
         function updateUI() {
             const container = document.getElementById('cart-items-container');
-            const emptyMsg = document.getElementById('empty-cart-msg');
             const countBadge = document.getElementById('cart-count');
 
             countBadge.innerText = selectedServices.length;
-            container.innerHTML = '';
+            container.innerHTML = ''; // تفريغ الحاوية بأمان
 
+            // توليد رسالة السلة الفارغة برمجياً إذا كانت المصفوفة فارغة
             if (selectedServices.length === 0) {
-                emptyMsg.classList.remove('hidden');
-                container.appendChild(emptyMsg);
+                container.innerHTML = `<p class="text-center text-slate-400 my-8">لم تقم باختيار أي مشروع لتصميمه بعد!</p>`;
                 return;
             }
 
-            emptyMsg.classList.add('hidden');
-
+            // بناء عناصر السلة الحالية
             selectedServices.forEach(service => {
                 const itemDiv = document.createElement('div');
-                itemDiv.className = "flex justify-between items-center bg-slate-100 p-3 rounded-xl border border-slate-200";
+                itemDiv.className = "flex justify-between items-center bg-slate-100 p-3 rounded-xl border border-slate-200 animate-fade-in";
                 
                 itemDiv.innerHTML = `
                     <span class="font-semibold text-slate-800 text-sm"><i class="fa-solid fa-check text-indigo-600 ml-1"></i> ${service}</span>
-                    <button onclick="removeService('${service}')" class="text-red-500 hover:text-red-700 p-1 text-sm"><i class="fa-solid fa-trash"></i></button>
+                    <button onclick="removeService('${service}')" class="text-red-500 hover:text-red-700 p-1 text-sm transition"><i class="fa-solid fa-trash"></i></button>
                 `;
                 container.appendChild(itemDiv);
             });
         }
 
+        // إرسال الطلب المنظم إلى رقم الواتساب
         function sendOrderWhatsApp() {
             if (selectedServices.length === 0) {
                 showNotification("من فضلك اختر خدمة واحدة على الأقل لإرسال طلبك.");
@@ -391,8 +399,9 @@
             window.open(finalURL, '_blank');
         }
 
-        // تشغيل تحديث الواجهة فوراً عند فتح الصفحة لقراءة البيانات المحفوظة تلقائياً
+        // تشغيل البناء التلقائي للسلة لقراءة الذاكرة المخزنة فور فتح الصفحة
         updateUI();
     </script>
 </body>
 </html>
+
