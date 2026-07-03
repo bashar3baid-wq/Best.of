@@ -88,7 +88,7 @@
                     <h3 class="font-bold text-xl mb-2">مواقع وتطبيقات المطاعم</h3>
                     <p class="text-slate-600 text-sm leading-relaxed mb-4">نظام منيو تفاعلي، استقبال الطلبات مباشرة عبر الواتساب أو لوحة التحكم، وإدارة الوجبات والأسعار بسهولة تامة.</p>
                 </div>
-                <button onclick="addService('موقع وتطبيق مطعم متكامل')" class="w-full bg-slate-900 hover:bg-indigo-600 text-white font-semibold py-2.5 rounded-xl transition text-sm">طلب تصميم هذا المشروع</button>
+                <button onclick="addService('موقع وتطبيق مطعم متكامل')" class="w-full bg-slate-900 hover:bg-indigo-600 text-white font-semibold py-2.5 rounded-xl transition text-sm">طلب تصميم this المشروع</button>
             </div>
 
             <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 hover:shadow-xl transition duration-300 flex flex-col justify-between">
@@ -139,7 +139,7 @@
         </div>
     </section>
 
-    <!-- 🌟 قسم معرض القوالب الحية الجديد (مستوحى من تصميم لقطة الشاشة 1783121903601.jpeg ويعمل بالسحب) -->
+    <!-- 🌟 قسم معرض القوالب الحية الجديد -->
     <section id="templates-section" class="py-20 bg-slate-100 overflow-hidden border-t border-b border-slate-200">
         <div class="container mx-auto px-4">
             <div class="text-center mb-12">
@@ -238,7 +238,8 @@
         </div>
 
         <div id="cart-items-container" class="p-5 flex-grow overflow-y-auto space-y-4">
-            <p id="empty-cart-msg" class="text-center text-slate-400 my-8">لم تقم باختيار أي مشروع لتصميمه بعد!</p>
+            <!-- سيتم التحكم في ظهور هذه الرسالة برمجياً لمنع المشاكل عند استعادة العناصر المحفوظة -->
+            <p id="empty-cart-msg" class="text-center text-slate-400 my-8 hidden">لم تقم باختيار أي مشروع لتصميمه بعد!</p>
         </div>
 
         <div class="p-5 border-t border-slate-200 bg-slate-50">
@@ -269,22 +270,20 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
     <script>
-        // 1. كود تهيئة وإعداد السلايدر ليكون متجاوباً بالكامل
+        // 1. كود تهيئة وإعداد السلايدر
         var swiper = new Swiper(".templatesSwiper", {
-            slidesPerView: 1.25,       // عرض كارت وجزء بسيط من الكارت التالي على شاشة الموبايل لحث المستخدم على السحب
-            spaceBetween: 16,          // المسافة بين كل كارت وكارت
-            grabCursor: true,          // تغيير شكل المؤشر ليد ممسكة لتوضيح إمكانية السحب
+            slidesPerView: 1.25,
+            spaceBetween: 16,
+            grabCursor: true,
             pagination: {
                 el: ".swiper-pagination",
                 clickable: true,
             },
             breakpoints: {
-                // الشاشات المتوسطة (تابلت) تعرض كارتين وجزء بسيط
                 640: {
                     slidesPerView: 2.2,
                     spaceBetween: 20,
                 },
-                // الشاشات الكبيرة (كمبيوتر) تعرض 3 كروت وجزء بسيط
                 1024: {
                     slidesPerView: 3.2,
                     spaceBetween: 24,
@@ -292,8 +291,10 @@
             },
         });
 
-        // 2. كود العمليات والوظائف الأساسية للموقع (السلة والتنبيهات)
-        let selectedServices = [];
+        // 2. كود السلة المطور مع ميزة الحفظ التلقائي في الذاكرة المحلية (LocalStorage)
+        
+        // جلب العناصر المحفوظة سابقاً عند تحميل الصفحة، وإذا لم تكن موجودة يتم إنشاء مصفوفة فارغة
+        let selectedServices = JSON.parse(localStorage.getItem('savedCart')) || [];
 
         function showNotification(text) {
             const toast = document.getElementById('custom-toast');
@@ -313,9 +314,14 @@
             document.getElementById('cart-overlay').classList.toggle('hidden');
         }
 
+        // إضافة خدمة للسلة وحفظها
         function addService(serviceName) {
             if (!selectedServices.includes(serviceName)) {
                 selectedServices.push(serviceName);
+                
+                // حفظ المصفوفة الجديدة في ذاكرة المتصفح
+                localStorage.setItem('savedCart', JSON.stringify(selectedServices));
+                
                 updateUI();
                 showNotification(`تم تحديد: ${serviceName}`);
             } else {
@@ -323,11 +329,17 @@
             }
         }
 
+        // حذف خدمة من السلة وتحديث الحفظ
         function removeService(serviceName) {
             selectedServices = selectedServices.filter(item => item !== serviceName);
+            
+            // تحديث ذاكرة المتصفح بعد الحذف
+            localStorage.setItem('savedCart', JSON.stringify(selectedServices));
+            
             updateUI();
         }
 
+        // تحديث واجهة السلة
         function updateUI() {
             const container = document.getElementById('cart-items-container');
             const emptyMsg = document.getElementById('empty-cart-msg');
@@ -337,9 +349,12 @@
             container.innerHTML = '';
 
             if (selectedServices.length === 0) {
+                emptyMsg.classList.remove('hidden');
                 container.appendChild(emptyMsg);
                 return;
             }
+
+            emptyMsg.classList.add('hidden');
 
             selectedServices.forEach(service => {
                 const itemDiv = document.createElement('div');
@@ -375,6 +390,9 @@
             const finalURL = `https://wa.me/${myPhone}?text=${encodeURIComponent(msg)}`;
             window.open(finalURL, '_blank');
         }
+
+        // تشغيل تحديث الواجهة فوراً عند فتح الصفحة لقراءة البيانات المحفوظة تلقائياً
+        updateUI();
     </script>
 </body>
 </html>
