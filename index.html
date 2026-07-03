@@ -1,1 +1,430 @@
-# Best.of
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Best of | للحلول الرقمية وتطوير المواقع والتطبيقات</title>
+    <style>
+        /* إعدادات الخطوط والألوان الأساسية */
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap');
+
+        :root {
+            --bg-color: #0f172a; /* كحلي داكن جداً خلفية تقنية */
+            --card-bg: #1e293b; /* لون الكروت */
+            --primary-color: #38bdf8; /* أزرق سماوي رقمي */
+            --accent-color: #4ade80; /* أخضر فسفوري للواتساب والتنبيهات */
+            --text-main: #f8fafc; /* نص أبيض مائل للرمادي مريح للعين */
+            --text-muted: #94a3b8; /* رمادي للنصوص الفرعية */
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Cairo', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            width: 85%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* الهيدر والقائمة (Navbar) */
+        header {
+            background-color: rgba(15, 23, 42, 0.9);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            border-bottom: 1px solid rgba(56, 189, 248, 0.1);
+        }
+
+        header .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        
+        .logo span {
+            color: var(--text-main);
+            font-size: 14px;
+            font-weight: 400;
+            margin-right: 8px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-right: 25px;
+        }
+
+        nav ul li a {
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        /* واجهة الموقع الرئيسية (Hero Section) */
+        .hero {
+            padding: 160px 0 100px 0;
+            text-align: center;
+            background: radial-gradient(circle at top, rgba(56, 189, 248, 0.15), transparent);
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        .hero h1 span {
+            color: var(--primary-color);
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto 40px auto;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: #0f172a;
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 14px rgba(56, 189, 248, 0.4);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(56, 189, 248, 0.6);
+        }
+
+        .btn-whatsapp {
+            background-color: var(--accent-color);
+            box-shadow: 0 4px 14px rgba(74, 222, 128, 0.4);
+            color: #0f172a;
+        }
+
+        .btn-whatsapp:hover {
+            box-shadow: 0 6px 20px rgba(74, 222, 128, 0.6);
+        }
+
+        /* الأقسام العامة */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background-color: var(--primary-color);
+            margin: 10px auto 0 auto;
+            border-radius: 2px;
+        }
+
+        /* قسم الخدمات (Services) */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background-color: var(--card-bg);
+            padding: 40px 30px;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: transform 0.3s, border-color 0.3s;
+            text-align: center;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(56, 189, 248, 0.3);
+        }
+
+        .service-icon {
+            font-size: 40px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+
+        .service-card p {
+            color: var(--text-muted);
+            font-size: 15px;
+        }
+
+        /* قسم لماذا نحن (Features) */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .feature-item {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .feature-item h4 {
+            color: var(--primary-color);
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        /* قسم معرض الأعمال (Portfolio) */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .portfolio-item {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .portfolio-info {
+            padding: 25px;
+        }
+
+        .portfolio-info h4 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .portfolio-info p {
+            color: var(--text-muted);
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .btn-sm {
+            padding: 8px 16px;
+            font-size: 14px;
+            border-radius: 6px;
+        }
+
+        /* قسم تواصل معنا */
+        .contact-section {
+            background: linear-gradient(180px, transparent, rgba(56, 189, 248, 0.05));
+            text-align: center;
+        }
+
+        .contact-box {
+            background-color: var(--card-bg);
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 40px;
+            border-radius: 16px;
+            border: 1px solid rgba(56, 189, 248, 0.2);
+        }
+
+        .contact-box p {
+            margin-bottom: 30px;
+            color: var(--text-muted);
+        }
+
+        /* الفوتر (Footer) */
+        footer {
+            background-color: #0b1329;
+            padding: 30px 0;
+            text-align: center;
+            font-size: 14px;
+            color: var(--text-muted);
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        /* التوافق مع الهواتف الذكية */
+        @media (max-width: 768px) {
+            header .nav-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            nav ul li {
+                margin: 0 10px;
+            }
+            .hero h1 {
+                font-size: 30px;
+            }
+            .hero p {
+                font-size: 15px;
+            }
+            section {
+                padding: 50px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- الهيدر والقائمة -->
+    <header>
+        <div class="container nav-container">
+            <div class="logo">Best of <span>| معاً نحو التميز والإبداع</span></div>
+            <nav>
+                <ul>
+                    <li><a href="#home">الرئيسية</a></li>
+                    <li><a href="#services">خدماتنا</a></li>
+                    <li><a href="#portfolio">أعمالنا</a></li>
+                    <li><a href="#contact">تواصل معنا</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- الواجهة الرئيسية -->
+    <section id="home" class="hero">
+        <div class="container">
+            <h1>انطلق بمشروعك إلى القمة مع <span>Best of</span></h1>
+            <p>نصمم لك موقعك الإلكتروني الخاص وتطبيق أندرويد ذكي لمتجرك ومحلك التجاري بأعلى جودة احترافية، وبأقل تكلفة ممكنة، وبدون أي مصاريف استضافة شهرية أو سنوية!</p>
+            <a href="https://wa.me/963985207356?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20Best%20of%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%B7%D9%84%D8%A8%20%D9%86%D9%85%D9%85%D9%88%D8%B0%D8%AC%20%D8%AA%D8%AC%D8%B1%D9%8A%D8%A8%D9%8A%20%D9%84%D9%85%D8%B4%D8%B1%D9%84%D9%88%D8%B9%D9%8A" target="_blank" class="btn btn-whatsapp">اطلب نموذجك التجريبي المجاني الآن</a>
+        </div>
+    </section>
+
+    <!-- قسم الخدمات -->
+    <section id="services">
+        <div class="container">
+            <h2 class="section-title">خدماتنا الرقمية</h2>
+            <div class="services-grid">
+                <!-- خدمة المواقع -->
+                <div class="service-card">
+                    <div class="service-icon">🌐</div>
+                    <h3>تصميم المواقع الاحترافية</h3>
+                    <p>نصمم لك موقعاً تعريفياً سريعاً جداً وآمناً لعرض منتجاتك أو خدماتك، مستضاف بالكامل مجاناً وبدون أي تكاليف اشتراك أو تجديد سنوي.</p>
+                </div>
+                <!-- خدمة التطبيقات -->
+                <div class="service-card">
+                    <div class="service-icon">📱</div>
+                    <h3>تطوير تطبيقات الأندرويد</h3>
+                    <p>نصمم تطبيق أندرويد ذكي خاصاً بمحلك، يتيح لزبائنك تصفح القائمة والمنتجات وإرسال طلباتهم مباشرة إلى رقم الواتساب الخاص بك بضغطة زر.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم الميزات التنافسية -->
+    <section style="background-color: rgba(255,255,255,0.02);">
+        <div class="container">
+            <h2 class="section-title">لماذا تختار Best of؟</h2>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <h4>💰 تكلفة ذكية</h4>
+                    <p>لا وجود للاشتراكات الشهرية أو السنوية المزعجة للاستضافة.</p>
+                </div>
+                <div class="feature-item">
+                    <h4>⚡ سرعة خارقة</h4>
+                    <p>مواقع خفيفة تفتح للزبائن في أجزاء من الثانية.</p>
+                </div>
+                <div class="feature-item">
+                    <h4>💬 ربط بالواتساب</h4>
+                    <p>تسهيل استلام الطلبات من زبائنك مباشرة لدردشتك.</p>
+                </div>
+                <div class="feature-item">
+                    <h4>🤝 دعم مباشر</h4>
+                    <p>نحن معك خطوة بخطوة حتى تطلق مشروعك بنجاح.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم معرض الأعمال -->
+    <section id="portfolio">
+        <div class="container">
+            <h2 class="section-title">معرض أعمالنا (نماذج تجريبية)</h2>
+            <p style="text-align: center; color: var(--text-muted); margin-bottom: 40px; margin-top: -30px;">جرب النماذج بنفسك لترى دقة وسرعة عملنا</p>
+            
+            <div class="portfolio-grid">
+                <!-- نموذج موقع مطعم أو متجر -->
+                <div class="portfolio-item">
+                    <div class="portfolio-info">
+                        <h4>نموذج موقع إلكتروني سريع</h4>
+                        <p>صفحة تعريفية لعرض المنتجات أو قائمة طعام لمطعم، متوافقة تماماً مع الهواتف ومستضافة مجانا.</p>
+                        <!-- ضع رابط موقعك التجريبي على جيتهاب هنا بعد href مستقبلاً -->
+                        <a href="#" target="_blank" class="btn btn-sm">معاينة حية للموقع 🌐</a>
+                    </div>
+                </div>
+
+                <!-- نموذج تطبيق أندرويد -->
+                <div class="portfolio-item">
+                    <div class="portfolio-info">
+                        <h4>نموذج تطبيق أندرويد ذكي</h4>
+                        <p>تطبيق لعرض المنيو والأصناف مع ميزة إرسال الطلب المباشر عبر الواتساب لصاحب العمل.</p>
+                        <!-- ضع رابط تحميل ملف الـ APK من جوجل درايف هنا بعد href مستقبلاً -->
+                        <a href="#" target="_blank" class="btn btn-sm btn-whatsapp">تحميل وتجربة التطبيق 📱</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم تواصل معنا -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <div class="contact-box">
+                <h2>هل أنت جاهز لنقل عملك إلى الإنترنت؟</h2>
+                <p>تواصل معنا اليوم، وسنصنع لك نموذجاً تجريبياً خاصاً بمشروعك مجاناً لتراه بنفسك قبل الدفع!</p>
+                <a href="https://wa.me/963985207356?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20Best%20of%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D9%8A%D8%A7%D9%84%D8%A5%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D8%AA%D8%B5%D9%85%D9%8A%D9%85%20%D9%85%D9%88%D9%82%D9%8A%20%D8%A3%D9%88%20%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%D9%8A" target="_blank" class="btn btn-whatsapp">تواصل معنا عبر واتساب الآن 💬</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- الفوتر -->
+    <footer>
+        <div class="container">
+            <p>جميع الحقوق محفوظة © 2026 لمشروع <span style="color: var(--primary-color); font-weight: bold;">Best of</span></p>
+        </div>
+    </footer>
+
+</body>
+</html>
