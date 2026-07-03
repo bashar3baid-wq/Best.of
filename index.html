@@ -24,6 +24,12 @@
 </head>
 <body class="bg-slate-50 text-slate-900 overflow-x-hidden">
 
+    <!-- عنصر التنبيه الاحترافي الجديد (Toast) مخفي افتراضياً -->
+    <div id="custom-toast" class="fixed top-24 left-1/2 -translate-x-1/2 bg-indigo-600 text-white px-6 py-3 rounded-xl shadow-2xl z-50 font-bold opacity-0 pointer-events-none transition-all duration-300 transform -translate-y-4 flex items-center gap-2">
+        <i class="fa-solid fa-circle-check text-emerald-400"></i>
+        <span id="toast-text">تم إضافة الخدمة بنجاح</span>
+    </div>
+
     <!-- القائمة العلوية (Navbar) -->
     <header class="bg-white/90 backdrop-blur shadow-sm sticky top-0 z-40">
         <div class="container mx-auto px-4 py-4 flex justify-between items-center">
@@ -140,7 +146,7 @@
     <!-- قسم عبارة توجيهية هامة (Why us) -->
     <section id="why-us" class="bg-slate-900 text-white py-16">
         <div class="container mx-auto px-4 text-center max-w-3xl">
-            <h2 class="text-2xl md:text-3xl font-bold mb-6">لماذا تختار "Best of" لتصميم مشروعك؟</h2>
+            <h2 class="text-2xl md:text-3xl font-bold mb-6">لماذا تختار "Best of" لتصميم مشروعك?</h2>
             <p class="text-slate-400 leading-relaxed mb-8">
                 في العصر الحالي، العميل يبحث عن الراحة والسرعة. عدم امتلاك مشروعك لتطبيق على الهاتف أو موقع على الإنترنت يعني تفويت 80% من الزبائن المحتملين. نحن نضمن لك تصاميم جذابة خفيفة، وسرعة برمجية مذهلة تساعد مشروعك على النمو والتميز.
             </p>
@@ -199,6 +205,22 @@
     <script>
         let selectedServices = [];
 
+        // دالة مخصصة لعرض التنبيه الاحترافي الجديد تلقائياً وبشكل ناعم
+        function showNotification(text) {
+            const toast = document.getElementById('custom-toast');
+            document.getElementById('toast-text').innerText = text;
+            
+            // تفعيل حركة الظهور الهادئة
+            toast.classList.remove('opacity-0', 'pointer-events-none', '-translate-y-4');
+            toast.classList.add('opacity-100', 'translate-y-0');
+            
+            // إخفاء التنبيه تلقائياً بعد 3 ثوانٍ فقط بدون إزعاج
+            setTimeout(() => {
+                toast.classList.remove('opacity-100', 'translate-y-0');
+                toast.classList.add('opacity-0', 'pointer-events-none', '-translate-y-4');
+            }, 3000);
+        }
+
         function toggleCart() {
             document.getElementById('cart-sidebar').classList.toggle('-translate-x-full');
             document.getElementById('cart-overlay').classList.toggle('hidden');
@@ -209,9 +231,10 @@
             if (!selectedServices.includes(serviceName)) {
                 selectedServices.push(serviceName);
                 updateUI();
-                alert(`تم تحديد: ${serviceName}. افتح السلة العلوية لإرسال الطلب.`);
+                // استبدال الـ alert القديم بالإشعار الجديد
+                showNotification(`تم تحديد: ${serviceName}`);
             } else {
-                alert("هذه الخدمة مضافة بالفعل في قائمة طلباتك!");
+                showNotification("هذه الخدمة مضافة بالفعل في قائمة طلباتك!");
             }
         }
 
@@ -237,7 +260,7 @@
 
             selectedServices.forEach(service => {
                 const itemDiv = document.createElement('div');
-                itemDiv.className = "flex justify-between items-center bg-slate-100 p-3 rounded-xl border border-slate-200 animate-fadeIn";
+                itemDiv.className = "flex justify-between items-center bg-slate-100 p-3 rounded-xl border border-slate-200";
                 itemDiv.innerHTML = `
                     <span class="font-semibold text-slate-800 text-sm"><i class="fa-solid fa-check text-indigo-600 ml-1"></i> ${service}</span>
                     <button onclick="removeService('${service}')" class="text-red-500 hover:text-red-700 p-1 text-sm"><i class="fa-solid fa-trash"></i></button>
@@ -249,13 +272,12 @@
         // إرسال الطلب بشكل منظم جداً ومفصل إلى رقم واتسابك مباشرة
         function sendOrderWhatsApp() {
             if (selectedServices.length === 0) {
-                alert("من فضلك اختر خدمة واحدة على الأقل لإرسال طلبك.");
+                showNotification("من فضلك اختر خدمة واحدة على الأقل لإرسال طلبك.");
                 return;
             }
 
-            const myPhone = "963985207356"; // رقمك تم ضبطه هنا بدون أصفار إضافية للرابط
+            const myPhone = "963985207356"; 
             
-            // صياغة الرسالة التسويقية والطلب الموجه إليك
             let msg = "*مرحباً Best of Tech، أود الاستفسار وطلب تصميم مشروع*\n";
             msg += "=========================\n\n";
             msg += "*الخدمات والمشاريع التي حددتها من موقعكم:*\n";
@@ -273,3 +295,4 @@
     </script>
 </body>
 </html>
+
