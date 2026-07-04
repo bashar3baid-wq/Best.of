@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Best of - لتصميم المواقع والتطبيقات الاحترافية</title>
+    <title>Best Of - طريقك نحو التميز الرقمي</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
@@ -11,22 +11,20 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap');
         body {
             font-family: 'Cairo', sans-serif;
         }
         @keyframes bounce-slow {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-8px); }
+            50% { transform: translateY(-6px); }
         }
         .float-wa {
             animation: bounce-slow 3s infinite ease-in-out;
         }
-        /* تعديل مخصص لنقاط التنقل السفلية في السلايدر ليناسب هوية موقعك */
-        .swiper-pagination-bullet-active {
-            background: #4f46e5 !important;
-            width: 20px !important;
-            border-radius: 4px !important;
+        /* تنعيم حركات فتح وإغلاق أقسام الخدمات */
+        .details-transition {
+            transition: all 0.3s ease-in-out;
         }
     </style>
 </head>
@@ -39,274 +37,376 @@
     </div>
 
     <!-- الهيدر والقائمة العلوية -->
-    <header class="bg-white/90 backdrop-blur shadow-sm sticky top-0 z-40">
+    <header class="bg-white/95 backdrop-blur shadow-sm sticky top-0 z-45 border-b border-slate-100">
         <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <a href="#" class="text-2xl font-black text-indigo-600 tracking-wider">
-                Best <span class="text-slate-800">of</span> <span class="text-sm font-semibold text-slate-500 block md:inline md:mr-1">Tech</span>
-            </a>
+            <div class="flex items-center gap-4">
+                <a href="#" class="text-2xl font-black text-indigo-600 tracking-wider">
+                    Best <span class="text-slate-800">Of</span>
+                </a>
+                <!-- رابط الفيسبوك باللوجو والاسم الإنجليزي -->
+                <a href="https://www.facebook.com/profile.php?id=61591230917546" target="_blank" class="text-slate-500 hover:text-blue-600 flex items-center gap-1.5 text-xs font-semibold bg-slate-100 px-2.5 py-1 rounded-lg transition">
+                    <i class="fa-brands fa-facebook text-base"></i>
+                    <span>Best Of</span>
+                </a>
+            </div>
             
-            <nav class="hidden md:flex space-x-6 space-x-reverse font-medium text-slate-600">
+            <nav class="hidden md:flex space-x-6 space-x-reverse font-medium text-slate-600 text-sm">
                 <a href="#" class="hover:text-indigo-600 transition">الرئيسية</a>
-                <a href="#services" class="hover:text-indigo-600 transition">خدماتنا</a>
-                <a href="#templates-section" class="hover:text-indigo-600 transition">معرض القوالب</a>
-                <a href="#why-us" class="hover:text-indigo-600 transition">لماذا نحن؟</a>
-                <a href="#contact" class="hover:text-indigo-600 transition font-bold text-indigo-600">اطلب الآن</a>
+                <a href="#services-section" class="hover:text-indigo-600 transition">خدماتنا</a>
+                <a href="#portfolio-section" class="hover:text-indigo-600 transition">معرض أعمالنا</a>
+                <a href="#why-us-section" class="hover:text-indigo-600 transition">لماذا نحن؟</a>
             </nav>
 
-            <button onclick="toggleCart()" class="bg-indigo-50 text-indigo-600 hover:bg-indigo-100 px-4 py-2 rounded-xl flex items-center gap-2 font-bold relative transition">
-                <i class="fa-solid fa-laptop-code"></i>
-                <span class="hidden sm:inline">الخدمات المختارة</span>
+            <button onclick="toggleCart()" class="bg-indigo-50 text-indigo-600 hover:bg-indigo-100 px-4 py-2 rounded-xl flex items-center gap-2 font-bold relative transition text-sm">
+                <i class="fa-solid fa-layer-group"></i>
+                <span class="hidden sm:inline">الطلبات المختارة</span>
                 <span id="cart-count" class="bg-indigo-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center absolute -top-2 -left-2">0</span>
             </button>
         </div>
     </header>
 
-    <!-- الهيرو سيكشن (الواجهة الرئيسية) -->
-    <section class="relative bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 text-white py-20 md:py-32">
-        <div class="container mx-auto px-4 text-center relative z-10">
-            <span class="bg-indigo-500/20 text-indigo-400 border border-indigo-500/30 text-sm font-bold px-4 py-1.5 rounded-full inline-block mb-6">موقعك وتطبيقك هما واجهة نجاحك</span>
-            <h1 class="text-4xl md:text-6xl font-extrabold mb-6 leading-tight">كل مشروع يحتاج <span class="text-indigo-400">تطبيق وموقع</span></h1>
-            <p class="text-slate-300 max-w-2xl mx-auto mb-10 text-base md:text-xl leading-relaxed">
-                نصمم ونطور مواقع وتطبيقات احترافية، عصرية ومخصصة لعملك بأسلوب يماثل كبرى المنصات العالمية مثل <span class="text-white underline decoration-indigo-500 font-semibold">Stylish by Hazem</span> وغيرها. ارفع مبيعاتك واجعل حجز عملائك أسهل اليوم.
-            </p>
-            <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="#services" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-8 py-4 rounded-xl shadow-lg transition transform hover:scale-105 inline-block">تصفح أعمالنا والخدمات</a>
-                <a href="https://wa.me/963985207356" target="_blank" class="bg-transparent border-2 border-slate-700 hover:border-white hover:bg-white hover:text-slate-950 text-white font-bold px-8 py-4 rounded-xl transition inline-block">استشارة مجانية عبر واتساب</a>
-            </div>
-        </div>
-    </section>
+    <!-- الواجهة الرئيسية الاحترافية والمنظمة (Hero Section) -->
+    <section class="relative bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 text-white py-16 md:py-24 overflow-hidden">
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="max-w-4xl mx-auto text-center">
+                <span class="bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 text-xs md:text-sm font-bold px-4 py-2 rounded-full inline-block mb-6 tracking-wide animate-pulse">
+                    🚀 حوّل فكرتك إلى علامة تجارية ناجحة
+                </span>
+                
+                <h1 class="text-3xl md:text-5xl font-black mb-6 leading-tight">
+                    مرحبًا بك في <span class="text-indigo-400">Best Of</span>
+                </h1>
+                
+                <p class="text-slate-300 max-w-3xl mx-auto mb-8 text-base md:text-lg leading-relaxed font-light">
+                    نحن نصنع حضورًا رقميًا يلفت الأنظار ويحقق النتائج. من تصميم الهوية البصرية إلى إدارة حسابات التواصل الاجتماعي، وإنشاء المواقع الإلكترونية والتطبيقات، وإطلاق الحملات الإعلانية، نقدم كل ما يحتاجه مشروعك لينمو ويصل إلى المزيد من العملاء.
+                </p>
 
-    <!-- قسم الخدمات البرمجية -->
-    <section id="services" class="py-20 container mx-auto px-4">
-        <div class="text-center mb-16">
-            <h2 class="text-3xl md:text-4xl font-bold mb-4">خدمات التصميم البرمجي حسب مجالك</h2>
-            <p class="text-slate-500 max-w-lg mx-auto">اختر مجالك ودعنا نبني لك النظام المتكامل (موقع إنترنت + تطبيق هاتف ذكي اندرويد وايفون).</p>
-            <div class="w-20 h-1 bg-indigo-600 mx-auto rounded mt-4"></div>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            
-            <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 hover:shadow-xl transition duration-300 flex flex-col justify-between">
-                <div>
-                    <div class="w-12 h-12 bg-orange-100 text-orange-600 rounded-xl flex items-center justify-center text-2xl mb-4"><i class="fa-solid fa-utensils"></i></div>
-                    <h3 class="font-bold text-xl mb-2">مواقع وتطبيقات المطاعم</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed mb-4">نظام منيو تفاعلي، استقبال الطلبات مباشرة عبر الواتساب أو لوحة التحكم، وإدارة الوجبات والأسعار بسهولة تامة.</p>
-                </div>
-                <button onclick="addService('موقع وتطبيق مطعم متكامل')" class="w-full bg-slate-900 hover:bg-indigo-600 text-white font-semibold py-2.5 rounded-xl transition text-sm">طلب تصميم هذا المشروع</button>
-            </div>
-
-            <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 hover:shadow-xl transition duration-300 flex flex-col justify-between">
-                <div>
-                    <div class="w-12 h-12 bg-amber-100 text-amber-600 rounded-xl flex items-center justify-center text-2xl mb-4"><i class="fa-solid fa-scissors"></i></div>
-                    <h3 class="font-bold text-xl mb-2">صالونات الحلاقة الرجالية</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed mb-4">نظام حجز مواعيد ذكي، عرض الخدمات والأسعار، معرض قصات الشعر واللحية، ومتجر متكامل لبيع منتجات العناية بالبشرة والشعر.</p>
-                </div>
-                <button onclick="addService('موقع وتطبيق صالون حلاقة رجالي')" class="w-full bg-slate-900 hover:bg-indigo-600 text-white font-semibold py-2.5 rounded-xl transition text-sm">طلب تصميم هذا المشروع</button>
-            </div>
-
-            <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 hover:shadow-xl transition duration-300 flex flex-col justify-between">
-                <div>
-                    <div class="w-12 h-12 bg-pink-100 text-pink-600 rounded-xl flex items-center justify-center text-2xl mb-4"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
-                    <h3 class="font-bold text-xl mb-2">صالونات ومراكز التجميل النسائية</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed mb-4">تطبيق وموقع مخصص لجدولة حجوزات العرائس، تصنيفات الخدمات (شعر، ميك اب، عناية)، مع واجهات أنيقة جداً وتنبيهات تلقائية للمواعيد.</p>
-                </div>
-                <button onclick="addService('موقع وتطبيق كوافير نسائي')" class="w-full bg-slate-900 hover:bg-indigo-600 text-white font-semibold py-2.5 rounded-xl transition text-sm">طلب تصميم هذا المشروع</button>
-            </div>
-
-            <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 hover:shadow-xl transition duration-300 flex flex-col justify-between">
-                <div>
-                    <div class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-xl flex items-center justify-center text-2xl mb-4"><i class="fa-solid fa-bag-shopping"></i></div>
-                    <h3 class="font-bold text-xl mb-2">المتاجر الإلكترونية (E-Commerce)</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed mb-4">تطبيق وموقع لبيع أي منتج برمجياً، إضافة سلة مشتريات ذكية، إدارات الأقسام والمخزون، وتوفير تجربة تسوق فائقة السرعة للمستخدمين.</p>
-                </div>
-                <button onclick="addService('تصميم متجر إلكتروني متكامل')" class="w-full bg-slate-900 hover:bg-indigo-600 text-white font-semibold py-2.5 rounded-xl transition text-sm">طلب تصميم هذا المشروع</button>
-            </div>
-
-            <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 hover:shadow-xl transition duration-300 flex flex-col justify-between">
-                <div>
-                    <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center text-2xl mb-4"><i class="fa-solid fa-user-doctor"></i></div>
-                    <h3 class="font-bold text-xl mb-2">الأطباء والعيادات الطبية</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed mb-4">تنظيم المراجعات الطبية للمرضى، حجز الاستشارات أونلاين، عرض التخصصات الطبية لتعزيز ثقة المرضى وتسهيل زيارتهم.</p>
-                </div>
-                <button onclick="addService('موقع وتطبيق لعيادة أو طبيب')" class="w-full bg-slate-900 hover:bg-indigo-600 text-white font-semibold py-2.5 rounded-xl transition text-sm">طلب تصميم هذا المشروع</button>
-            </div>
-
-            <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 hover:shadow-xl transition duration-300 flex flex-col justify-between">
-                <div>
-                    <div class="w-12 h-12 bg-purple-100 text-purple-600 rounded-xl flex items-center justify-center text-2xl mb-4"><i class="fa-solid fa-building"></i></div>
-                    <h3 class="font-bold text-xl mb-2">مواقع الشركات التعريفية</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed mb-4">تصميم واجهات رسمية للشركات لعرض خدماتها، رؤيتها، سابقة أعمالها، وطرق التواصل معها لبناء هوية رقمية موثوقة في السوق.</p>
-                </div>
-                <button onclick="addService('موقع وتطبيق لشركة أو مؤسسة')" class="w-full bg-slate-900 hover:bg-indigo-600 text-white font-semibold py-2.5 rounded-xl transition text-sm">طلب تصميم هذا المشروع</button>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- 🌟 قسم معرض القوالب الحية (يعمل بالسحب واللمس) -->
-    <section id="templates-section" class="py-20 bg-slate-100 overflow-hidden border-t border-b border-slate-200">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-12">
-                <span class="bg-indigo-100 text-indigo-700 text-xs font-bold px-4 py-1.5 rounded-full inline-block mb-3">📱 اسحب يميناً ويساراً للتصفح</span>
-                <h2 class="text-3xl font-bold text-slate-900">معرض القوالب الحية الجاهزة للتجربة</h2>
-                <p class="text-slate-500 max-w-md mx-auto text-sm mt-2">اختر التصميم المفضل لديك، وأرسل لنا الاسم الذي تريده لإنشاء نسختك التجريبية المجانية فوراً.</p>
-            </div>
-
-            <!-- حاوية السلايدر الرئيسي -->
-            <div class="swiper templatesSwiper !pb-12 relative">
-                <div class="swiper-wrapper">
-                    
-                    <!-- كارت قالب المطاعم -->
-                    <div class="swiper-slide bg-white rounded-2xl p-4 border border-slate-200 shadow-sm hover:shadow-md transition duration-300 flex flex-col justify-between h-auto">
-                        <div>
-                            <div class="relative overflow-hidden rounded-xl mb-4">
-                                <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=500" class="w-full h-44 object-cover" alt="قالب مطعم تفاعلي">
-                                <span class="absolute top-2 right-2 bg-orange-600 text-white text-xs font-bold px-2.5 py-1 rounded-lg shadow-md">الأكثر مبيعاً 🔥</span>
-                            </div>
-                            <h3 class="font-bold text-lg text-slate-800 mb-1">قالب المطاعم الفوري</h3>
-                            <p class="text-xs text-slate-500 leading-relaxed mb-4">قالب منيو عصري يتيح للزبون تصفح الأقسام، واختيار الوجبات بحركات ناعمة، مع ميزة الإرسال الفوري للواتساب.</p>
-                        </div>
-                        <button onclick="addService('تجربة قالب المطاعم الفوري')" class="w-full bg-slate-900 hover:bg-indigo-600 text-white font-bold py-3 rounded-xl transition text-xs shadow-sm">تحديد هذا القالب للتجربة</button>
-                    </div>
-
-                    <!-- كارت قالب صالونات الحلاقة -->
-                    <div class="swiper-slide bg-white rounded-2xl p-4 border border-slate-200 shadow-sm hover:shadow-md transition duration-300 flex flex-col justify-between h-auto">
-                        <div>
-                            <div class="relative overflow-hidden rounded-xl mb-4">
-                                <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=500" class="w-full h-44 object-cover" alt="قالب صالون حلاقة">
-                                <span class="absolute top-2 right-2 bg-indigo-600 text-white text-xs font-bold px-2.5 py-1 rounded-lg shadow-md">تصميم عصري ✨</span>
-                            </div>
-                            <h3 class="font-bold text-lg text-slate-800 mb-1">قالب الحلاقة الرجالية (Stylish)</h3>
-                            <p class="text-xs text-slate-500 leading-relaxed mb-4">واجهة داكنة غاية في الفخامة لعرض خدمات العناية بالشعر واللحية، نظام حجز أوقات دقيق، ومعرض صور للقصات.</p>
-                        </div>
-                        <button onclick="addService('تجربة قالب الحلاقة الرجالية')" class="w-full bg-slate-900 hover:bg-indigo-600 text-white font-bold py-3 rounded-xl transition text-xs shadow-sm">تحديد هذا القالب للتجربة</button>
-                    </div>
-
-                    <!-- كارت قالب المتاجر الإلكترونية -->
-                    <div class="swiper-slide bg-white rounded-2xl p-4 border border-slate-200 shadow-sm hover:shadow-md transition duration-300 flex flex-col justify-between h-auto">
-                        <div>
-                            <div class="relative overflow-hidden rounded-xl mb-4">
-                                <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=500" class="w-full h-44 object-cover" alt="قالب متجر إلكتروني">
-                                <span class="absolute top-2 right-2 bg-emerald-600 text-white text-xs font-bold px-2.5 py-1 rounded-lg shadow-md">خفيف وسريع ⚡</span>
-                            </div>
-                            <h3 class="font-bold text-lg text-slate-800 mb-1">قالب المتجر الذكي</h3>
-                            <p class="text-xs text-slate-500 leading-relaxed mb-4">مخصص لبيع المنتجات مع إضافة سلة مشتريات منبثقة، وتصنيفات للمنتجات، ونظام فوترة ذكي ومبسط للعملاء.</p>
-                        </div>
-                        <button onclick="addService('تجربة قالب المتجر الذكي')" class="w-full bg-slate-900 hover:bg-indigo-600 text-white font-bold py-3 rounded-xl transition text-xs shadow-sm">تحديد هذا القالب للتجربة</button>
-                    </div>
-
-                    <!-- كارت قالب الشركات والمؤسسات -->
-                    <div class="swiper-slide bg-white rounded-2xl p-4 border border-slate-200 shadow-sm hover:shadow-md transition duration-300 flex flex-col justify-between h-auto">
-                        <div>
-                            <div class="relative overflow-hidden rounded-xl mb-4">
-                                <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=500" class="w-full h-44 object-cover" alt="قالب شركة تعريفية">
-                                <span class="absolute top-2 right-2 bg-purple-600 text-white text-xs font-bold px-2.5 py-1 rounded-lg shadow-md">رسمي واحترافي 💼</span>
-                            </div>
-                            <h3 class="font-bold text-lg text-slate-800 mb-1">قالب الشركات والمؤسسات</h3>
-                            <p class="text-xs text-slate-500 leading-relaxed mb-4">مناسب للشركات الطموحة التي تريد بناء حضور رقمي موثوق، يعرض رؤية الشركة، خدماتها، وسجل أعمالها الناجحة.</p>
-                        </div>
-                        <button onclick="addService('تجربة قالب الشركات والمؤسسات')" class="w-full bg-slate-900 hover:bg-indigo-600 text-white font-bold py-3 rounded-xl transition text-xs shadow-sm">تحديد هذا القالب للتجربة</button>
-                    </div>
-
+                <!-- شبكة الخدمات السريعة المرتبة بدون عجقة -->
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 max-w-3xl mx-auto text-right text-xs md:text-sm text-slate-200 mb-10 bg-white/5 p-6 rounded-2xl backdrop-blur-sm border border-white/10">
+                    <div class="flex items-center gap-2"><i class="fa-solid fa-check text-indigo-400"></i> إدارة حسابات السوشال ميديا</div>
+                    <div class="flex items-center gap-2"><i class="fa-solid fa-check text-indigo-400"></i> تصميم الشعارات والهوية البصرية</div>
+                    <div class="flex items-center gap-2"><i class="fa-solid fa-check text-indigo-400"></i> تصميم البوستات والإعلانات</div>
+                    <div class="flex items-center gap-2"><i class="fa-solid fa-check text-indigo-400"></i> إنتاج الفيديوهات والموشن جرافيك</div>
+                    <div class="flex items-center gap-2"><i class="fa-solid fa-check text-indigo-400"></i> إنشاء المواقع والمتاجر الإلكترونية</div>
+                    <div class="flex items-center gap-2"><i class="fa-solid fa-check text-indigo-400"></i> تطوير تطبيقات الهواتف الذكية</div>
+                    <div class="flex items-center gap-2"><i class="fa-solid fa-check text-indigo-400"></i> إنشاء وربط أكواد الـ QR Code</div>
+                    <div class="flex items-center gap-2"><i class="fa-solid fa-check text-indigo-400"></i> إدارة الحملات الإعلانية الممولة</div>
+                    <div class="flex items-center gap-2"><i class="fa-solid fa-check text-indigo-400"></i> تحسين محركات البحث (SEO)</div>
                 </div>
                 
-                <!-- نقاط التمرير السفلي -->
-                <div class="swiper-pagination !bottom-0"></div>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="#services-section" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-8 py-3.5 rounded-xl shadow-lg transition transform hover:scale-102 inline-block text-sm">تصفح الخدمات واطلب الآن</a>
+                    <a href="https://wa.me/963985207356" target="_blank" class="bg-transparent border border-slate-700 hover:border-white hover:bg-white/5 text-white font-bold px-8 py-3.5 rounded-xl transition inline-block text-sm">استشارة تسويقية مجانية</a>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- قسم مميزات الوكالة -->
-    <section id="why-us" class="bg-slate-900 text-white py-16">
+    <!-- نص تسويقي إضافي مريح للعين -->
+    <section class="bg-indigo-50 py-10 border-b border-indigo-100 text-center">
+        <div class="container mx-auto px-4 max-w-3xl">
+            <h3 class="text-xl md:text-2xl font-bold text-slate-900 mb-2">مع Best Of... نجاح مشروعك يبدأ من هنا</h3>
+            <p class="text-sm md:text-base text-slate-600 font-medium">لسنا مجرد شركة تصميم... نحن شركاؤك في بناء علامة تجارية قوية نساعدك على الوصول إلى آلاف العملاء من خلال أحدث استراتيجيات التسويق الرقمي.</p>
+        </div>
+    </section>
+
+    <!-- قسم الخدمات التفاعلية القابلة للتوسيع (Accordion Services) -->
+    <section id="services-section" class="py-16 container mx-auto px-4 max-w-4xl">
+        <div class="text-center mb-12">
+            <h2 class="text-2xl md:text-3xl font-extrabold mb-3 text-slate-900">خدماتنا الاحترافية بالتفصيل</h2>
+            <p class="text-slate-500 text-sm max-w-md mx-auto">اضغط على أي قسم لفتح واستعراض كامل التفاصيل والمميزات المتاحة له.</p>
+            <div class="w-16 h-1 bg-indigo-600 mx-auto rounded mt-3"></div>
+        </div>
+
+        <div class="space-y-4">
+            
+            <!-- 1. إدارة مواقع التواصل الاجتماعي -->
+            <div class="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm hover:border-slate-300 transition">
+                <button onclick="toggleAccordion('acc-social')" class="w-full p-5 flex justify-between items-center bg-slate-50/50 hover:bg-slate-50 text-right gap-4 transition">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center text-lg"><i class="fa-solid fa-share-nodes"></i></div>
+                        <h3 class="font-bold text-base md:text-lg text-slate-800">إدارة مواقع التواصل الاجتماعي</h3>
+                    </div>
+                    <i id="icon-acc-social" class="fa-solid fa-chevron-down text-slate-400 transition-transform duration-300"></i>
+                </button>
+                <div id="acc-social" class="hidden border-t border-slate-100 p-5 bg-white space-y-4">
+                    <ul class="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm text-slate-600">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle text-[6px] text-indigo-500"></i> إدارة صفحات فيسبوك، إنستغرام، تيك توك، سناب شات، لينكدإن.</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle text-[6px] text-indigo-500"></i> الرد على الرسائل والتعليقات الحية واليومية.</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle text-[6px] text-indigo-500"></i> جدولة المنشورات في أوقات الذروة.</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle text-[6px] text-indigo-500"></i> إعداد خطة محتوى شهرية مدروسة ومتكاملة.</li>
+                    </ul>
+                    <div class="flex justify-end pt-2"><button onclick="addService('إدارة مواقع التواصل الاجتماعي')" class="bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold px-5 py-2.5 rounded-xl transition">إضافة هذا القسم للطلب</button></div>
+                </div>
+            </div>
+
+            <!-- 2. التصميم -->
+            <div class="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm hover:border-slate-300 transition">
+                <button onclick="toggleAccordion('acc-design')" class="w-full p-5 flex justify-between items-center bg-slate-50/50 hover:bg-slate-50 text-right gap-4 transition">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-purple-100 text-purple-600 rounded-xl flex items-center justify-center text-lg"><i class="fa-solid fa-palette"></i></div>
+                        <h3 class="font-bold text-base md:text-lg text-slate-800">التصميم الجرافيكي والهوية البصرية</h3>
+                    </div>
+                    <i id="icon-acc-design" class="fa-solid fa-chevron-down text-slate-400 transition-transform duration-300"></i>
+                </button>
+                <div id="acc-design" class="hidden border-t border-slate-100 p-5 bg-white space-y-4">
+                    <ul class="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm text-slate-600">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle text-[6px] text-indigo-500"></i> تصميم شعار مميز وهادف (Logo).</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle text-[6px] text-indigo-500"></i> تصميم هوية بصرية كاملة للأعمال والبراندات.</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle text-[6px] text-indigo-500"></i> تصميم بوستات احترافية جداً لمنصات العرض.</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle text-[6px] text-indigo-500"></i> تصميم ستوري وبنرات إعلانية لافتة.</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle text-[6px] text-indigo-500"></i> تصميم بروشورات ومنشورات ورقية للطباعة.</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle text-[6px] text-indigo-500"></i> تصميم منيو للمطاعم وكروت أعمال (Business Cards).</li>
+                    </ul>
+                    <div class="flex justify-end pt-2"><button onclick="addService('التصميم الجرافيكي والهوية البصرية')" class="bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold px-5 py-2.5 rounded-xl transition">إضافة هذا القسم للطلب</button></div>
+                </div>
+            </div>
+
+            <!-- 3. صناعة الفيديو -->
+            <div class="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm hover:border-slate-300 transition">
+                <button onclick="toggleAccordion('acc-video')" class="w-full p-5 flex justify-between items-center bg-slate-50/50 hover:bg-slate-50 text-right gap-4 transition">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-amber-100 text-amber-600 rounded-xl flex items-center justify-center text-lg"><i class="fa-solid fa-clapperboard"></i></div>
+                        <h3 class="font-bold text-base md:text-lg text-slate-800">صناعة الفيديو والمونتاج</h3>
+                    </div>
+                    <i id="icon-acc-video" class="fa-solid fa-chevron-down text-slate-400 transition-transform duration-300"></i>
+                </button>
+                <div id="acc-video" class="hidden border-t border-slate-100 p-5 bg-white space-y-4">
+                    <ul class="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm text-slate-600">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle text-[6px] text-indigo-500"></i> فيديوهات إعلانية وترويجية قصيرة وطويلة.</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle text-[6px] text-indigo-500"></i> مونتاج احترافي سينمائي وتعديل ألوان وصوت.</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle text-[6px] text-indigo-500"></i> تصميم مقاطع موشن جرافيك (Motion Graphics) لشرح الأفكار.</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle text-[6px] text-indigo-500"></i> صناعة ريلز وتيك توك سريعة الانتشار والتفاعل.</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle text-[6px] text-indigo-500"></i> تصوير ومونتاج استعراض المنتجات بدقة فوتوغرافية.</li>
+                    </ul>
+                    <div class="flex justify-end pt-2"><button onclick="addService('صناعة الفيديو والمونتاج')" class="bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold px-5 py-2.5 rounded-xl transition">إضافة هذا القسم للطلب</button></div>
+                </div>
+            </div>
+
+            <!-- 4. الإعلانات الممولة -->
+            <div class="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm hover:border-slate-300 transition">
+                <button onclick="toggleAccordion('acc-ads')" class="w-full p-5 flex justify-between items-center bg-slate-50/50 hover:bg-slate-50 text-right gap-4 transition">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-emerald-100 text-emerald-600 rounded-xl flex items-center justify-center text-lg"><i class="fa-solid fa-rectangle-ad"></i></div>
+                        <h3 class="font-bold text-base md:text-lg text-slate-800">الحملات الإعلانية الممولة</h3>
+                    </div>
+                    <i id="icon-acc-ads" class="fa-solid fa-chevron-down text-slate-400 transition-transform duration-300"></i>
+                </button>
+                <div id="acc-ads" class="hidden border-t border-slate-100 p-5 bg-white space-y-4">
+                    <ul class="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm text-slate-600">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle text-[6px] text-indigo-500"></i> إعلانات ممولة مستهدفة على فيسبوك وإنستغرام.</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle text-[6px] text-indigo-500"></i> حملات تسويقية وتكبير صفحات على منصة تيك توك.</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle text-[6px] text-indigo-500"></i> إعلانات شبكة البحث وجوجل (Google Ads) المتقدمة.</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle text-[6px] text-indigo-500"></i> استراتيجيات متطورة لزيادة المبيعات والوصول للعملاء الفعليين.</li>
+                    </ul>
+                    <div class="flex justify-end pt-2"><button onclick="addService('الحملات الإعلانية الممولة')" class="bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold px-5 py-2.5 rounded-xl transition">إضافة هذا القسم للطلب</button></div>
+                </div>
+            </div>
+
+            <!-- 5. إنشاء المواقع -->
+            <div class="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm hover:border-slate-300 transition">
+                <button onclick="toggleAccordion('acc-web')" class="w-full p-5 flex justify-between items-center bg-slate-50/50 hover:bg-slate-50 text-right gap-4 transition">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-indigo-100 text-indigo-600 rounded-xl flex items-center justify-center text-lg"><i class="fa-solid fa-globe"></i></div>
+                        <h3 class="font-bold text-base md:text-lg text-slate-800">إنشاء وتطوير المواقع الإلكترونية</h3>
+                    </div>
+                    <i id="icon-acc-web" class="fa-solid fa-chevron-down text-slate-400 transition-transform duration-300"></i>
+                </button>
+                <div id="acc-web" class="hidden border-t border-slate-100 p-5 bg-white space-y-4">
+                    <ul class="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm text-slate-600">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle text-[6px] text-indigo-500"></i> تصميم مواقع شركات تعريفية ورسمية عالية المستوى.</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle text-[6px] text-indigo-500"></i> بناء متاجر إلكترونية متكاملة لعرض وبيع المنتجات.</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle text-[6px] text-indigo-500"></i> تطوير مواقع شخصية ومواقع حجز مواعيد ذكية وتلقائية.</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle text-[6px] text-indigo-500"></i> تصميم صفحات هبوط بيعية (Landing Pages) سريعة ومقنعة.</li>
+                    </ul>
+                    <div class="flex justify-end pt-2"><button onclick="addService('إنشاء وتطوير المواقع الإلكترونية')" class="bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold px-5 py-2.5 rounded-xl transition">إضافة هذا القسم للطلب</button></div>
+                </div>
+            </div>
+
+            <!-- 6. تطبيقات الهواتف -->
+            <div class="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm hover:border-slate-300 transition">
+                <button onclick="toggleAccordion('acc-apps')" class="w-full p-5 flex justify-between items-center bg-slate-50/50 hover:bg-slate-50 text-right gap-4 transition">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-orange-100 text-orange-600 rounded-xl flex items-center justify-center text-lg"><i class="fa-solid fa-mobile-screen-button"></i></div>
+                        <h3 class="font-bold text-base md:text-lg text-slate-800">برمجة تطبيقات الهواتف الذكية</h3>
+                    </div>
+                    <i id="icon-acc-apps" class="fa-solid fa-chevron-down text-slate-400 transition-transform duration-300"></i>
+                </button>
+                <div id="acc-apps" class="hidden border-t border-slate-100 p-5 bg-white space-y-4">
+                    <ul class="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm text-slate-600">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle text-[6px] text-indigo-500"></i> تطوير تطبيقات لنظام Android ونشرها على متجر Google Play.</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle text-[6px] text-indigo-500"></i> تطوير تطبيقات لنظام iPhone ونشرها على متجر App Store.</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle text-[6px] text-indigo-500"></i> ربط برمجيات التطبيق بالموقع الإلكتروني لتحديث فوري موحد.</li>
+                    </ul>
+                    <div class="flex justify-end pt-2"><button onclick="addService('برمجة تطبيقات الهواتف الذكية')" class="bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold px-5 py-2.5 rounded-xl transition">إضافة هذا القسم للطلب</button></div>
+                </div>
+            </div>
+
+            <!-- 7. QR Code -->
+            <div class="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm hover:border-slate-300 transition">
+                <button onclick="toggleAccordion('acc-qr')" class="w-full p-5 flex justify-between items-center bg-slate-50/50 hover:bg-slate-50 text-right gap-4 transition">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-pink-100 text-pink-600 rounded-xl flex items-center justify-center text-lg"><i class="fa-solid fa-qrcode"></i></div>
+                        <h3 class="font-bold text-base md:text-lg text-slate-800">أنظمة وتجهيز أكواد الـ QR Code</h3>
+                    </div>
+                    <i id="icon-acc-qr" class="fa-solid fa-chevron-down text-slate-400 transition-transform duration-300"></i>
+                </button>
+                <div id="acc-qr" class="hidden border-t border-slate-100 p-5 bg-white space-y-4">
+                    <ul class="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm text-slate-600">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle text-[6px] text-indigo-500"></i> إنشاء كود QR احترافي مخصص يحمل هويتك البصرية.</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle text-[6px] text-indigo-500"></i> ربط الكود بموقعك الإلكتروني أو متجرك مباشرة.</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle text-[6px] text-indigo-500"></i> ربط الكود بالقائمة الإلكترونية للمطاعم والصالونات.</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle text-[6px] text-indigo-500"></i> ربط الكود بصفحات التواصل لزيادة المتابعين بلمسة واحدة.</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle text-[6px] text-indigo-500"></i> تجهيزه للطباعة ليوضع على طاولات المحل، واجهة المشروع، الفواتير، أو كروت الأعمال.</li>
+                    </ul>
+                    <div class="flex justify-end pt-2"><button onclick="addService('تجهيز أنظمة الـ QR Code')" class="bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold px-5 py-2.5 rounded-xl transition">إضافة هذا القسم للطلب</button></div>
+                </div>
+            </div>
+
+            <!-- 8. تحسين الظهور -->
+            <div class="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm hover:border-slate-300 transition">
+                <button onclick="toggleAccordion('acc-seo')" class="w-full p-5 flex justify-between items-center bg-slate-50/50 hover:bg-slate-50 text-right gap-4 transition">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-teal-100 text-teal-600 rounded-xl flex items-center justify-center text-lg"><i class="fa-solid fa-arrow-up-right-dots"></i></div>
+                        <h3 class="font-bold text-base md:text-lg text-slate-800">تحسين الظهور والـ SEO</h3>
+                    </div>
+                    <i id="icon-acc-seo" class="fa-solid fa-chevron-down text-slate-400 transition-transform duration-300"></i>
+                </button>
+                <div id="acc-seo" class="hidden border-t border-slate-100 p-5 bg-white space-y-4">
+                    <ul class="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm text-slate-600">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle text-[6px] text-indigo-500"></i> تحسين محركات البحث بالكامل (SEO) لرفع تصنيف موقعك.</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle text-[6px] text-indigo-500"></i> تحسين ظهور مشروعك في نتائج الخرائط وبحث Google المجاني.</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle text-[6px] text-indigo-500"></i> تهيئة وتحديث ملفك التجاري على خرائط Google لجلب الزيارات العضوية والمحلية.</li>
+                    </ul>
+                    <div class="flex justify-end pt-2"><button onclick="addService('تحسين الظهور والـ SEO')" class="bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold px-5 py-2.5 rounded-xl transition">إضافة هذا القسم للطلب</button></div>
+                </div>
+            </div>
+
+            <!-- 9. خدمات إضافية -->
+            <div class="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm hover:border-slate-300 transition">
+                <button onclick="toggleAccordion('acc-more')" class="w-full p-5 flex justify-between items-center bg-slate-50/50 hover:bg-slate-50 text-right gap-4 transition">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-slate-100 text-slate-600 rounded-xl flex items-center justify-center text-lg"><i class="fa-solid fa-circle-plus"></i></div>
+                        <h3 class="font-bold text-base md:text-lg text-slate-800">خدمات استشارية وإضافية متقدمة</h3>
+                    </div>
+                    <i id="icon-acc-more" class="fa-solid fa-chevron-down text-slate-400 transition-transform duration-300"></i>
+                </button>
+                <div id="acc-more" class="hidden border-t border-slate-100 p-5 bg-white space-y-4">
+                    <ul class="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm text-slate-600">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle text-[6px] text-indigo-500"></i> كتابة المحتوى التسويقي والإعلاني الجاذب للعملاء (Copywriting).</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle text-[6px] text-indigo-500"></i> التسويق والمتابعة التلقائية عبر البريد الإلكتروني وتطبيق واتساب.</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle text-[6px] text-indigo-500"></i> دراسة وتحليل المنافسين المباشرين وبناء استراتيجيات الهوية التجارية.</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle text-[6px] text-indigo-500"></i> تقديم استشارات تسويقية دورية مع تسليم تقارير وتحليلات أداء شهرية واضحة.</li>
+                    </ul>
+                    <div class="flex justify-end pt-2"><button onclick="addService('خدمات استشارية وإضافية متقدمة')" class="bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold px-5 py-2.5 rounded-xl transition">إضافة هذا القسم للطلب</button></div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 🌟 قسم معرض سابقة أعمالنا الحية الجديد (Portfolio Section) -->
+    <section id="portfolio-section" class="py-16 bg-slate-100 border-t border-b border-slate-200">
+        <div class="container mx-auto px-4 max-w-4xl">
+            <div class="bg-white rounded-3xl p-6 md:p-8 shadow-sm border border-slate-200 text-center flex flex-col md:flex-row items-center justify-between gap-6">
+                <div class="text-right max-w-lg">
+                    <span class="bg-emerald-100 text-emerald-700 text-xs font-bold px-3 py-1 rounded-md mb-2 inline-block">💻 سابقة أعمالنا حية</span>
+                    <h3 class="text-2xl font-black text-slate-900 mb-2">تصفح أحدث قوالبنا المصممة</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">قم بالاطلاع على نماذج واجهات مشاريعنا الميدانية الحية، لترى دقة التفاصيل، التناسق اللوني، وسرعة التصفح الاستثنائية التي نوفرها لكل زبائننا.</p>
+                </div>
+                <div class="w-full md:w-auto shrink-0">
+                    <a href="https://bashar3baid-wq.github.io/mancave/" target="_blank" class="w-full md:w-auto bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-6 py-3.5 rounded-xl shadow-md transition inline-block text-sm">
+                        <i class="fa-solid fa-arrow-up-right-from-square ml-1.5"></i> فتح ومعاينة معرض الأعمال
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم "لماذا نحن" المحدث والمختصر -->
+    <section id="why-us-section" class="bg-slate-900 text-white py-16">
         <div class="container mx-auto px-4 text-center max-w-3xl">
-            <h2 class="text-2xl md:text-3xl font-bold mb-6">لماذا تختار "Best of" لتصميم مشروعك؟</h2>
-            <p class="text-slate-400 leading-relaxed mb-8">
-                في العصر الحالي، عدم امتلاك مشروعك لتطبيق أو موقع يعني تفويت غالية الزبائن. نحن نضمن لك تصاميم جذابة خفيفة، وسرعة برمجية مذهلة تساعد مشروعك على النمو.
+            <h2 class="text-2xl md:text-3xl font-bold mb-4">لماذا وكالة Best Of؟</h2>
+            <p class="text-slate-400 text-sm md:text-base leading-relaxed mb-8">
+                لأننا لا نقدم خدمة منفصلة فقط، بل نبني هوية رقمية متكاملة تساعد مشروعك على التميز، الوصول إلى جمهور أكبر، وزيادة المبيعات بخطط تسويق مدروسة ونتائج احترافية للغاية. ابدأ اليوم... واجعل مشروعك يظهر بأفضل صورة في العالم الرقمي.
             </p>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-                <div class="p-4 bg-slate-800 rounded-xl"><h4 class="font-bold text-indigo-400 text-xl mb-1">100%</h4><p class="text-xs text-slate-400">متوافق مع الجوال</p></div>
-                <div class="p-4 bg-slate-800 rounded-xl"><h4 class="font-bold text-indigo-400 text-xl mb-1">دعم فني</h4><p class="text-xs text-slate-400">مستمر ومتكامل</p></div>
-                <div class="p-4 bg-slate-800 rounded-xl"><h4 class="font-bold text-indigo-400 text-xl mb-1">سرعة</h4><p class="text-xs text-slate-400">في تسليم الأكواد</p></div>
-                <div class="p-4 bg-slate-800 rounded-xl"><h4 class="font-bold text-indigo-400 text-xl mb-1">لوحة تحكم</h4><p class="text-xs text-slate-400">سهلة باللغة العربية</p></div>
+            <div class="grid grid-cols-3 gap-3 text-center text-xs md:text-sm">
+                <div class="p-3 bg-slate-800 rounded-xl"><h4 class="font-bold text-indigo-400 mb-1">تم المراجعة</h4><p class="text-slate-400">تقارير شهرية للأداء</p></div>
+                <div class="p-3 bg-slate-800 rounded-xl"><h4 class="font-bold text-indigo-400 mb-1">دعم متكامل</h4><p class="text-slate-400">من الفكرة للبيع</p></div>
+                <div class="p-3 bg-slate-800 rounded-xl"><h4 class="font-bold text-indigo-400 mb-1">استراتيجيات</h4><p class="text-slate-400">مبنية لزيادة المبيعات</p></div>
             </div>
         </div>
     </section>
 
-    <!-- القائمة الجانبية للسلة -->
+    <!-- القائمة الجانبية للسلة المحمية ضد التحديث والخروج -->
     <div id="cart-sidebar" class="fixed inset-y-0 left-0 z-50 w-full max-w-md bg-white shadow-2xl transform -translate-x-full transition-transform duration-300 ease-in-out flex flex-col">
         <div class="p-5 border-b border-slate-200 flex justify-between items-center bg-slate-50">
             <h3 class="text-xl font-bold text-slate-800 flex items-center gap-2">
-                <i class="fa-solid fa-list-check text-indigo-600"></i> تفاصيل طلبك
+                <i class="fa-solid fa-list-check text-indigo-600"></i> الأقسام التي تود طلبها
             </h3>
             <button onclick="toggleCart()" class="text-slate-400 hover:text-slate-600 text-2xl">
                 <i class="fa-solid fa-xmark"></i>
             </button>
         </div>
 
-        <!-- حاوي عناصر السلة الديناميكي الجديد -->
         <div id="cart-items-container" class="p-5 flex-grow overflow-y-auto space-y-4"></div>
 
         <div class="p-5 border-t border-slate-200 bg-slate-50">
             <button onclick="sendOrderWhatsApp()" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3.5 rounded-xl flex items-center justify-center gap-2 text-lg shadow transition">
-                <i class="fa-brands fa-whatsapp text-2xl"></i> أرسل المشاريع المطلوبة للواتساب
+                <i class="fa-brands fa-whatsapp text-2xl"></i> إرسال تفاصيل باقتي للواتساب
             </button>
         </div>
     </div>
 
     <div id="cart-overlay" onclick="toggleCart()" class="fixed inset-0 bg-black/40 z-40 hidden"></div>
 
-    <!-- زر واتساب العائم -->
+    <!-- زر واتساب العائم والمحفز للحركة -->
     <a href="https://wa.me/963985207356" target="_blank" class="float-wa fixed bottom-6 right-6 z-40 bg-green-500 text-white rounded-full w-16 h-16 shadow-2xl flex items-center justify-center text-3xl hover:bg-green-600 transition duration-300" title="تواصل مباشر عبر الواتساب">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 
-    <!-- الفوتر السفلي -->
+    <!-- الفوتر السفلي المتناسق -->
     <footer id="contact" class="bg-slate-950 text-slate-400 py-12 text-center border-t border-slate-900">
         <div class="container mx-auto px-4">
-            <h3 class="text-white font-extrabold text-2xl mb-2">Best of for Technology</h3>
-            <p class="text-sm max-w-sm mx-auto mb-6">نحول أفكارك التجارية الطموحة إلى واقع تقني ملموس يدعم أرباحك.</p>
-            <div class="flex justify-center items-center gap-2 text-indigo-400 font-bold text-lg mb-6">
-                <i class="fa-solid fa-phone"></i> تواصل معنا مباشرة: <a href="tel:00963985207356" class="text-white hover:underline">00963985207356</a>
+            <h3 class="text-white font-extrabold text-2xl mb-1">Best Of</h3>
+            <p class="text-xs text-indigo-400 font-bold mb-4">طريقك نحو التميز.</p>
+            <p class="text-sm max-w-sm mx-auto mb-6">نجعل مشروعك يظهر بأفضل صورة... ويصل إلى المزيد من العملاء... مع خططنا المتكاملة.</p>
+            
+            <div class="flex justify-center gap-4 mb-6">
+                <a href="https://www.facebook.com/profile.php?id=61591230917546" target="_blank" class="text-slate-400 hover:text-white flex items-center gap-1.5 text-sm bg-slate-900 px-4 py-2 rounded-xl transition border border-slate-800">
+                    <i class="fa-brands fa-facebook text-base text-blue-500"></i>
+                    <span>Best Of on Facebook</span>
+                </a>
             </div>
-            <p class="text-xs text-slate-600 pt-6 border-t border-slate-900">جميع الحقوق محفوظة لوكالة Best of © 2026</p>
+
+            <p class="text-xs text-slate-600 pt-6 border-t border-slate-900">جميع الحقوق محفوظة لوكالة Best Of © 2026</p>
         </div>
     </footer>
 
-    <!-- ملف سكربت Swiper.js الرئيسي لتفعيل الحركة -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
     <script>
-        // 1. كود تهيئة وإعداد السلايدر المتجاوب
-        var swiper = new Swiper(".templatesSwiper", {
-            slidesPerView: 1.25,
-            spaceBetween: 16,
-            grabCursor: true,
-            pagination: {
-                el: ".swiper-pagination",
-                clickable: true,
-            },
-            breakpoints: {
-                640: {
-                    slidesPerView: 2.2,
-                    spaceBetween: 20,
-                },
-                1024: {
-                    slidesPerView: 3.2,
-                    spaceBetween: 24,
-                },
-            },
-        });
+        // دالة التحكم بالأقسام التفاعلية (Accordion Toggle) بنعومة
+        function toggleAccordion(id) {
+            const accordionContent = document.getElementById(id);
+            const icon = document.getElementById('icon-' + id);
+            
+            // تبديل ظهور العنصر
+            accordionContent.classList.toggle('hidden');
+            
+            // تدوير السهم لإضافة مظهر تفاعلي مميز
+            if (accordionContent.classList.contains('hidden')) {
+                icon.style.transform = 'rotate(0deg)';
+            } else {
+                icon.style.transform = 'rotate(180deg)';
+            }
+        }
 
-        // 2. كود السلة المحمي والخالي من أخطاء الانهيار البرمجي
+        // كود إدارة السلة الذكي والحفظ الموضعي المتين (LocalStorage)
         let selectedServices = [];
         
-        // جلب البيانات المحفوظة بأمان وفحصها لمنع أي تجميد للمتصفح
         try {
             const savedData = localStorage.getItem('savedCart');
             selectedServices = savedData ? JSON.parse(savedData) : [];
-            if (!Array.isArray(selectedServices)) {
-                selectedServices = [];
-            }
+            if (!Array.isArray(selectedServices)) selectedServices = [];
         } catch (error) {
             selectedServices = [];
         }
@@ -329,40 +429,35 @@
             document.getElementById('cart-overlay').classList.toggle('hidden');
         }
 
-        // إضافة خدمة للسلة وحفظها فورياً
         function addService(serviceName) {
             if (!selectedServices.includes(serviceName)) {
                 selectedServices.push(serviceName);
                 localStorage.setItem('savedCart', JSON.stringify(selectedServices));
                 updateUI();
-                showNotification(`تم تحديد: ${serviceName}`);
+                showNotification(`تمت إضافة: ${serviceName}`);
             } else {
-                showNotification("هذه الخدمة مضافة بالفعل في قائمة طلباتك!");
+                showNotification("هذا القسم مضاف مسبقاً لطلباتك!");
             }
         }
 
-        // حذف خدمة من السلة بأمان وتحديث الحفظ
         function removeService(serviceName) {
             selectedServices = selectedServices.filter(item => item !== serviceName);
             localStorage.setItem('savedCart', JSON.stringify(selectedServices));
             updateUI();
         }
 
-        // تحديث واجهة السلة (تم إصلاحها بالكامل وتوليد الرسائل برمجياً لمنع الاختفاء)
         function updateUI() {
             const container = document.getElementById('cart-items-container');
             const countBadge = document.getElementById('cart-count');
 
             countBadge.innerText = selectedServices.length;
-            container.innerHTML = ''; // تفريغ الحاوية بأمان
+            container.innerHTML = ''; 
 
-            // توليد رسالة السلة الفارغة برمجياً إذا كانت المصفوفة فارغة
             if (selectedServices.length === 0) {
-                container.innerHTML = `<p class="text-center text-slate-400 my-8">لم تقم باختيار أي مشروع لتصميمه بعد!</p>`;
+                container.innerHTML = `<p class="text-center text-slate-400 my-8">لم تقم بتحديد أي قسم لتصميمه أو تسويقه بعد!</p>`;
                 return;
             }
 
-            // بناء عناصر السلة الحالية
             selectedServices.forEach(service => {
                 const itemDiv = document.createElement('div');
                 itemDiv.className = "flex justify-between items-center bg-slate-100 p-3 rounded-xl border border-slate-200 animate-fade-in";
@@ -375,31 +470,30 @@
             });
         }
 
-        // إرسال الطلب المنظم إلى رقم الواتساب
         function sendOrderWhatsApp() {
             if (selectedServices.length === 0) {
-                showNotification("من فضلك اختر خدمة واحدة على الأقل لإرسال طلبك.");
+                showNotification("يرجى اختيار باقة واحدة على الأقل لإرسال الطلب.");
                 return;
             }
 
             const myPhone = "963985207356"; 
             
-            let msg = "*مرحباً Best of Tech، أود الاستفسار وطلب تصميم مشروع*\n";
+            let msg = "*مرحباً Best Of، أود الاستفسار وطلب خدمات التسويق والبرمجة المتكاملة*\n";
             msg += "=========================\n\n";
-            msg += "*الخدمات والمشاريع التي حددتها من موقعكم:*\n";
+            msg += "*الأقسام والخطط التي حددتها من موقعكم الحركي:*\n";
             
             selectedServices.forEach((service, index) => {
-                msg += `${index + 1}. 🛠️ *${service}*\n`;
+                msg += `${index + 1}. 🚀 *${service}*\n`;
             });
             
             msg += "\n=========================\n";
-            msg += "يرجى التواصل معي لمناقشة التفاصيل، مدة التنفيذ، والتكلفة المتوقعة لبدء العمل.";
+            msg += "أرغب بالتواصل لمناقشة استراتيجية البدء وتكلفة تنفيذ الباقة المحددة.";
 
             const finalURL = `https://wa.me/${myPhone}?text=${encodeURIComponent(msg)}`;
             window.open(finalURL, '_blank');
         }
 
-        // تشغيل البناء التلقائي للسلة لقراءة الذاكرة المخزنة فور فتح الصفحة
+        // تشغيل فوري لقراءة البيانات المحفوظة بمجرد فتح الزبون للموقع
         updateUI();
     </script>
 </body>
