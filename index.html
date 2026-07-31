@@ -25,11 +25,14 @@
             --accent-red: #e53935;
             --accent-red-bright: #ff3b30;
             --accent-gradient: linear-gradient(135deg, #ff3b30 0%, #d32f2f 100%);
+            --vip-gold: #ffd700;
+            --vip-gradient: linear-gradient(135deg, #ffe066 0%, #f59e0b 100%);
             --border-color: rgba(255, 255, 255, 0.08);
             --border-red: rgba(255, 59, 48, 0.4);
             /* Red Laser Glow Shadows */
             --laser-glow: 0 0 20px rgba(255, 59, 48, 0.25);
             --laser-glow-strong: 0 0 35px rgba(255, 59, 48, 0.45);
+            --vip-glow: 0 0 20px rgba(255, 215, 0, 0.35);
             --radius-sm: 8px;
             --radius-md: 14px;
             --radius-lg: 22px;
@@ -123,7 +126,7 @@
         }
 
         /* ==========================================================================
-           3. NAVBAR & LOGO WITH PRO AD BADGE & WAVE EFFECT (WITH FADE ON SCROLL)
+           3. NAVBAR & LOGO WITH PRO AD BADGE & WAVE EFFECT
            ========================================================================== */
         .navbar {
             position: fixed;
@@ -140,8 +143,6 @@
             justify-content: space-between;
             align-items: center;
             box-shadow: 0 4px 20px rgba(0,0,0,0.5);
-
-            /* تسريع الاستجابة بالتلاشي والسحب */
             will-change: transform, opacity;
             transition: opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1), 
                         transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
@@ -149,7 +150,6 @@
             opacity: 1;
         }
 
-        /* حالة اختفاء التوليبار عند السحب لأسفل */
         .navbar.hidden {
             opacity: 0;
             transform: translateY(-15px);
@@ -187,7 +187,6 @@
             100% { background-position: 200% center; }
         }
 
-        /* Developer Credit Badge with Code Symbol */
         .developer-credit-badge {
             direction: ltr !important;
             font-size: 0.62rem;
@@ -211,7 +210,6 @@
             color: var(--accent-red-bright);
         }
 
-        /* حركية التلاشي والتنفس للعلامة */
         @keyframes proAdFade {
             0%, 100% {
                 opacity: 0.2;
@@ -295,6 +293,30 @@
             transform: translateY(-1px);
             box-shadow: var(--laser-glow-strong);
         }
+
+        /* أنماط الحساب والمستخدم بالأعلى */
+        .user-nav-badge {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid var(--border-color);
+            padding: 4px 10px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .user-nav-badge:hover {
+            border-color: var(--accent-red-bright);
+        }
+        .badge-type {
+            font-size: 0.7rem;
+            padding: 2px 7px;
+            border-radius: 10px;
+            font-weight: 800;
+        }
+        .badge-type.free { background: rgba(255,255,255,0.1); color: var(--text-secondary); }
+        .badge-type.vip { background: var(--vip-gradient); color: #000; box-shadow: var(--vip-glow); }
 
         .btn-primary {
             background: var(--accent-gradient);
@@ -1067,6 +1089,93 @@
             min-height: 85px;
         }
 
+        /* عناصر التحكم بالحساب والـ Auth Tabs */
+        .auth-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+        }
+
+        .auth-tab {
+            flex: 1;
+            background: transparent;
+            border: none;
+            color: var(--text-secondary);
+            padding: 8px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+            border-radius: 6px;
+        }
+
+        .auth-tab.active {
+            background: rgba(255, 59, 48, 0.12);
+            color: var(--accent-red-bright);
+            border: 1px solid rgba(255, 59, 48, 0.3);
+        }
+
+        .google-btn {
+            width: 100%;
+            background: #ffffff;
+            color: #222;
+            border: none;
+            padding: 10px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.88rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 16px;
+            transition: var(--transition);
+        }
+
+        .google-btn:hover {
+            background: #f1f1f1;
+            box-shadow: 0 0 15px rgba(255,255,255,0.2);
+        }
+
+        .divider-text {
+            text-align: center;
+            margin: 14px 0;
+            font-size: 0.78rem;
+            color: var(--text-secondary);
+            position: relative;
+        }
+
+        .divider-text::before, .divider-text::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            width: 40%;
+            height: 1px;
+            background: var(--border-color);
+        }
+        .divider-text::before { left: 0; }
+        .divider-text::after { right: 0; }
+
+        .progress-bar-container {
+            width: 100%;
+            background: var(--bg-main);
+            height: 10px;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 12px 0;
+            border: 1px solid var(--border-color);
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: var(--accent-gradient);
+            width: 0%;
+            transition: width 0.4s ease;
+        }
+
         /* PWA Toast */
         .pwa-toast {
             position: fixed;
@@ -1346,6 +1455,18 @@
         </ul>
 
         <div class="nav-controls">
+            <!-- Auth Nav Controls -->
+            <div id="loggedOutNav">
+                <button class="nav-btn-small" onclick="openAuthModal('login')"><i class="fas fa-sign-in-alt"></i> دخول</button>
+            </div>
+            <div id="loggedInNav" style="display: none;">
+                <div class="user-nav-badge" onclick="openProfileModal()">
+                    <i class="fas fa-user-circle" style="font-size: 1.1rem; color: var(--accent-red-bright);"></i>
+                    <span id="navUserName" style="font-size: 0.82rem; font-weight: 700;">المستخدم</span>
+                    <span id="navUserBadge" class="badge-type free">Free</span>
+                </div>
+            </div>
+
             <button class="lang-btn" onclick="toggleLanguage()" id="langBtn">
                 <i class="fas fa-globe"></i> English
             </button>
@@ -1454,800 +1575,4 @@
 
         <div class="works-carousel-container" id="worksContainer">
             <div class="works-track" id="worksTrack">
-                <!-- Card 1 -->
-                <div class="work-card" data-id="1">
-                    <div class="work-card-icon"><i class="fas fa-scissors"></i></div>
-                    <h3>صالون الملك</h3>
-                    <span class="service-tag">حجز مواعيد</span>
-                    <button class="work-card-btn" data-i18n="cardBtnDetails"><i class="fas fa-arrow-left"></i> التفاصيل</button>
-                </div>
-                <!-- Card 2 -->
-                <div class="work-card" data-id="2">
-                    <div class="work-card-icon"><i class="fas fa-utensils"></i></div>
-                    <h3>مطعم الذوق</h3>
-                    <span class="service-tag">موقع مطعم</span>
-                    <button class="work-card-btn" data-i18n="cardBtnDetails"><i class="fas fa-arrow-left"></i> التفاصيل</button>
-                </div>
-                <!-- Card 3 -->
-                <div class="work-card" data-id="3">
-                    <div class="work-card-icon"><i class="fas fa-coffee"></i></div>
-                    <h3>كافيه مودرن</h3>
-                    <span class="service-tag">موقع كافيه</span>
-                    <button class="work-card-btn" data-i18n="cardBtnDetails"><i class="fas fa-arrow-left"></i> التفاصيل</button>
-                </div>
-                <!-- Card 4 -->
-                <div class="work-card" data-id="4">
-                    <div class="work-card-icon"><i class="fas fa-stethoscope"></i></div>
-                    <h3>عيادة دكتور بلس</h3>
-                    <span class="service-tag">حجز مواعيد</span>
-                    <button class="work-card-btn" data-i18n="cardBtnDetails"><i class="fas fa-arrow-left"></i> التفاصيل</button>
-                </div>
-                <!-- Card 5 -->
-                <div class="work-card" data-id="5">
-                    <div class="work-card-icon"><i class="fas fa-shopping-bag"></i></div>
-                    <h3>متجر ستايل</h3>
-                    <span class="service-tag">متجر إلكتروني</span>
-                    <button class="work-card-btn" data-i18n="cardBtnDetails"><i class="fas fa-arrow-left"></i> التفاصيل</button>
-                </div>
-                <!-- Card 6 -->
-                <div class="work-card" data-id="6">
-                    <div class="work-card-icon"><i class="fas fa-building"></i></div>
-                    <h3>الشركة العقارية</h3>
-                    <span class="service-tag">عرض عقارات</span>
-                    <button class="work-card-btn" data-i18n="cardBtnDetails"><i class="fas fa-arrow-left"></i> التفاصيل</button>
-                </div>
-            </div>
-        </div>
-
-        <div class="carousel-glow-line" style="margin-top:24px; margin-bottom:0;"></div>
-    </section>
-
-    <!-- ==========================================================================
-       SERVICES SECTION WITH LASER BACKDROP
-       ========================================================================== -->
-    <section class="services-section" id="services">
-        <div class="laser-ambient-bg" style="top: -80px; right: 0;"></div>
-        <div class="laser-ambient-bg" style="bottom: -80px; left: 0;"></div>
-        
-        <div class="section-header">
-            <h2 data-i18n="servicesTitle">خدماتنا الرقمية</h2>
-            <p data-i18n="servicesSub">نوفر كل ما تحتاجه لبناء حضور رقمي قوي متكامل مع Best Of</p>
-        </div>
-
-        <div class="services-grid">
-            <div class="service-card">
-                <div>
-                    <div class="service-icon"><i class="fas fa-laptop-code"></i></div>
-                    <h3 data-i18n="s1Title">تصميم وتطوير المواقع</h3>
-                    <p data-i18n="s1Desc">م مواقع حديثة وسريعة ومتجاوبة بالكامل مع كافة الشاشات والأجهزة.</p>
-                </div>
-                <button class="btn-order-action" onclick="openOrderModal('تصميم وتطوير المواقع')" data-i18n="orderNow">صمم الآن</button>
-            </div>
-
-            <div class="service-card">
-                <div>
-                    <div class="service-icon"><i class="fas fa-mobile-alt"></i></div>
-                    <h3 data-i18n="s2Title">تطوير التطبيقات</h3>
-                    <p data-i18n="s2Desc">تطبيقات مخصصة وبديهية للأعمال والخدمات تلبي تطلعات عميلك.</p>
-                </div>
-                <button class="btn-order-action" onclick="openOrderModal('تطوير التطبيقات')" data-i18n="orderNow">اطلب الآن</button>
-            </div>
-
-            <div class="service-card">
-                <div>
-                    <div class="service-icon"><i class="fas fa-pen-nib"></i></div>
-                    <h3 data-i18n="s3Title">التصميم والهوية البصرية</h3>
-                    <p data-i18n="s3Desc">شعارات، براندينغ، وهويات بصرية متكاملة تعكس التميز الاحترافي.</p>
-                </div>
-                <button class="btn-order-action" onclick="openOrderModal('التصميم والهوية البصرية')" data-i18n="orderNow">صمم الآن</button>
-            </div>
-
-            <div class="service-card">
-                <div>
-                    <div class="service-icon"><i class="fas fa-video"></i></div>
-                    <h3 data-i18n="s4Title">المونتاج والفيديوهات الإعلانية</h3>
-                    <p data-i18n="s4Desc">فيديوهات ترويجية واحترافية متلائمة مع منصات التواصل الاجتماعي.</p>
-                </div>
-                <button class="btn-order-action" onclick="openOrderModal('المونتاج والفيديوهات الإعلانية')" data-i18n="orderNow">اطلب الآن</button>
-            </div>
-
-            <div class="service-card">
-                <div>
-                    <div class="service-icon"><i class="fas fa-calendar-check"></i></div>
-                    <h3 data-i18n="s5Title">أنظمة الحجز والإدارة</h3>
-                    <p data-i18n="s5Desc">برمجيات متخصصة لتنظيم المواقيت والإشراف على المواعيد بمرونة.</p>
-                </div>
-                <button class="btn-order-action" onclick="openOrderModal('أنظمة الحجز والإدارة')" data-i18n="orderNow">اطلب الآن</button>
-            </div>
-
-            <div class="service-card">
-                <div>
-                    <div class="service-icon"><i class="fas fa-cogs"></i></div>
-                    <h3 data-i18n="s6Title">حلول رقمية مخصصة</h3>
-                    <p data-i18n="s6Desc">نبتكر وننفذ برمجيات متقدمة مُصممة خصيصًا حسب احتياج مشروعك الفريد.</p>
-                </div>
-                <button class="btn-order-action" onclick="openOrderModal('حلول رقمية مخصصة')" data-i18n="orderNow">اطلب الآن</button>
-            </div>
-        </div>
-    </section>
-
-    <!-- ==========================================================================
-       WHY BEST OF
-       ========================================================================== -->
-    <section class="features-section" id="why-us">
-        <div class="laser-ambient-bg" style="top: 30%; right: 40%;"></div>
-        <div class="section-header">
-            <h2>لماذا <span>Best Of</span>؟</h2>
-            <p data-i18n="whySub">نضمن لك الجودة والابتكار في كل تفصيلة برمجية وبصرية</p>
-        </div>
-
-        <div class="features-grid">
-            <div class="feature-box">
-                <i class="fas fa-award"></i>
-                <h3 data-i18n="w1Title">جودة احترافية</h3>
-                <p data-i18n="w1Desc">نضمن لك أعلى جودة في كل مرحلة من مراحل المشروع.</p>
-            </div>
-            <div class="feature-box">
-                <i class="fas fa-tags"></i>
-                <h3 data-i18n="w2Title">أسعار مناسبة</h3>
-                <p data-i18n="w2Desc">خطط مرنة تناسب جميع الميزانيات الاحترافية.</p>
-            </div>
-            <div class="feature-box">
-                <i class="fas fa-headset"></i>
-                <h3 data-i18n="w3Title">دعم مستمر</h3>
-                <p data-i18n="w3Desc">نقدم لك الدعم الفني في كل وقت بعد إطلاق المشروع.</p>
-            </div>
-            <div class="feature-box">
-                <i class="fas fa-tachometer-alt"></i>
-                <h3 data-i18n="w4Title">أداء عالٍ</h3>
-                <p data-i18n="w4Desc">مواقع سريعة ومتوافقة مع جميع الأجهزة الذكية.</p>
-            </div>
-            <div class="feature-box">
-                <i class="fas fa-paint-brush"></i>
-                <h3 data-i18n="w5Title">تصميم عصري</h3>
-                <p data-i18n="w5Desc">تصاميم حديثة تعكس هوية مشروعك بأسلوب إبداعي.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- ==========================================================================
-       PROCESS SECTION
-       ========================================================================== -->
-    <section class="process-section" id="process">
-        <div class="section-header">
-            <h2 data-i18n="processTitle">كيف نعمل؟</h2>
-            <p data-i18n="processSub">خطوات واضحة وبسيطة لتحويل فكرتك إلى واقع</p>
-        </div>
-
-        <div class="process-steps">
-            <div class="step-card">
-                <div class="step-num">1</div>
-                <h3 data-i18n="p1Title">تواصل معنا</h3>
-                <p data-i18n="p1Desc">تخبرنا عن فكرتك ومتطلبات مشروعك الأولي.</p>
-            </div>
-            <div class="step-card">
-                <div class="step-num">2</div>
-                <h3 data-i18n="p2Title">نفهم فكرتك</h3>
-                <p data-i18n="p2Desc">نحلل احتياجاتك ونقدم الحلول والخطط المناسبة.</p>
-            </div>
-            <div class="step-card">
-                <div class="step-num">3</div>
-                <h3 data-i18n="p3Title">نصمم ونطور</h3>
-                <p data-i18n="p3Desc">نبدأ في التصميم والتطوير بأعلى المعايير.</p>
-            </div>
-            <div class="step-card">
-                <div class="step-num">4</div>
-                <h3 data-i18n="p4Title">نطلق مشروعك</h3>
-                <p data-i18n="p4Desc">نسلم المشروع ونبقى معك بالدعم والمتابعة.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA BANNER -->
-    <div class="cta-banner">
-        <h2 data-i18n="ctaTitle">هل لديك فكرة مشروع؟</h2>
-        <p data-i18n="ctaSub">دعنا نحولها إلى واقع رقمي مميز مع Best Of</p>
-        <button class="btn-primary" onclick="openOrderModal('فكرة مشروع جديد')" data-i18n="ctaBtn">اطلب مشروعك الآن</button>
-    </div>
-
-    <!-- ==========================================================================
-       MODAL 1: PROJECT DETAILS
-       ========================================================================== -->
-    <div class="modal-overlay" id="projectModal">
-        <div class="modal-container">
-            <button class="modal-close" onclick="closeProjectModal()"><i class="fas fa-times"></i></button>
-            
-            <span class="service-tag" id="projModalCategory" style="color:var(--accent-red-bright); font-weight:700;">نوع الخدمة</span>
-            <h2 id="projModalTitle" style="margin-top: 6px; font-weight: 800;">اسم المشروع</h2>
-
-            <div class="mockup-box">
-                <div style="font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 8px;">عرض توضيحي للمشروع (UI Mockup)</div>
-                <div class="mockup-screen">
-                    <div class="mockup-line accent"></div>
-                    <div class="mockup-line"></div>
-                    <div class="mockup-line short"></div>
-                </div>
-            </div>
-
-            <h4 style="margin-top: 10px; font-size: 0.92rem;" data-i18n="featuresHead">تفاصيل العمل المنفذ:</h4>
-            <ul class="project-features-list" id="projModalFeatures"></ul>
-
-            <button class="btn-primary" style="width: 100%; border-radius: 8px; margin-top: 10px;" onclick="switchProjectToOrder()" data-i18n="orderSimilar">
-                اطلب مشروعًا مشابهًا
-            </button>
-        </div>
-    </div>
-
-    <!-- ==========================================================================
-       MODAL 2: ORDER SERVICE FORM
-       ========================================================================== -->
-    <div class="modal-overlay" id="orderModal">
-        <div class="modal-container">
-            <button class="modal-close" onclick="closeOrderModal()"><i class="fas fa-times"></i></button>
-            
-            <h2 style="font-weight: 800; margin-bottom: 6px;" data-i18n="orderModalTitle">طلب خدمة / مشروع جديد</h2>
-            <p style="color: var(--text-secondary); margin-bottom: 20px; font-size: 0.88rem;" data-i18n="orderModalSub">أدخل بياناتك وسيتم التواصل معك مباشرة لمناقشة التفاصيل.</p>
-
-            <form id="orderForm" onsubmit="handleOrderSubmit(event)">
-                <div class="form-group">
-                    <label data-i18n="labelName">الاسم الكامل</label>
-                    <input type="text" class="form-control" id="orderName" required placeholder="أدخل اسمك الكريم">
-                </div>
-
-                <div class="form-group">
-                    <label data-i18n="labelPhone">رقم الهاتف / الواتساب</label>
-                    <input type="tel" class="form-control" id="orderPhone" placeholder="05xxxxxxxx" required>
-                </div>
-
-                <div class="form-group">
-                    <label data-i18n="labelType">نوع الخدمة / المشروع</label>
-                    <input type="text" class="form-control" id="orderType" readonly required>
-                </div>
-
-                <div class="form-group">
-                    <label data-i18n="labelDesc">وصف المشروع</label>
-                    <textarea class="form-control" id="orderDesc" required placeholder="اكتب تفاصيل مختصرة عن مشروعك..."></textarea>
-                </div>
-
-                <button type="submit" class="btn-primary" id="orderSubmitBtn" style="width: 100%; border-radius: 8px;" data-i18n="submitBtn">إرسال الطلب الآن</button>
-            </form>
-        </div>
-    </div>
-
-    <!-- ==========================================================================
-       MODAL 3: SUCCESS DIALOG
-       ========================================================================== -->
-    <div class="modal-overlay" id="successModal">
-        <div class="modal-container" style="text-align: center; max-width: 420px;">
-            <div style="width: 50px; height: 50px; background: rgba(229,57,53,0.15); color: var(--accent-red-bright); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin: 0 auto 14px; box-shadow:var(--laser-glow);">
-                <i class="fas fa-check"></i>
-            </div>
-            <h2 style="font-weight: 800; margin-bottom: 8px; font-size:1.25rem;" data-i18n="successTitle">تم استلام طلبك بنجاح!</h2>
-            <p style="color: var(--text-secondary); font-size: 0.88rem; margin-bottom: 18px; line-height: 1.6;" data-i18n="successSub">
-                شكرًا لتواصلك مع <strong>Best Of</strong>.<br>سيتم التواصل معك في أقرب وقت لمناقشة تفاصيل مشروعك.
-            </p>
-            <button class="btn-primary" style="width: 100%; border-radius: 8px;" onclick="closeSuccessModal()" data-i18n="okBtn">حسنًا</button>
-        </div>
-    </div>
-
-    <!-- PWA INSTALL TOAST -->
-    <div class="pwa-toast" id="pwaToast">
-        <div class="pwa-toast-text">
-            <h4 data-i18n="pwaTitle">ثبّت Best Of على جهازك</h4>
-            <p data-i18n="pwaSub">احصل على وصول أسرع إلى موقعنا مباشرة.</p>
-        </div>
-        <div class="pwa-actions">
-            <button class="btn-primary" style="padding: 5px 12px; font-size: 0.78rem;" id="pwaInstallBtn" data-i18n="install">تثبيت</button>
-            <button class="btn-secondary" style="padding: 5px 10px; font-size: 0.78rem;" onclick="dismissPwa()" data-i18n="notNow">ليس الآن</button>
-        </div>
-    </div>
-
-    <!-- FLOATING UTILITIES -->
-    <a href="https://wa.me/963999999999" target="_blank" class="floating-whatsapp" title="تواصل عبر الواتساب">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-
-    <button class="back-to-top" id="backToTop" onclick="scrollToTop()">
-        <i class="fas fa-arrow-up"></i>
-    </button>
-
-    <!-- ==========================================================================
-       FOOTER
-       ========================================================================== -->
-    <footer id="contact">
-        <div class="laser-ambient-bg" style="bottom: 0; right: 20%;"></div>
-        <div class="footer-grid">
-            <div class="footer-col">
-                <div class="brand-container" style="margin-bottom:12px;">
-                    <a href="#" class="logo">Best <span class="wave-text">Of</span></a>
-                    <div class="developer-credit-badge">
-                        <i class="fas fa-code"></i> By Bashar Obaid
-                    </div>
-                </div>
-                <p data-i18n="footerDesc">وكالة رقمية تقدم حلولاً مبتكرة لأعمالك على الإنترنت بخبرة وجودة عالية.</p>
-            </div>
-            <div class="footer-col">
-                <h4 data-i18n="footerQuick">روابط سريعة</h4>
-                <ul class="footer-links">
-                    <li><a href="#hero" data-i18n="navHome">الرئيسية</a></li>
-                    <li><a href="#services" data-i18n="navServices">خدماتنا</a></li>
-                    <li><a href="#works" data-i18n="navWorks">أعمالنا</a></li>
-                    <li><a href="#contact" data-i18n="navContact">تواصل معنا</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4 data-i18n="footerServices">خدماتنا</h4>
-                <ul class="footer-links">
-                    <li><a href="#services" data-i18n="s1Title">تصميم مواقع</a></li>
-                    <li><a href="#services" data-i18n="s2Title">تطوير تطبيقات</a></li>
-                    <li><a href="#services" data-i18n="s3Title">تصميم هوية</a></li>
-                    <li><a href="#services" data-i18n="s4Title">مونتاج فيديو</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4 data-i18n="footerContact">تواصل معنا</h4>
-                <p><i class="fas fa-phone"></i> +963 999 999 999</p>
-                <p><i class="fas fa-envelope"></i> info@bestof.com</p>
-                <p><i class="fas fa-map-marker-alt"></i> سوريا - دمشق</p>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 <strong>Best Of</strong>. <span data-i18n="footerRights">جميع الحقوق محفوظة.</span></p>
-        </div>
-    </footer>
-
-    <!-- ==========================================================================
-       FIREBASE SDKs & INTEGRATION
-       ========================================================================== -->
-    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-database-compat.js"></script>
-
-    <!-- ==========================================================================
-       JAVASCRIPT ENGINE
-       ========================================================================== -->
-    <script>
-        /* --------------------------------------------------------------------------
-           0. FIREBASE CONFIGURATION & INITIALIZATION
-           -------------------------------------------------------------------------- */
-        const firebaseConfig = {
-            databaseURL: "https://bashharobaid.firebaseio.com/"
-        };
-
-        // تهيئة Firebase
-        if (!firebase.apps.length) {
-            firebase.initializeApp(firebaseConfig);
-        }
-        const database = firebase.database();
-
-        /* --------------------------------------------------------------------------
-           1. LOADER DISMISSAL
-           -------------------------------------------------------------------------- */
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                const loader = document.getElementById('loader');
-                if(loader) loader.classList.add('hidden');
-            }, 250);
-        });
-
-        /* --------------------------------------------------------------------------
-           2. NAVBAR FADE ON SCROLL ENGINE (إخفاء وتلاشي النافبار عند السحب)
-           -------------------------------------------------------------------------- */
-        (() => {
-            const navbar = document.getElementById('mainNavbar');
-            let lastScrollY = window.scrollY;
-            let ticking = false;
-
-            function handleNavbarScroll() {
-                const currentScrollY = window.scrollY;
-
-                // التوارس والتلاشي عند نزول الصفحة لأكثر من 60px
-                if (currentScrollY > lastScrollY && currentScrollY > 60) {
-                    navbar.classList.add('hidden');
-                } else {
-                    navbar.classList.remove('hidden');
-                }
-
-                lastScrollY = currentScrollY;
-                ticking = false;
-            }
-
-            window.addEventListener('scroll', () => {
-                if (!ticking) {
-                    window.requestAnimationFrame(handleNavbarScroll);
-                    ticking = true;
-                }
-            }, { passive: true });
-        })();
-
-        /* --------------------------------------------------------------------------
-           3. ARABIC & ENGLISH TRANSLATION DICTIONARY
-           -------------------------------------------------------------------------- */
-        const translations = {
-            ar: {
-                navHome: "الرئيسية", navServices: "خدماتنا", navWorks: "أعمالنا", navWhyUs: "لماذا نحن", navProcess: "كيف نعمل", navContact: "تواصل معنا",
-                navOrderBtn: "اطلب مشروعك الآن", heroBadge: "وكالة رقمية Best Of", heroTitle: "حلول رقمية متكاملة <span>لأعمالك</span>",
-                heroSub: "تصميم مواقع • تطبيقات • تصميم • مونتاج. نوفر لك أفضل الأنظمة الإلكترونية والهويات الرقمية للنهوض بشركتك.",
-                heroBtnOrder: "اطلب مشروعك الآن", heroBtnWorks: "شاهد أعمالنا",
-                techTitle: "نستخدم أحدث التقنيات", techSub: "تظهر التقنيات بشكل متتابع لتأكيد الاعتمادية والسرعة في الأداء",
-                cat1: "برمجة وتطوير", cat2: "تصميم ومونتاج", cat3: "تطبيقات موبايل", cat4: "أدوات رقمية",
-                worksTitle: "أعمالنا", worksSub: "انقر على أي عمل لاستعراض التفاصيل الكاملة",
-                cardBtnDetails: '<i class="fas fa-arrow-left"></i> التفاصيل',
-                servicesTitle: "خدماتنا الرقمية", servicesSub: "نوفر كل ما تحتاجه لبناء حضور رقمي قوي متكامل مع Best Of",
-                s1Title: "تصميم وتطوير المواقع", s1Desc: "مواقع حديثة وسريعة ومتجاوبة بالكامل مع كافة الشاشات والأجهزة.",
-                s2Title: "تطوير التطبيقات", s2Desc: "تطبيقات مخصصة وبديهية للأعمال والخدمات تلبي تطلعات عميلك.",
-                s3Title: "التصميم والهوية البصرية", s3Desc: "شعارات، براندينغ، وهويات بصرية متكاملة تعكس التميز الاحترافي.",
-                s4Title: "المونتاج والفيديوهات الإعلانية", s4Desc: "فيديوهات ترويجية واحترافية متلائمة مع منصات التواصل الاجتماعي.",
-                s5Title: "أنظمة الحجز والإدارة", s5Desc: "برمجيات متخصصة لتنظيم المواقيت والإشراف على المواعيد بمرونة.",
-                s6Title: "حلول رقمية مخصصة", s6Desc: "نبتكر وننفذ برمجيات متقدمة مُصممة خصيصًا حسب احتياج مشروعك الفريد.",
-                orderNow: "اطلب الآن", whySub: "نضمن لك الجودة والابتكار في كل تفصيلة برمجية وبصرية",
-                w1Title: "جودة احترافية", w1Desc: "نضمن لك أعلى جودة في كل مرحلة من مراحل المشروع.",
-                w2Title: "أسعار مناسبة", w2Desc: "خطط مرنة تناسب جميع الميزانيات الاحترافية.",
-                w3Title: "دعم مستمر", w3Desc: "نقدم لك الدعم الفني في كل وقت بعد إطلاق المشروع.",
-                w4Title: "أداء عالٍ", w4Desc: "مواقع سريعة ومتوافقة مع جميع الأجهزة الذكية.",
-                w5Title: "تصميم عصري", w5Desc: "تصاميم حديثة تعكس هوية مشروعك بأسلوب إبداعي.",
-                processTitle: "كيف نعمل؟", processSub: "خطوات واضحة وبسيطة لتحويل فكرتك إلى واقع",
-                p1Title: "تواصل معنا", p1Desc: "تخبرنا عن فكرتك ومتطلبات مشروعك الأولي.",
-                p2Title: "نفهم فكرتك", p2Desc: "نحلل احتياجاتك ونقدم الحلول والخطط المناسبة.",
-                p3Title: "نصمم ونطور", p3Desc: "نبدأ في التصميم والتطوير بأعلى المعايير.",
-                p4Title: "نطلق مشروعك", p4Desc: "نسلم المشروع ونبقى معك بالدعم والمتابعة.",
-                ctaTitle: "هل لديك فكرة مشروع؟", ctaSub: "دعنا نحولها إلى واقع رقمي مميز مع Best Of", ctaBtn: "اطلب مشروعك الآن",
-                featuresHead: "تفاصيل العمل المنفذ:", orderSimilar: "اطلب مشروعًا مشابهًا",
-                orderModalTitle: "طلب خدمة / مشروع جديد", orderModalSub: "أدخل بياناتك وسيتم التواصل معك مباشرة لمناقشة التفاصيل.",
-                labelName: "الاسم الكامل", labelPhone: "رقم الهاتف / الواتساب", labelType: "نوع الخدمة / المشروع", labelDesc: "وصف المشروع",
-                submitBtn: "إرسال الطلب الآن", successTitle: "تم استلام طلبك بنجاح!",
-                successSub: "شكرًا لتواصلك مع Best Of.<br>سيتم التواصل معك في أقرب وقت لمناقشة تفاصيل مشروعك.", okBtn: "حسنًا",
-                pwaTitle: "ثبّت Best Of على جهازك", pwaSub: "احصل على وصول أسرع إلى موقعنا مباشرة.", install: "تثبيت", notNow: "ليس الآن",
-                footerDesc: "وكالة رقمية تقدم حلولاً مبتكرة لأعمالك على الإنترنت بخبرة وجودة عالية.",
-                footerQuick: "روابط سريعة", footerServices: "خدماتنا", footerContact: "تواصل معنا", footerRights: "جميع الحقوق محفوظة."
-            },
-            en: {
-                navHome: "Home", navServices: "Services", navWorks: "Our Works", navWhyUs: "Why Us", navProcess: "Process", navContact: "Contact",
-                navOrderBtn: "Order Now", heroBadge: "Digital Agency Best Of", heroTitle: "Complete Digital Solutions For <span>Your Business</span>",
-                heroSub: "Web Design • Mobile Apps • Branding • Video Editing. Elevate your brand with Best Of.",
-                heroBtnOrder: "Order Project Now", heroBtnWorks: "View Our Works",
-                techTitle: "Our Tech Stack", techSub: "Sequential fade animations to demonstrate high-performance stability",
-                cat1: "Development", cat2: "Design & Editing", cat3: "Mobile Apps", cat4: "Digital Tools",
-                worksTitle: "Our Works", worksSub: "Click any card to explore full project details",
-                cardBtnDetails: 'Details <i class="fas fa-arrow-right"></i>',
-                servicesTitle: "Digital Services", servicesSub: "Everything you need to build a powerful presence with Best Of",
-                s1Title: "Web Development", s1Desc: "Modern, fast, and fully responsive web systems.",
-                s2Title: "App Development", s2Desc: "Intuitive mobile solutions tailored to your users.",
-                s3Title: "Branding & Identity", s3Desc: "Logos and complete visual brand designs.",
-                s4Title: "Video Editing", s4Desc: "High converting promo and marketing video motion.",
-                s5Title: "Booking Systems", s5Desc: "Custom software for appointment and client management.",
-                s6Title: "Custom Solutions", s6Desc: "Tailored software logic built around your goals.",
-                orderNow: "Order Now", whySub: "We ensure top quality and innovation in every single detail",
-                w1Title: "Top Quality", w1Desc: "High standards guaranteed across every phase.",
-                w2Title: "Fair Pricing", w2Desc: "Flexible plans suitable for all professional budgets.",
-                w3Title: "24/7 Support", w3Desc: "Continuous assistance long after project launch.",
-                w4Title: "High Performance", w4Desc: "Lightning fast speed optimized for mobile users.",
-                w5Title: "Modern Design", w5Desc: "Fresh aesthetics that highlight your brand vision.",
-                processTitle: "How We Work", processSub: "Simple 4-step execution plan",
-                p1Title: "1. Contact Us", p1Desc: "Share your initial ideas and vision.",
-                p2Title: "2. Conceptualize", p2Desc: "We analyze needs and craft the roadmap.",
-                p3Title: "3. Build & Design", p3Desc: "Development using modern high standards.",
-                p4Title: "4. Launch & Scale", p4Desc: "Delivery with ongoing technical backing.",
-                ctaTitle: "Have a Project Idea?", ctaSub: "Let's turn it into a digital reality with Best Of", ctaBtn: "Order Now",
-                featuresHead: "Work Executed Breakdown:", orderSimilar: "Request Similar Project",
-                orderModalTitle: "Request a Service / Project", orderModalSub: "Fill in your details and we will reach out immediately.",
-                labelName: "Full Name", labelPhone: "Phone / WhatsApp", labelType: "Service Type", labelDesc: "Project Description",
-                submitBtn: "Submit Order", successTitle: "Order Received!",
-                successSub: "Thank you for choosing Best Of.<br>We will contact you shortly to discuss your project.", okBtn: "Got it",
-                pwaTitle: "Install Best Of App", pwaSub: "Get fast instant access directly from your desktop or phone.", install: "Install", notNow: "Not Now",
-                footerDesc: "Full-service digital agency building modern custom systems.",
-                footerQuick: "Quick Links", footerServices: "Services", footerContact: "Contact Us", footerRights: "All rights reserved."
-            }
-        };
-
-        let currentLang = 'ar';
-
-        function toggleLanguage() {
-            currentLang = (currentLang === 'ar') ? 'en' : 'ar';
-            document.documentElement.lang = currentLang;
-            document.documentElement.dir = (currentLang === 'ar') ? 'rtl' : 'ltr';
-
-            document.getElementById('langBtn').innerHTML = `<i class="fas fa-globe"></i> ${currentLang === 'ar' ? 'English' : 'عربي'}`;
-
-            document.querySelectorAll('[data-i18n]').forEach(el => {
-                const key = el.getAttribute('data-i18n');
-                if (translations[currentLang][key]) {
-                    el.innerHTML = translations[currentLang][key];
-                }
-            });
-        }
-
-        /* --------------------------------------------------------------------------
-           4. PROJECT DETAILS DATA
-           -------------------------------------------------------------------------- */
-        const projectsData = {
-            1: {
-                title: "صالون الملك",
-                category: "حجز مواعيد",
-                features: [
-                    "نظام حجز مواعيد للعملاء عبر الويب.",
-                    "تطبيق لاستلام وتنظيم الحجوزات المباشرة.",
-                    "لوحة إدارة متكاملة للمواعيد والموظفين.",
-                    "إدارة وتنظيم أوقات الدوام بدقة.",
-                    "متابعة وإدارة الطلبات والعملاء بسهولة."
-                ]
-            },
-            2: {
-                title: "مطعم الذوق",
-                category: "موقع مطعم",
-                features: [
-                    "واجهة جذابة لعرض قوائم الطعام والوجبات.",
-                    "نظام استقبال الطلبات المباشرة أونلاين.",
-                    "عرض الفروع والخرائط وساعات العمل.",
-                    "تصميم سريع ومتجاوب كلياً مع الجوال."
-                ]
-            },
-            3: {
-                title: "كافيه مودرن",
-                category: "موقع كافيه",
-                features: [
-                    "استعراض قائمة المشروبات والحلويات بأسلوب عصري.",
-                    "معرض صور عالي الجودة لأجواء الكافيه.",
-                    "إمكانية الحجز المسبق للطاولات."
-                ]
-            },
-            4: {
-                title: "عيادة دكتور بلس",
-                category: "حجز مواعيد",
-                features: [
-                    "حجز المواعيد الطبية بسهولة حسب اليوم والوقت.",
-                    "عرض الخدمات والأطباء والتخصصات.",
-                    "تنبيهات المواعيد وتأكيد الحجز."
-                ]
-            },
-            5: {
-                title: "متجر ستايل",
-                category: "متجر إلكتروني",
-                features: [
-                    "منصة عرض أزياء ومنتجات بتصنيفات متطورة.",
-                    "سلة تسوق خفيفة ونظام إرسال طلب مباشر.",
-                    "فلترة مبسطة وسريعة حسب المقاس والألوان."
-                ]
-            },
-            6: {
-                title: "الشركة العقارية",
-                category: "عرض عقارات",
-                features: [
-                    "استعراض العقارات الشاغرة للبيع والإيجار.",
-                    "فلترة البحث حسب المنطقة والسعر والنوع.",
-                    "نموذج حجز معاينة وتواصل مباشر مع العميل."
-                ]
-            }
-        };
-
-        /* --------------------------------------------------------------------------
-           5. UNIFIED INFINITE CAROUSEL ENGINE (PERFORMANCE OPTIMIZED)
-           -------------------------------------------------------------------------- */
-        const container = document.getElementById('worksContainer');
-        const track = document.getElementById('worksTrack');
-        
-        let isPausedForModal = false;
-        let isDragging = false;
-        let startX = 0;
-        let currentTranslate = 0;
-        let prevTranslate = 0;
-        let speed = 1.6;
-
-        // Clone cards for infinite seamless movement
-        const originalCards = Array.from(track.children);
-        originalCards.forEach(card => {
-            const clone = card.cloneNode(true);
-            track.appendChild(clone);
-        });
-
-        function getHalfWidth() {
-            return track.scrollWidth / 2;
-        }
-
-        function animateCarousel() {
-            if (!isPausedForModal && !isDragging) {
-                currentTranslate -= speed;
-                const halfWidth = getHalfWidth();
-                if (Math.abs(currentTranslate) >= halfWidth) {
-                    currentTranslate = 0;
-                }
-                setTrackPosition();
-            }
-            requestAnimationFrame(animateCarousel);
-        }
-
-        function setTrackPosition() {
-            track.style.transform = `translate3d(${currentTranslate}px, 0, 0)`;
-        }
-
-        container.addEventListener('pointerdown', (e) => {
-            startX = e.clientX;
-            isDragging = true;
-            prevTranslate = currentTranslate;
-            container.style.cursor = 'grabbing';
-        });
-
-        window.addEventListener('pointermove', (e) => {
-            if (!isDragging) return;
-            const currentX = e.clientX;
-            const diff = currentX - startX;
-            currentTranslate = prevTranslate + diff;
-
-            const halfWidth = getHalfWidth();
-            if (currentTranslate > 0) {
-                currentTranslate = -halfWidth;
-            } else if (Math.abs(currentTranslate) >= halfWidth) {
-                currentTranslate = 0;
-            }
-            setTrackPosition();
-        });
-
-        window.addEventListener('pointerup', () => {
-            if (!isDragging) return;
-            isDragging = false;
-            container.style.cursor = 'grab';
-        });
-
-        track.addEventListener('click', (e) => {
-            const card = e.target.closest('.work-card');
-            if (card) {
-                const id = card.getAttribute('data-id');
-                if (id) {
-                    openProjectModal(parseInt(id));
-                }
-            }
-        });
-
-        requestAnimationFrame(animateCarousel);
-
-        /* --------------------------------------------------------------------------
-           6. MODALS ENGINE
-           -------------------------------------------------------------------------- */
-        let activeProjectTitle = '';
-
-        function openProjectModal(id) {
-            isPausedForModal = true;
-            const proj = projectsData[id] || projectsData[1];
-            activeProjectTitle = proj.title;
-
-            document.getElementById('projModalTitle').innerText = proj.title;
-            document.getElementById('projModalCategory').innerText = proj.category;
-
-            const list = document.getElementById('projModalFeatures');
-            list.innerHTML = '';
-            proj.features.forEach(f => {
-                const li = document.createElement('li');
-                li.innerHTML = `<i class="fas fa-check-circle"></i> ${f}`;
-                list.appendChild(li);
-            });
-
-            document.getElementById('projectModal').classList.add('active');
-        }
-
-        function closeProjectModal() {
-            document.getElementById('projectModal').classList.remove('active');
-            isPausedForModal = false;
-        }
-
-        function switchProjectToOrder() {
-            closeProjectModal();
-            openOrderModal(`مشروع مشابه لـ (${activeProjectTitle})`);
-        }
-
-        function openOrderModal(serviceType) {
-            isPausedForModal = true;
-            document.getElementById('orderType').value = serviceType;
-            document.getElementById('orderModal').classList.add('active');
-        }
-
-        function closeOrderModal() {
-            document.getElementById('orderModal').classList.remove('active');
-            isPausedForModal = false;
-        }
-
-        function closeSuccessModal() {
-            document.getElementById('successModal').classList.remove('active');
-            isPausedForModal = false;
-        }
-
-        /* --------------------------------------------------------------------------
-           7. FIREBASE ORDER SUBMISSION HANDLER
-           -------------------------------------------------------------------------- */
-        function handleOrderSubmit(e) {
-            e.preventDefault();
-
-            const submitBtn = document.getElementById('orderSubmitBtn');
-            const originalBtnText = submitBtn.innerHTML;
-            submitBtn.disabled = true;
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري إرسال الطلب...';
-
-            const name = document.getElementById('orderName').value.trim();
-            const phone = document.getElementById('orderPhone').value.trim();
-            const serviceType = document.getElementById('orderType').value.trim();
-            const description = document.getElementById('orderDesc').value.trim();
-
-            // حفظ الطلب في عقدة 'orders' داخل Firebase Realtime Database
-            const newOrderRef = database.ref('orders').push();
-            newOrderRef.set({
-                name: name,
-                phone: phone,
-                serviceType: serviceType,
-                description: description,
-                status: 'pending',
-                createdAt: new Date().toLocaleString('ar-EG'),
-                timestamp: firebase.database.ServerValue.TIMESTAMP
-            }).then(() => {
-                submitBtn.disabled = false;
-                submitBtn.innerHTML = originalBtnText;
-
-                document.getElementById('orderForm').reset();
-                closeOrderModal();
-
-                setTimeout(() => {
-                    isPausedForModal = true;
-                    document.getElementById('successModal').classList.add('active');
-                }, 250);
-            }).catch((error) => {
-                console.error("خطأ أثناء حفظ الطلب في Firebase:", error);
-                submitBtn.disabled = false;
-                submitBtn.innerHTML = originalBtnText;
-                alert("حدث خطأ أثناء الاتصال بالخادم، يرجى التحقق من اتصالك بالإنترنت والمحاولة مرة أخرى.");
-            });
-        }
-
-        /* --------------------------------------------------------------------------
-           8. PWA PROMPT
-           -------------------------------------------------------------------------- */
-        let deferredPrompt = null;
-
-        window.addEventListener('beforeinstallprompt', (e) => {
-            e.preventDefault();
-            deferredPrompt = e;
-            setTimeout(() => {
-                document.getElementById('pwaToast').classList.add('show');
-            }, 3000);
-        });
-
-        document.getElementById('pwaInstallBtn').addEventListener('click', () => {
-            if (deferredPrompt) {
-                deferredPrompt.prompt();
-                deferredPrompt.userChoice.then(() => {
-                    deferredPrompt = null;
-                    dismissPwa();
-                });
-            }
-        });
-
-        function dismissPwa() {
-            document.getElementById('pwaToast').classList.remove('show');
-        }
-
-        /* --------------------------------------------------------------------------
-           9. UTILITIES
-           -------------------------------------------------------------------------- */
-        const menuToggle = document.getElementById('menuToggle');
-        const navLinks = document.getElementById('navLinks');
-
-        menuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
-
-        document.querySelectorAll('.nav-links a').forEach(l => {
-            l.addEventListener('click', () => navLinks.classList.remove('active'));
-        });
-
-        const backToTopBtn = document.getElementById('backToTop');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 400) {
-                backToTopBtn.classList.add('show');
-            } else {
-                backToTopBtn.classList.remove('show');
-            }
-        }, { passive: true });
-
-        function scrollToTop() {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-    </script>
-</body>
-</html>
-
+                
