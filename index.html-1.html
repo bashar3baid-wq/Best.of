@@ -1,0 +1,2894 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Best Of | وكالة الحلول الرقمية والتطوير الإبداعي</title>
+    
+    <!-- الوسوم التعريفية لظهور اسم Best Of وشعاره في محركات البحث جوجل والمشاركة -->
+    <meta name="description" content="Best Of | وكالة الحلول الرقمية والتطوير الإبداعي - تصميم مواقع، تطبيقات، هوية بصرية، ومونتاج.">
+    <meta name="author" content="Best Of">
+    <meta property="og:site_name" content="Best Of">
+    <meta property="og:title" content="Best Of | وكالة الحلول الرقمية والتطوير الإبداعي">
+    <meta property="og:description" content="Best Of | وكالة الحلول الرقمية والتطوير الإبداعي - تصميم مواقع، تطبيقات، هوية بصرية، ومونتاج.">
+    <meta property="og:type" content="website">
+
+    <!-- أيقونة الشعار (Favicon) لظهور لوجو الموقع بدلاً من شعار الكلاود فلير الافتراضي -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230f0f12'/><text x='50%' y='68%' font-family='Cairo, sans-serif' font-weight='900' font-size='55' fill='%23ff3b30' text-anchor='middle'>B</text></svg>">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230f0f12'/><text x='50%' y='68%' font-family='Cairo, sans-serif' font-weight='900' font-size='55' fill='%23ff3b30' text-anchor='middle'>B</text></svg>">
+
+    <!-- خطوط جوجل -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Poppins:wght@400;600;700;800&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- مكتبة أيقونات FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        /* ==========================================================================
+           1. VARIABLES & BASE STYLES WITH LASER GLOW ACCENTS
+           ========================================================================== */
+        :root {
+            --bg-main: #0f0f12;
+            --bg-surface: #16161b;
+            --bg-card: #1c1c24;
+            --bg-card-hover: #242430;
+            --text-primary: #f4f4f7;
+            --text-secondary: #9e9ea8;
+            --accent-red: #e53935;
+            --accent-red-bright: #ff3b30;
+            --accent-gradient: linear-gradient(135deg, #ff3b30 0%, #d32f2f 100%);
+            --border-color: rgba(255, 255, 255, 0.08);
+            --border-red: rgba(255, 59, 48, 0.4);
+            /* Red Laser Glow Shadows */
+            --laser-glow: 0 0 20px rgba(255, 59, 48, 0.25);
+            --laser-glow-strong: 0 0 35px rgba(255, 59, 48, 0.45);
+            --radius-sm: 8px;
+            --radius-md: 14px;
+            --radius-lg: 22px;
+            --transition: all 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Cairo', 'Tajawal', 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html, body {
+            background-color: var(--bg-main);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            width: 100%;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Ambient Laser Lighting Effect Background */
+        .laser-ambient-bg {
+            position: absolute;
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, rgba(255, 59, 48, 0.18) 0%, rgba(255, 59, 48, 0) 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+            filter: blur(50px);
+            transform: translateZ(0);
+        }
+
+        /* ==========================================================================
+           2. INITIAL SCREEN LOADER
+           ========================================================================== */
+        #loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--bg-main);
+            z-index: 99999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.4s ease, visibility 0.4s ease;
+        }
+
+        #loader.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .loader-logo {
+            font-size: 2.2rem;
+            font-weight: 900;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+            direction: ltr !important;
+            unicode-bidi: isolate;
+        }
+
+        .loader-spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid rgba(255, 59, 48, 0.15);
+            border-top: 3px solid var(--accent-red-bright);
+            border-radius: 50%;
+            box-shadow: var(--laser-glow);
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* ==========================================================================
+           3. NAVBAR & LOGO WITH PRO AD BADGE & WAVE EFFECT
+           ========================================================================== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(15, 15, 18, 0.92);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-bottom: 1px solid var(--border-color);
+            padding: 10px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+            will-change: transform, opacity;
+            transition: opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1), 
+                        transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .navbar.hidden {
+            opacity: 0;
+            transform: translateY(-15px);
+            pointer-events: none;
+        }
+
+        .brand-container {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: stretch;
+            width: fit-content;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 900;
+            letter-spacing: 0.5px;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            direction: ltr !important;
+            unicode-bidi: isolate;
+            line-height: 1;
+        }
+
+        .wave-text {
+            background: linear-gradient(90deg, #ffffff 0%, #ff3b30 30%, #ffffff 60%, #ff3b30 90%);
+            background-size: 200% auto;
+            color: transparent;
+            -webkit-background-clip: text;
+            background-clip: text;
+            animation: waveMotion 3.5s linear infinite;
+        }
+
+        @keyframes waveMotion {
+            0% { background-position: 0% center; }
+            100% { background-position: 200% center; }
+        }
+
+        /* Developer Credit Badge under Best Of Logo */
+        .developer-credit-badge {
+            direction: ltr !important;
+            font-size: 0.62rem;
+            font-weight: 800;
+            color: #fff;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            padding: 2px 4px;
+            margin-top: 3px;
+            border-radius: 6px;
+            background: rgba(255, 59, 48, 0.12);
+            border: 1px solid rgba(255, 59, 48, 0.4);
+            display: block;
+            width: 100%;
+            text-align: center;
+            white-space: nowrap;
+            box-sizing: border-box;
+            animation: proAdFade 3.5s ease-in-out infinite;
+        }
+
+        .developer-credit-badge i {
+            font-size: 0.6rem;
+            color: var(--accent-red-bright);
+            margin-right: 2px;
+        }
+
+        @keyframes proAdFade {
+            0%, 100% {
+                opacity: 0.35;
+                box-shadow: 0 0 4px rgba(255, 59, 48, 0.15);
+                border-color: rgba(255, 59, 48, 0.25);
+            }
+            50% {
+                opacity: 1;
+                box-shadow: 0 0 12px rgba(255, 59, 48, 0.5);
+                border-color: var(--accent-red-bright);
+            }
+        }
+
+        /* TOOLBAR QUICK LINKS */
+        .top-quick-links {
+            display: flex;
+            gap: 7px;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            min-width: 0;
+            flex: 1 1 auto;
+        }
+
+        .top-quick-links a {
+            font-weight: 700;
+            font-size: 0.78rem;
+            color: var(--text-primary);
+            background: rgba(255, 255, 255, 0.025);
+            border: 1px solid rgba(255, 255, 255, 0.10);
+            border-radius: 8px;
+            padding: 4px 9px;
+            transition: var(--transition);
+            white-space: nowrap;
+            line-height: 1.5;
+            cursor: pointer;
+        }
+
+        .top-quick-links a:hover,
+        .top-quick-links a:focus-visible,
+        .top-quick-links a.active {
+            color: #fff;
+            background: rgba(255, 59, 48, 0.92);
+            border-color: var(--accent-red-bright);
+            box-shadow: 0 0 12px rgba(255, 59, 48, 0.25);
+            text-shadow: none;
+            outline: none;
+        }
+
+        .brand-container {
+            flex: 0 0 auto;
+        }
+
+        .nav-controls {
+            flex: 0 0 auto;
+        }
+
+        @media (max-width: 1050px) {
+            .navbar {
+                padding-left: 3%;
+                padding-right: 3%;
+            }
+            .top-quick-links {
+                gap: 5px;
+                margin: 0 8px;
+            }
+            .top-quick-links a {
+                padding: 4px 7px;
+                font-size: 0.72rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .top-quick-links {
+                gap: 4px;
+                margin: 0 5px;
+            }
+            .top-quick-links a {
+                font-size: 0.68rem;
+                padding: 3px 6px;
+                border-radius: 7px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .navbar {
+                padding-left: 2%;
+                padding-right: 2%;
+            }
+            .logo {
+                font-size: 1.18rem;
+            }
+            .developer-credit-badge {
+                font-size: 0.46rem;
+                letter-spacing: 0.4px;
+            }
+            .top-quick-links {
+                gap: 2px;
+                margin: 0 3px;
+            }
+            .top-quick-links a {
+                font-size: 0.61rem;
+                padding: 3px 4px;
+                border-radius: 6px;
+            }
+            .nav-controls {
+                gap: 3px;
+            }
+            .lang-btn {
+                padding: 3px 5px;
+                font-size: 0.62rem;
+            }
+            .menu-toggle {
+                font-size: 1.05rem;
+            }
+        }
+
+        /* ==========================================================================
+           DYNAMIC HOME AD CONTAINER
+           ========================================================================== */
+        .home-ad-wrapper {
+            display: none;
+            width: 100%;
+            margin-bottom: 12px;
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-red);
+            box-shadow: var(--laser-glow);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .home-ad-wrapper.active {
+            display: block;
+        }
+
+        .home-ad-wrapper:hover {
+            box-shadow: var(--laser-glow-strong);
+            border-color: var(--accent-red-bright);
+        }
+
+        .home-ad-link {
+            display: block;
+            width: 100%;
+            text-decoration: none;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .home-ad-img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            display: block;
+            border-radius: var(--radius-sm);
+            transition: transform 0.3s ease;
+        }
+
+        .home-ad-link:hover .home-ad-img {
+            transform: scale(1.01);
+        }
+
+        .home-ad-title {
+            position: absolute;
+            bottom: 6px;
+            right: 8px;
+            background: rgba(15, 15, 18, 0.85);
+            color: var(--text-primary);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            border: 1px solid var(--border-color);
+            backdrop-filter: blur(4px);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 22px;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        }
+
+        .nav-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .lang-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.78rem;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            white-space: nowrap;
+        }
+
+        .lang-btn:hover {
+            border-color: var(--accent-red-bright);
+            color: var(--accent-red-bright);
+            box-shadow: var(--laser-glow);
+        }
+
+        .btn-primary {
+            background: var(--accent-gradient);
+            color: #fff;
+            padding: 10px 22px;
+            border-radius: 28px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 0 18px rgba(229, 57, 53, 0.4);
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--laser-glow-strong);
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.3rem;
+            cursor: pointer;
+            color: var(--text-primary);
+        }
+
+        /* ==========================================================================
+           4. HERO SECTION
+           ========================================================================== */
+        .hero {
+            padding: 140px 5% 65px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+            max-width: 1300px;
+            margin: 0 auto;
+            position: relative;
+            transform: translateZ(0);
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(229, 57, 53, 0.12);
+            border: 1px solid rgba(229, 57, 53, 0.4);
+            color: var(--accent-red-bright);
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.82rem;
+            font-weight: 700;
+            margin-bottom: 18px;
+            box-shadow: var(--laser-glow);
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2.1rem, 4.2vw, 3.4rem);
+            font-weight: 900;
+            line-height: 1.25;
+            margin-bottom: 18px;
+        }
+
+        .hero-content h1 span {
+            color: var(--accent-red-bright);
+            text-shadow: 0 0 15px rgba(255, 59, 48, 0.35);
+        }
+
+        .hero-sub {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+            max-width: 540px;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            padding: 10px 22px;
+            border-radius: 28px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent-red-bright);
+            color: var(--accent-red-bright);
+            background: rgba(255, 59, 48, 0.05);
+            box-shadow: var(--laser-glow);
+        }
+
+        .hero-visual {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-mockup-card {
+            width: 100%;
+            max-width: 480px;
+            background: var(--bg-surface);
+            border: 1px solid var(--border-red);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6), var(--laser-glow);
+            position: relative;
+        }
+
+        .mockup-header {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 16px;
+        }
+
+        .dot { width: 10px; height: 10px; border-radius: 50%; background: #444; }
+        .dot.red { background: #ff5f56; }
+        .dot.yellow { background: #ffbd2e; }
+        .dot.green { background: #27c93f; }
+
+        .mockup-body {
+            background: var(--bg-main);
+            border-radius: var(--radius-md);
+            padding: 20px;
+            border: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        .mockup-body h3 {
+            font-size: 1.4rem;
+            font-weight: 800;
+            margin-bottom: 6px;
+        }
+
+        .mockup-tags {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 14px;
+            flex-wrap: wrap;
+        }
+
+        .tag-pill {
+            font-size: 0.75rem;
+            background: rgba(255,255,255,0.05);
+            padding: 4px 10px;
+            border-radius: 12px;
+            color: var(--text-secondary);
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        /* ==========================================================================
+           5. TECH STACK
+           ========================================================================== */
+        .tech-section {
+            padding: 55px 5%;
+            background-color: var(--bg-surface);
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+            transform: translateZ(0);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 34px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .section-header h2 {
+            font-size: 1.75rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        .section-header h2 span {
+            color: var(--accent-red-bright);
+            text-shadow: 0 0 12px rgba(255, 59, 48, 0.4);
+        }
+
+        .section-header p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .tech-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 18px;
+            max-width: 1100px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .tech-cat-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 16px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: var(--transition);
+        }
+
+        .tech-cat-box:hover {
+            border-color: var(--border-red);
+            box-shadow: var(--laser-glow);
+        }
+
+        .tech-cat-title {
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+            text-align: center;
+        }
+
+        .tech-items-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .tech-badge {
+            background: var(--bg-main);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 5px 11px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            animation: sequentialFade 3.6s infinite ease-in-out;
+        }
+
+        .tech-badge i {
+            font-size: 0.95rem;
+            color: var(--accent-red-bright);
+        }
+
+        .tech-badge:nth-child(1) { animation-delay: 0.0s; }
+        .tech-badge:nth-child(2) { animation-delay: 0.4s; }
+        .tech-badge:nth-child(3) { animation-delay: 0.8s; }
+        .tech-badge:nth-child(4) { animation-delay: 1.2s; }
+        .tech-badge:nth-child(5) { animation-delay: 1.6s; }
+
+        @keyframes sequentialFade {
+            0%, 100% { opacity: 0.45; border-color: var(--border-color); box-shadow: none; }
+            50% { opacity: 1; border-color: var(--accent-red-bright); box-shadow: var(--laser-glow); }
+        }
+
+        /* ==========================================================================
+           6. OUR WORKS CAROUSEL
+           ========================================================================== */
+        .works-section {
+            padding: 75px 0;
+            position: relative;
+            background: linear-gradient(180deg, var(--bg-main) 0%, var(--bg-surface) 50%, var(--bg-main) 100%);
+            border-bottom: 1px solid var(--border-color);
+            overflow: hidden;
+            transform: translateZ(0);
+        }
+
+        .carousel-glow-line {
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent-red-bright), transparent);
+            margin-bottom: 24px;
+            box-shadow: 0 0 10px var(--accent-red-bright);
+        }
+
+        .works-carousel-container {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            user-select: none;
+            cursor: grab;
+            padding: 20px 0;
+            direction: ltr !important; 
+            z-index: 2;
+        }
+
+        .works-carousel-container:active {
+            cursor: grabbing;
+        }
+
+        .works-track {
+            display: flex;
+            gap: 22px;
+            width: max-content;
+            will-change: transform;
+            direction: ltr !important;
+        }
+
+        .work-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            width: 230px;
+            padding: 22px 18px 18px;
+            flex-shrink: 0;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            justify-content: space-between;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.4), var(--laser-glow);
+            position: relative;
+        }
+
+        html[dir="rtl"] .work-card {
+            direction: rtl;
+        }
+
+        .work-card:hover {
+            border-color: var(--accent-red-bright);
+            background: var(--bg-card-hover);
+            transform: translateY(-6px);
+            box-shadow: var(--laser-glow-strong);
+        }
+
+        .work-card-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(255, 59, 48, 0.12);
+            border: 1px solid rgba(255, 59, 48, 0.2);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            color: var(--accent-red-bright);
+            margin-bottom: 12px;
+            box-shadow: var(--laser-glow);
+        }
+
+        .work-card h3 {
+            font-size: 1.1rem;
+            font-weight: 800;
+            margin-bottom: 2px;
+        }
+
+        .work-card .service-tag {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            font-weight: 600;
+            margin-bottom: 14px;
+        }
+
+        .work-card-btn {
+            background: rgba(255, 59, 48, 0.1);
+            border: 1px solid var(--border-red);
+            color: var(--text-primary);
+            width: 100%;
+            padding: 7px 12px;
+            border-radius: 8px;
+            font-size: 0.82rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .work-card:hover .work-card-btn {
+            background: var(--accent-gradient);
+            color: #fff;
+            border-color: transparent;
+            box-shadow: var(--laser-glow);
+        }
+
+        /* ==========================================================================
+           7. SERVICES SECTION
+           ========================================================================== */
+        .services-section {
+            padding: 85px 5%;
+            background-color: var(--bg-surface);
+            position: relative;
+            overflow: hidden;
+            transform: translateZ(0);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 22px;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .service-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 26px 20px;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.4), var(--laser-glow);
+            position: relative;
+        }
+
+        .service-card:hover {
+            border-color: var(--accent-red-bright);
+            transform: translateY(-6px);
+            box-shadow: var(--laser-glow-strong);
+        }
+
+        .service-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(229, 57, 53, 0.12);
+            border: 1px solid rgba(229, 57, 53, 0.25);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            color: var(--accent-red-bright);
+            margin-bottom: 16px;
+            box-shadow: var(--laser-glow);
+        }
+
+        .service-card h3 {
+            font-size: 1.15rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        .service-card p {
+            color: var(--text-secondary);
+            font-size: 0.88rem;
+            margin-bottom: 20px;
+        }
+
+        .service-card .btn-order-action {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            padding: 8px 14px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+            width: 100%;
+        }
+
+        .service-card:hover .btn-order-action {
+            background: var(--accent-gradient);
+            border-color: transparent;
+            color: #fff;
+            box-shadow: var(--laser-glow);
+        }
+
+        /* ==========================================================================
+           8. WHY BEST OF & PROCESS SECTIONS
+           ========================================================================== */
+        .features-section {
+            padding: 85px 5%;
+            position: relative;
+            transform: translateZ(0);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 18px;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .feature-box {
+            background: var(--bg-card);
+            padding: 22px 18px;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3), var(--laser-glow);
+        }
+
+        .feature-box:hover {
+            border-color: var(--accent-red-bright);
+            transform: translateY(-4px);
+            box-shadow: var(--laser-glow-strong);
+        }
+
+        .feature-box i {
+            font-size: 1.7rem;
+            color: var(--accent-red-bright);
+            margin-bottom: 12px;
+            filter: drop-shadow(0 0 8px rgba(255, 59, 48, 0.4));
+        }
+
+        .feature-box h3 {
+            font-size: 1.05rem;
+            margin-bottom: 5px;
+        }
+
+        .feature-box p {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+        .process-section {
+            padding: 85px 5%;
+            background-color: var(--bg-surface);
+            border-top: 1px solid var(--border-color);
+            position: relative;
+            transform: translateZ(0);
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 18px;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .step-card {
+            background: var(--bg-main);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 22px;
+            position: relative;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            transition: var(--transition);
+        }
+
+        .step-card:hover {
+            border-color: var(--border-red);
+            box-shadow: var(--laser-glow);
+        }
+
+        .step-num {
+            width: 34px;
+            height: 34px;
+            background: var(--accent-gradient);
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 0.9rem;
+            margin-bottom: 12px;
+            box-shadow: var(--laser-glow);
+        }
+
+        .step-card h3 {
+            font-size: 1.05rem;
+            margin-bottom: 5px;
+        }
+
+        .step-card p {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+        .cta-banner {
+            max-width: 1100px;
+            margin: 0 auto 75px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-red);
+            border-radius: var(--radius-lg);
+            padding: 38px 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5), var(--laser-glow-strong);
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta-banner h2 {
+            font-size: 1.75rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        .cta-banner p {
+            color: var(--text-secondary);
+            margin-bottom: 22px;
+        }
+
+        /* ==========================================================================
+           FOOTER EXTRA BUTTONS FOR REPORT & SUPPORT
+           ========================================================================== */
+        .footer-action-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+
+        .footer-btn-report, .footer-btn-support {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            padding: 10px 20px;
+            border-radius: var(--radius-md);
+            font-size: 0.88rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-btn-report:hover {
+            border-color: var(--accent-red-bright);
+            color: var(--accent-red-bright);
+            background: rgba(255, 59, 48, 0.08);
+            box-shadow: var(--laser-glow);
+        }
+
+        .footer-btn-support:hover {
+            border-color: #25d366;
+            color: #25d366;
+            background: rgba(37, 211, 102, 0.08);
+            box-shadow: 0 0 15px rgba(37, 211, 102, 0.2);
+        }
+
+        /* ==========================================================================
+           9. MODALS ENGINE & POPUPS
+           ========================================================================== */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.88);
+            backdrop-filter: blur(8px);
+            z-index: 3000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-container {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-red);
+            border-radius: var(--radius-lg);
+            width: 100%;
+            max-width: 540px;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 28px;
+            position: relative;
+            transform: scale(0.95);
+            transition: var(--transition);
+            box-shadow: var(--laser-glow-strong);
+        }
+
+        .modal-overlay.active .modal-container {
+            transform: scale(1);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            background: rgba(255, 255, 255, 0.06);
+            border: none;
+            color: var(--text-secondary);
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        html[dir="ltr"] .modal-close {
+            left: auto;
+            right: 16px;
+        }
+
+        .modal-close:hover {
+            background: var(--accent-red-bright);
+            color: #fff;
+        }
+
+        .mockup-box {
+            background: var(--bg-main);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 16px;
+            margin: 16px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mockup-screen {
+            width: 90%;
+            height: 85px;
+            background: var(--bg-card);
+            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .mockup-line {
+            height: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+        }
+
+        .mockup-line.short { width: 35%; }
+        .mockup-line.accent { background: var(--accent-red-bright); width: 65%; box-shadow: var(--laser-glow); }
+
+        .project-features-list {
+            list-style: none;
+            margin: 16px 0;
+        }
+
+        .project-features-list li {
+            padding: 6px 0;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9rem;
+        }
+
+        .project-features-list li i {
+            color: var(--accent-red-bright);
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+            transition: var(--transition);
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.84rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .form-control {
+            width: 100%;
+            background: var(--bg-main);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 10px 14px;
+            color: #fff;
+            font-size: 0.9rem;
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            border-color: var(--accent-red-bright);
+            box-shadow: var(--laser-glow);
+        }
+
+        select.form-control option {
+            background: var(--bg-surface);
+            color: #fff;
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 85px;
+        }
+
+        /* SMART COUNTRY SELECT & PHONE INPUT STYLES */
+        .phone-input-wrapper {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            direction: ltr;
+        }
+
+        .country-select-box {
+            width: 125px;
+            flex-shrink: 0;
+            background: var(--bg-main);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: #fff;
+            padding: 10px 6px;
+            font-size: 0.82rem;
+            outline: none;
+            cursor: pointer;
+        }
+
+        .country-select-box:focus {
+            border-color: var(--accent-red-bright);
+            box-shadow: var(--laser-glow);
+        }
+
+        .phone-input-wrapper input {
+            direction: ltr;
+            text-align: left;
+        }
+
+        .detected-country-badge {
+            margin-top: 6px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: #ff3b30;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255, 59, 48, 0.08);
+            padding: 4px 10px;
+            border-radius: 6px;
+            border: 1px solid rgba(255, 59, 48, 0.2);
+            width: fit-content;
+        }
+
+        /* SMART EMAIL FIELD & SUGGESTIONS STYLES */
+        .email-suggestions {
+            display: flex;
+            gap: 6px;
+            margin-top: 6px;
+            flex-wrap: wrap;
+        }
+
+        .email-chip {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            font-size: 0.74rem;
+            padding: 2px 8px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .email-chip:hover {
+            color: #fff;
+            border-color: var(--accent-red-bright);
+            background: rgba(255, 59, 48, 0.15);
+        }
+
+        .quick-modal-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .btn-action-outline {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            padding: 9px;
+            border-radius: 8px;
+            font-size: 0.82rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .btn-action-outline:hover {
+            border-color: var(--accent-red-bright);
+            color: var(--accent-red-bright);
+            background: rgba(255, 59, 48, 0.08);
+            box-shadow: var(--laser-glow);
+        }
+
+        /* PWA Toast */
+        .pwa-toast {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-red);
+            border-radius: var(--radius-md);
+            padding: 14px 18px;
+            z-index: 2500;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6), var(--laser-glow);
+            transform: translateY(150%);
+            transition: transform 0.4s ease;
+        }
+
+        .pwa-toast.show {
+            transform: translateY(0);
+        }
+
+        .pwa-toast-text h4 {
+            font-size: 0.92rem;
+            font-weight: 800;
+        }
+
+        .pwa-toast-text p {
+            font-size: 0.78rem;
+            color: var(--text-secondary);
+        }
+
+        .pwa-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            left: 28px;
+            width: 38px;
+            height: 38px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.95rem;
+            z-index: 2000;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        footer {
+            background-color: var(--bg-main);
+            border-top: 1px solid var(--border-color);
+            padding: 38px 5% 28px;
+            color: var(--text-secondary);
+            font-size: 0.86rem;
+            position: relative;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+            gap: 28px;
+            max-width: 1200px;
+            margin: 0 auto 28px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .footer-col h4 {
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            margin-bottom: 12px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 7px;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-red-bright);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+            padding-top: 18px;
+        }
+
+        /* Footer Contact Details Links */
+        .footer-contact-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+            transition: var(--transition);
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-weight: 600;
+        }
+
+        .footer-contact-link:hover {
+            color: var(--text-primary);
+            border-color: var(--accent-red-bright);
+            box-shadow: var(--laser-glow);
+        }
+
+        .footer-contact-link i.fa-whatsapp {
+            color: #25d366;
+            font-size: 1.1rem;
+        }
+
+        .footer-contact-link i.fa-envelope {
+            color: var(--accent-red-bright);
+            font-size: 1rem;
+        }
+
+        /* ==========================================================================
+           10. MEDIA QUERIES & RESPONSIVE FIXES FOR MOBILE
+           ========================================================================== */
+        @media (max-width: 900px) {
+            .hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+                padding-top: 115px;
+            }
+            .hero-sub { margin: 0 auto 24px; }
+            .hero-btns { justify-content: center; }
+            .brand-container { align-items: stretch; margin: 0 auto; }
+        }
+
+        @media (max-width: 768px) {
+            html, body {
+                overflow-x: hidden !important;
+                width: 100% !important;
+            }
+
+            .navbar {
+                padding: 8px 3%;
+                flex-wrap: nowrap;
+            }
+
+            .logo {
+                font-size: 1.3rem;
+            }
+
+            .developer-credit-badge {
+                font-size: 0.52rem;
+                padding: 1px 3px;
+            }
+
+            .nav-controls {
+                gap: 5px;
+            }
+
+            .lang-btn {
+                padding: 4px 8px;
+                font-size: 0.72rem;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                right: 0;
+                width: 100%;
+                background: var(--bg-surface);
+                flex-direction: column;
+                padding: 18px;
+                border-bottom: 1px solid var(--border-color);
+            }
+
+            .nav-links.active { display: flex; }
+            .menu-toggle { display: block; font-size: 1.2rem; }
+
+            .hero {
+                padding: 100px 4% 40px;
+                gap: 25px;
+            }
+
+            .hero-content h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero-sub {
+                font-size: 0.88rem;
+            }
+
+            .hero-btns {
+                flex-direction: row;
+                width: 100%;
+                gap: 8px;
+            }
+
+            .hero-btns .btn-primary, 
+            .hero-btns .btn-secondary {
+                flex: 1;
+                padding: 10px 8px;
+                font-size: 0.8rem;
+                text-align: center;
+                justify-content: center;
+            }
+
+            .services-section, .tech-section, .features-section, .process-section, .works-section {
+                padding: 50px 4%;
+            }
+
+            .section-header h2 {
+                font-size: 1.4rem;
+            }
+
+            .cta-banner {
+                padding: 28px 16px;
+                margin: 0 4% 50px;
+            }
+
+            .cta-banner h2 {
+                font-size: 1.3rem;
+            }
+
+            .modal-container {
+                padding: 20px 16px;
+            }
+
+            .pwa-toast {
+                left: 10px;
+                right: 10px;
+                bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ==========================================================================
+       INITIAL SCREEN LOADER
+       ========================================================================== -->
+    <div id="loader">
+        <div class="loader-logo">Best <span class="wave-text">Of</span></div>
+        <div class="loader-spinner"></div>
+    </div>
+
+    <!-- ==========================================================================
+       TOOLBAR / NAVIGATION BAR 
+       ========================================================================== -->
+    <nav class="navbar" id="mainNavbar">
+        <!-- Brand Logo & Pro Developer Credit Subtitle -->
+        <div class="brand-container">
+            <a href="#" class="logo">Best <span class="wave-text">Of</span></a>
+            <div class="developer-credit-badge">
+                <i class="fas fa-code"></i> By Bashar Obaid
+            </div>
+        </div>
+        
+        <!-- NEW QUICK LINKS FOR TOOLBAR (أعمالنا، خدماتنا، تواصل معنا) -->
+        <div class="top-quick-links">
+            <a href="#works" data-i18n="navWorks">أعمالنا</a>
+            <a href="#services" data-i18n="navServices">خدماتنا</a>
+            <a href="#contact" data-i18n="navContact">تواصل معنا</a>
+        </div>
+
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#hero" data-i18n="navHome">الرئيسية</a></li>
+            <li><a href="#services" data-i18n="navServices">خدماتنا</a></li>
+            <li><a href="#works" data-i18n="navWorks">أعمالنا</a></li>
+            <li><a href="#why-us" data-i18n="navWhyUs">لماذا نحن</a></li>
+            <li><a href="#process" data-i18n="navProcess">كيف نعمل</a></li>
+            <li><a href="#contact" data-i18n="navContact">تواصل معنا</a></li>
+        </ul>
+
+        <div class="nav-controls">
+            <button class="lang-btn" onclick="toggleLanguage()" id="langBtn">
+                <i class="fas fa-globe"></i> English
+            </button>
+            <div class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></div>
+        </div>
+    </nav>
+
+    <!-- ==========================================================================
+       HERO SECTION WITH AD CONTAINER PLACED IN THE SPECIFIED PLACE
+       ========================================================================== -->
+    <section class="hero" id="hero">
+        <div class="laser-ambient-bg" style="top: -50px; right: 10%;"></div>
+        <div class="hero-content">
+            <span class="hero-badge" data-i18n="heroBadge"><i class="fas fa-bolt"></i> وكالة رقمية Best Of</span>
+            <h1 data-i18n="heroTitle">حلول رقمية متكاملة <span>لأعمالك</span></h1>
+            
+            <p class="hero-sub" data-i18n="heroSub">تصميم مواقع • تطبيقات • تصميم • مونتاج. نوفر لك أفضل الأنظمة الإلكترونية والهويات الرقمية للنهوض بشركتك.</p>
+            <div class="hero-btns">
+                <button class="btn-primary" onclick="openOrderModal('مشروع جديد')" data-i18n="heroBtnOrder">اطلب مشروعك الآن</button>
+                <a href="#works" class="btn-secondary" data-i18n="heroBtnWorks"><i class="fas fa-play"></i> شاهد أعمالنا</a>
+            </div>
+        </div>
+
+        <div class="hero-visual">
+            <div class="hero-mockup-card">
+                <div class="mockup-header">
+                    <div class="dot red"></div>
+                    <div class="dot yellow"></div>
+                    <div class="dot green"></div>
+                </div>
+
+                <div class="mockup-body">
+                    <!-- Dynamic Advertisement Area -->
+                    <div class="home-ad-wrapper" id="homeAdContainer">
+                        <a href="#" id="homeAdLink" target="_blank" class="home-ad-link">
+                            <img id="homeAdImg" src="" alt="الإعلان" class="home-ad-img">
+                            <span id="homeAdTitle" class="home-ad-title" style="display:none;"></span>
+                        </a>
+                    </div>
+
+                    <h3>Best <span class="wave-text">Of</span></h3>
+                    <p style="font-size:0.82rem; color:var(--text-secondary); margin-top:2px;">Digital Solutions & Innovation</p>
+                    <div class="mockup-tags">
+                        <span class="tag-pill">Web Systems</span>
+                        <span class="tag-pill">Mobile Apps</span>
+                        <span class="tag-pill">Branding</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+       TECH STACK SECTION
+       ========================================================================== -->
+    <section class="tech-section">
+        <div class="laser-ambient-bg" style="bottom: -100px; left: 5%;"></div>
+        <div class="section-header">
+            <h2 data-i18n="techTitle">نستخدم أحدث <span>التقنيات</span></h2>
+            <p data-i18n="techSub">تظهر التقنيات بشكل متتابع لتأكيد الاعتمادية والسرعة في الأداء</p>
+        </div>
+
+        <div class="tech-categories">
+            <div class="tech-cat-box">
+                <div class="tech-cat-title" data-i18n="cat1">برمجة وتطوير</div>
+                <div class="tech-items-row">
+                    <div class="tech-badge"><i class="fab fa-html5"></i> HTML5</div>
+                    <div class="tech-badge"><i class="fab fa-css3-alt"></i> CSS3</div>
+                    <div class="tech-badge"><i class="fab fa-js"></i> JS</div>
+                    <div class="tech-badge"><i class="fab fa-php"></i> PHP</div>
+                    <div class="tech-badge"><i class="fab fa-python"></i> Python</div>
+                </div>
+            </div>
+
+            <div class="tech-cat-box">
+                <div class="tech-cat-title" data-i18n="cat2">تصميم ومونتاج</div>
+                <div class="tech-items-row">
+                    <div class="tech-badge"><i class="fab fa-figma"></i> Figma</div>
+                    <div class="tech-badge"><i class="fas fa-image"></i> Photoshop</div>
+                    <div class="tech-badge"><i class="fas fa-film"></i> Premiere</div>
+                    <div class="tech-badge"><i class="fas fa-photo-video"></i> After Effects</div>
+                </div>
+            </div>
+
+            <div class="tech-cat-box">
+                <div class="tech-cat-title" data-i18n="cat3">تطبيقات موبايل</div>
+                <div class="tech-items-row">
+                    <div class="tech-badge"><i class="fab fa-android"></i> Android</div>
+                    <div class="tech-badge"><i class="fas fa-mobile-alt"></i> Kotlin</div>
+                    <div class="tech-badge"><i class="fas fa-fire"></i> Firebase</div>
+                </div>
+            </div>
+
+            <div class="tech-cat-box">
+                <div class="tech-cat-title" data-i18n="cat4">أدوات رقمية</div>
+                <div class="tech-items-row">
+                    <div class="tech-badge"><i class="fab fa-wordpress"></i> WordPress</div>
+                    <div class="tech-badge"><i class="fas fa-cloud"></i> Cloudflare</div>
+                    <div class="tech-badge"><i class="fas fa-database"></i> MySQL</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+       OUR WORKS CAROUSEL
+       ========================================================================== -->
+    <section class="works-section" id="works">
+        <div class="laser-ambient-bg" style="top: 20%; left: 35%;"></div>
+        <div class="carousel-glow-line"></div>
+        <div class="section-header">
+            <h2 data-i18n="worksTitle">أعمالنا</h2>
+            <p data-i18n="worksSub">انقر على أي عمل لاستعراض التفاصيل الكاملة</p>
+        </div>
+
+        <div class="works-carousel-container" id="worksContainer">
+            <div class="works-track" id="worksTrack">
+                <!-- Card 1 -->
+                <div class="work-card" data-id="1">
+                    <div class="work-card-icon"><i class="fas fa-scissors"></i></div>
+                    <h3>صالون الملك</h3>
+                    <span class="service-tag">حجز مواعيد</span>
+                    <button class="work-card-btn" data-i18n="cardBtnDetails"><i class="fas fa-arrow-left"></i> التفاصيل</button>
+                </div>
+                <!-- Card 2 -->
+                <div class="work-card" data-id="2">
+                    <div class="work-card-icon"><i class="fas fa-utensils"></i></div>
+                    <h3>مطعم الذوق</h3>
+                    <span class="service-tag">موقع مطعم</span>
+                    <button class="work-card-btn" data-i18n="cardBtnDetails"><i class="fas fa-arrow-left"></i> التفاصيل</button>
+                </div>
+                <!-- Card 3 -->
+                <div class="work-card" data-id="3">
+                    <div class="work-card-icon"><i class="fas fa-coffee"></i></div>
+                    <h3>كافيه مودرن</h3>
+                    <span class="service-tag">موقع كافيه</span>
+                    <button class="work-card-btn" data-i18n="cardBtnDetails"><i class="fas fa-arrow-left"></i> التفاصيل</button>
+                </div>
+                <!-- Card 4 -->
+                <div class="work-card" data-id="4">
+                    <div class="work-card-icon"><i class="fas fa-stethoscope"></i></div>
+                    <h3>عيادة دكتور بلس</h3>
+                    <span class="service-tag">حجز مواعيد</span>
+                    <button class="work-card-btn" data-i18n="cardBtnDetails"><i class="fas fa-arrow-left"></i> التفاصيل</button>
+                </div>
+                <!-- Card 5 -->
+                <div class="work-card" data-id="5">
+                    <div class="work-card-icon"><i class="fas fa-shopping-bag"></i></div>
+                    <h3>متجر ستايل</h3>
+                    <span class="service-tag">متجر إلكتروني</span>
+                    <button class="work-card-btn" data-i18n="cardBtnDetails"><i class="fas fa-arrow-left"></i> التفاصيل</button>
+                </div>
+                <!-- Card 6 -->
+                <div class="work-card" data-id="6">
+                    <div class="work-card-icon"><i class="fas fa-building"></i></div>
+                    <h3>الشركة العقارية</h3>
+                    <span class="service-tag">عرض عقارات</span>
+                    <button class="work-card-btn" data-i18n="cardBtnDetails"><i class="fas fa-arrow-left"></i> التفاصيل</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="carousel-glow-line" style="margin-top:24px; margin-bottom:0;"></div>
+    </section>
+
+    <!-- ==========================================================================
+       SERVICES SECTION
+       ========================================================================== -->
+    <section class="services-section" id="services">
+        <div class="laser-ambient-bg" style="top: -80px; right: 0;"></div>
+        <div class="laser-ambient-bg" style="bottom: -80px; left: 0;"></div>
+        
+        <div class="section-header">
+            <h2 data-i18n="servicesTitle">خدماتنا الرقمية</h2>
+            <p data-i18n="servicesSub">نوفر كل ما تحتاجه لبناء حضور رقمي قوي متكامل مع Best Of</p>
+        </div>
+
+        <div class="services-grid">
+            <div class="service-card">
+                <div>
+                    <div class="service-icon"><i class="fas fa-laptop-code"></i></div>
+                    <h3 data-i18n="s1Title">تصميم وتطوير المواقع</h3>
+                    <p data-i18n="s1Desc">مواقع حديثة وسريعة ومتجاوبة بالكامل مع كافة الشاشات والأجهزة.</p>
+                </div>
+                <button class="btn-order-action" onclick="openOrderModal('تصميم وتطوير المواقع')" data-i18n="orderNow">صمم الآن</button>
+            </div>
+
+            <div class="service-card">
+                <div>
+                    <div class="service-icon"><i class="fas fa-mobile-alt"></i></div>
+                    <h3 data-i18n="s2Title">تطوير التطبيقات</h3>
+                    <p data-i18n="s2Desc">تطبيقات مخصصة وبديهية للأعمال والخدمات تلبي تطلعات عميلك.</p>
+                </div>
+                <button class="btn-order-action" onclick="openOrderModal('تطوير التطبيقات')" data-i18n="orderNow">اطلب الآن</button>
+            </div>
+
+            <div class="service-card">
+                <div>
+                    <div class="service-icon"><i class="fas fa-pen-nib"></i></div>
+                    <h3 data-i18n="s3Title">التصميم والهوية البصرية</h3>
+                    <p data-i18n="s3Desc">شعارات، براندينغ، وهويات بصرية متكاملة تعكس التميز الاحترافي.</p>
+                </div>
+                <button class="btn-order-action" onclick="openOrderModal('التصميم والهوية البصرية')" data-i18n="orderNow">صمم الآن</button>
+            </div>
+
+            <div class="service-card">
+                <div>
+                    <div class="service-icon"><i class="fas fa-video"></i></div>
+                    <h3 data-i18n="s4Title">المونتاج والفيديوهات الإعلانية</h3>
+                    <p data-i18n="s4Desc">فيديوهات ترويجية واحترافية متلائمة مع منصات التواصل الاجتماعي.</p>
+                </div>
+                <button class="btn-order-action" onclick="openOrderModal('المونتاج والفيديوهات الإعلانية')" data-i18n="orderNow">اطلب الآن</button>
+            </div>
+
+            <div class="service-card">
+                <div>
+                    <div class="service-icon"><i class="fas fa-calendar-check"></i></div>
+                    <h3 data-i18n="s5Title">أنظمة الحجز والإدارة</h3>
+                    <p data-i18n="s5Desc">برمجيات متخصصة لتنظيم المواقيت والإشراف على المواعيد بمرونة.</p>
+                </div>
+                <button class="btn-order-action" onclick="openOrderModal('أنظمة الحجز والإدارة')" data-i18n="orderNow">اطلب الآن</button>
+            </div>
+
+            <div class="service-card">
+                <div>
+                    <div class="service-icon"><i class="fas fa-cogs"></i></div>
+                    <h3 data-i18n="s6Title">حلول رقمية مخصصة</h3>
+                    <p data-i18n="s6Desc">نبتكر وننفذ برمجيات متقدمة مُصممة خصيصًا حسب احتياج مشروعك الفريد.</p>
+                </div>
+                <button class="btn-order-action" onclick="openOrderModal('حلول رقمية مخصصة')" data-i18n="orderNow">اطلب الآن</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+       WHY BEST OF
+       ========================================================================== -->
+    <section class="features-section" id="why-us">
+        <div class="laser-ambient-bg" style="top: 30%; right: 40%;"></div>
+        <div class="section-header">
+            <h2>لماذا <span>Best Of</span>؟</h2>
+            <p data-i18n="whySub">نضمن لك الجودة والابتكار في كل تفصيلة برمجية وبصرية</p>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-box">
+                <i class="fas fa-award"></i>
+                <h3 data-i18n="w1Title">جودة احترافية</h3>
+                <p data-i18n="w1Desc">نضمن لك أعلى جودة في كل مرحلة من مراحل المشروع.</p>
+            </div>
+            <div class="feature-box">
+                <i class="fas fa-tags"></i>
+                <h3 data-i18n="w2Title">أسعار مناسبة</h3>
+                <p data-i18n="w2Desc">خطط مرنة تناسب جميع الميزانيات الاحترافية.</p>
+            </div>
+            <div class="feature-box">
+                <i class="fas fa-headset"></i>
+                <h3 data-i18n="w3Title">دعم مستمر</h3>
+                <p data-i18n="w3Desc">نقدم لك الدعم الفني في كل وقت بعد إطلاق المشروع.</p>
+            </div>
+            <div class="feature-box">
+                <i class="fas fa-tachometer-alt"></i>
+                <h3 data-i18n="w4Title">أداء عالٍ</h3>
+                <p data-i18n="w4Desc">مواقع سريعة ومتوافقة مع جميع الأجهزة الذكية.</p>
+            </div>
+            <div class="feature-box">
+                <i class="fas fa-paint-brush"></i>
+                <h3 data-i18n="w5Title">تصميم عصري</h3>
+                <p data-i18n="w5Desc">تصاميم حديثة تعكس هوية مشروعك بأسلوب إبداعي.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+       PROCESS SECTION
+       ========================================================================== -->
+    <section class="process-section" id="process">
+        <div class="section-header">
+            <h2 data-i18n="processTitle">كيف نعمل؟</h2>
+            <p data-i18n="processSub">خطوات واضحة وبسيطة لتحويل فكرتك إلى واقع</p>
+        </div>
+
+        <div class="process-steps">
+            <div class="step-card">
+                <div class="step-num">1</div>
+                <h3 data-i18n="p1Title">تواصل معنا</h3>
+                <p data-i18n="p1Desc">تخبرنا عن فكرتك ومتطلبات مشروعك الأولي.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-num">2</div>
+                <h3 data-i18n="p2Title">نفهم فكرتك</h3>
+                <p data-i18n="p2Desc">نحلل احتياجاتك ونقدم الحلول والخطط المناسبة.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-num">3</div>
+                <h3 data-i18n="p3Title">نصمم ونطور</h3>
+                <p data-i18n="p3Desc">نبدأ في التصميم والتطوير بأعلى المعايير.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-num">4</div>
+                <h3 data-i18n="p4Title">نطلق مشروعك</h3>
+                <p data-i18n="p4Desc">نسلم المشروع ونبقى معك بالدعم والمتابعة.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA BANNER -->
+    <div class="cta-banner">
+        <h2 data-i18n="ctaTitle">هل لديك فكرة مشروع؟</h2>
+        <p data-i18n="ctaSub">دعنا نحولها إلى واقع رقمي مميز مع Best Of</p>
+        <button class="btn-primary" onclick="openOrderModal('فكرة مشروع جديد')" data-i18n="ctaBtn">اطلب مشروعك الآن</button>
+    </div>
+
+    <!-- ==========================================================================
+       MODAL 1: PROJECT DETAILS
+       ========================================================================== -->
+    <div class="modal-overlay" id="projectModal">
+        <div class="modal-container">
+            <button class="modal-close" onclick="closeProjectModal()"><i class="fas fa-times"></i></button>
+            
+            <span class="service-tag" id="projModalCategory" style="color:var(--accent-red-bright); font-weight:700;">نوع الخدمة</span>
+            <h2 id="projModalTitle" style="margin-top: 6px; font-weight: 800;">اسم المشروع</h2>
+
+            <div class="mockup-box">
+                <div style="font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 8px;">عرض توضيحي للمشروع (UI Mockup)</div>
+                <div class="mockup-screen">
+                    <div class="mockup-line accent"></div>
+                    <div class="mockup-line"></div>
+                    <div class="mockup-line short"></div>
+                </div>
+            </div>
+
+            <h4 style="margin-top: 10px; font-size: 0.92rem;" data-i18n="featuresHead">تفاصيل العمل المنفذ:</h4>
+            <ul class="project-features-list" id="projModalFeatures"></ul>
+
+            <button class="btn-primary" style="width: 100%; border-radius: 8px; margin-top: 10px;" onclick="switchProjectToOrder()" data-i18n="orderSimilar">
+                اطلب مشروعًا مشابهًا
+            </button>
+
+            <!-- الإبقاء فقط على زر "إبلاغ" وإلغاء "تواصل مع فريق الدعم" نهائيًا من هذه النافذة -->
+            <div class="quick-modal-actions">
+                <button type="button" class="btn-action-outline" style="width:100%;" onclick="closeProjectModal(); openOrderModal('إبلاغ');">
+                    <i class="fas fa-exclamation-triangle" style="color:var(--accent-red-bright);"></i>
+                    <span>إبلاغ</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==========================================================================
+       MODAL 2: ORDER / REPORT / SUPPORT SERVICE FORM (WITH SMART ANTI-FAKE PHONE & EMAIL ENGINE)
+       ========================================================================== -->
+    <div class="modal-overlay" id="orderModal">
+        <div class="modal-container">
+            <button class="modal-close" onclick="closeOrderModal()"><i class="fas fa-times"></i></button>
+            
+            <h2 id="orderModalHeading" style="font-weight: 800; margin-bottom: 6px;" data-i18n="orderModalTitle">طلب خدمة / مشروع جديد</h2>
+            <p id="orderModalSubheading" style="color: var(--text-secondary); margin-bottom: 20px; font-size: 0.88rem;" data-i18n="orderModalSub">أدخل بياناتك وسيتم التواصل معك مباشرة لمناقشة التفاصيل.</p>
+
+            <form id="orderForm" onsubmit="handleOrderSubmit(event)">
+                <div class="form-group">
+                    <label id="labelNameText" data-i18n="labelName">الاسم الكامل</label>
+                    <input type="text" class="form-control" id="orderName" required placeholder="أدخل اسمك الكريم">
+                </div>
+
+                <!-- حقل اختيار نوع المشكلة الخارجي والمخصص لزر إبلاغ -->
+                <div class="form-group" id="reportTypeGroup" style="display: none;">
+                    <label>نوع الإبلاغ / المشكلة</label>
+                    <select class="form-control" id="reportTypeSelect">
+                        <option value="مشكلة تقنية">مشكلة تقنية</option>
+                        <option value="مشكلة في الموقع">مشكلة في الموقع</option>
+                        <option value="مشكلة في إعلان">مشكلة في إعلان</option>
+                        <option value="رابط لا يعمل">رابط لا يعمل</option>
+                        <option value="محتوى مخالف">محتوى مخالف</option>
+                        <option value="أخرى">أخرى</option>
+                    </select>
+                </div>
+
+                <!-- SMART PHONE FIELD WITH COUNTRY LIST & SMART DETECTION -->
+                <div class="form-group" id="phoneGroup">
+                    <label data-i18n="labelPhone">رقم الهاتف / الواتساب</label>
+                    <div class="phone-input-wrapper">
+                        <select class="country-select-box" id="countrySelect" onchange="onCountrySelectChange()">
+                            <option value="+963">🇸🇾 سوريا (+963)</option>
+                            <option value="+966">🇸🇦 السعودية (+966)</option>
+                            <option value="+20">🇪🇬 مصر (+20)</option>
+                            <option value="+961">🇱🇧 لبنان (+961)</option>
+                            <option value="+962">🇯🇴 الأردن (+962)</option>
+                            <option value="+971">🇦🇪 الإمارات (+971)</option>
+                            <option value="+965">🇰🇼 الكويت (+965)</option>
+                            <option value="+974">🇶🇦 قطر (+974)</option>
+                            <option value="+968">🇴🇲 عمان (+968)</option>
+                            <option value="+973">🇧🇭 البحرين (+973)</option>
+                            <option value="+964">🇮🇶 العراق (+964)</option>
+                            <option value="+213">🇩🇿 الجزائر (+213)</option>
+                            <option value="+212">🇲🇦 المغرب (+212)</option>
+                            <option value="+216">🇹🇳 تونس (+216)</option>
+                            <option value="+249">🇸🇩 السودان (+249)</option>
+                            <option value="+967">🇾🇪 اليمن (+967)</option>
+                            <option value="+20">🇱🇾 ليبيا (+218)</option>
+                            <option value="+1">🇺🇸 أمريكا (+1)</option>
+                            <option value="+44">🇬🇧 بريطانيا (+44)</option>
+                            <option value="+49">🇩🇪 ألمانيا (+49)</option>
+                            <option value="+33">🇫🇷 فرنسا (+33)</option>
+                            <option value="+90">🇹🇷 تركيا (+90)</option>
+                            <option value="OTHER">🌐 دولة أخرى</option>
+                        </select>
+                        <input type="tel" class="form-control" id="orderPhone" placeholder="09xxxxxxxx" oninput="detectCountrySmartly(this.value)">
+                    </div>
+                    <div id="detectedCountryBadge" class="detected-country-badge" style="display:none;"></div>
+                </div>
+
+                <!-- SMART EMAIL FIELD FOR SUPPORT WITH REAL MAIL VALIDATION & SUGGESTIONS -->
+                <div class="form-group" id="emailGroup" style="display:none;">
+                    <label>البريد الإلكتروني (الحقيقي)</label>
+                    <input type="email" class="form-control" id="orderEmail" placeholder="example@gmail.com">
+                    <div class="email-suggestions" id="emailSuggestions">
+                        <span class="email-chip" onclick="appendEmailDomain('@gmail.com')">@gmail.com</span>
+                        <span class="email-chip" onclick="appendEmailDomain('@yahoo.com')">@yahoo.com</span>
+                        <span class="email-chip" onclick="appendEmailDomain('@outlook.com')">@outlook.com</span>
+                        <span class="email-chip" onclick="appendEmailDomain('@hotmail.com')">@hotmail.com</span>
+                    </div>
+                </div>
+
+                <div class="form-group" id="typeGroup">
+                    <label data-i18n="labelType">نوع الخدمة / المشروع</label>
+                    <input type="text" class="form-control" id="orderType" readonly required>
+                </div>
+
+                <div class="form-group">
+                    <label id="labelDescText" data-i18n="labelDesc">وصف المشروع</label>
+                    <textarea class="form-control" id="orderDesc" required placeholder="اكتب تفاصيل مختصرة عن مشروعك..."></textarea>
+                </div>
+
+                <button type="submit" class="btn-primary" id="orderSubmitBtn" style="width: 100%; border-radius: 8px;" data-i18n="submitBtn">إرسال الطلب الآن</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ==========================================================================
+       MODAL 3: SUCCESS DIALOG
+       ========================================================================== -->
+    <div class="modal-overlay" id="successModal">
+        <div class="modal-container" style="text-align: center; max-width: 420px;">
+            <div style="width: 50px; height: 50px; background: rgba(229,57,53,0.15); color: var(--accent-red-bright); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin: 0 auto 14px; box-shadow:var(--laser-glow);">
+                <i class="fas fa-check"></i>
+            </div>
+            <h2 style="font-weight: 800; margin-bottom: 8px; font-size:1.25rem;" id="successTitle" data-i18n="successTitle">تم استلام طلبك بنجاح!</h2>
+            <p style="color: var(--text-secondary); font-size: 0.88rem; margin-bottom: 18px; line-height: 1.6;" id="successSub" data-i18n="successSub">
+                شكرًا لتواصلك مع <strong>Best Of</strong>.<br>سيتم التواصل معك في أقرب وقت لمناقشة تفاصيل مشروعك.
+            </p>
+            <button class="btn-primary" style="width: 100%; border-radius: 8px;" onclick="closeSuccessModal()" data-i18n="okBtn">حسنًا</button>
+        </div>
+    </div>
+
+    <!-- PWA INSTALL TOAST -->
+    <div class="pwa-toast" id="pwaToast">
+        <div class="pwa-toast-text">
+            <h4 data-i18n="pwaTitle">ثبّت Best Of على جهازك</h4>
+            <p data-i18n="pwaSub">احصل على وصول أسرع إلى موقعنا مباشرة.</p>
+        </div>
+        <div class="pwa-actions">
+            <button class="btn-primary" style="padding: 5px 12px; font-size: 0.78rem;" id="pwaInstallBtn" data-i18n="install">تثبيت</button>
+            <button class="btn-secondary" style="padding: 5px 10px; font-size: 0.78rem;" onclick="dismissPwa()" data-i18n="notNow">ليس الآن</button>
+        </div>
+    </div>
+
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- ==========================================================================
+       FOOTER
+       ========================================================================== -->
+    <footer id="contact">
+        <div class="laser-ambient-bg" style="bottom: 0; right: 20%;"></div>
+
+        <!-- أزرار مستقلة ومنظمة في نهاية الصفحة بنفس هوية وألوان الموقع -->
+        <div class="footer-action-buttons">
+            <button type="button" class="footer-btn-report" onclick="openOrderModal('إبلاغ')">
+                <i class="fas fa-exclamation-triangle"></i>
+                <span>إبلاغ</span>
+            </button>
+            <button type="button" class="footer-btn-support" onclick="openOrderModal('تواصل مع فريق الدعم')">
+                <i class="fas fa-headset"></i>
+                <span>تواصل مع فريق الدعم</span>
+            </button>
+        </div>
+
+        <div class="footer-grid">
+            <div class="footer-col">
+                <div class="brand-container" style="margin-bottom:12px;">
+                    <a href="#" class="logo">Best <span class="wave-text">Of</span></a>
+                    <div class="developer-credit-badge">
+                        <i class="fas fa-code"></i> By Bashar Obaid
+                    </div>
+                </div>
+                <p data-i18n="footerDesc">وكالة رقمية تقدم حلولاً مبتكرة لأعمالك على الإنترنت بخبرة وجودة عالية.</p>
+            </div>
+            <div class="footer-col">
+                <h4 data-i18n="footerQuick">روابط سريعة</h4>
+                <ul class="footer-links">
+                    <li><a href="#hero" data-i18n="navHome">الرئيسية</a></li>
+                    <li><a href="#services" data-i18n="navServices">خدماتنا</a></li>
+                    <li><a href="#works" data-i18n="navWorks">أعمالنا</a></li>
+                    <li><a href="#contact" data-i18n="navContact">تواصل معنا</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4 data-i18n="footerServices">خدماتنا</h4>
+                <ul class="footer-links">
+                    <li><a href="#services" data-i18n="s1Title">تصميم مواقع</a></li>
+                    <li><a href="#services" data-i18n="s2Title">تطوير تطبيقات</a></li>
+                    <li><a href="#services" data-i18n="s3Title">تصميم هوية</a></li>
+                    <li><a href="#services" data-i18n="s4Title">مونتاج فيديو</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4 data-i18n="footerContact">تواصل معنا</h4>
+                <div style="display: flex; flex-direction: column; gap: 8px;">
+                    <a href="https://wa.me/96170016148" target="_blank" class="footer-contact-link">
+                        <i class="fab fa-whatsapp"></i> <span>+961 70 016 148</span>
+                    </a>
+                    <a href="mailto:Bashar.3baid@gmail.com" class="footer-contact-link">
+                        <i class="fas fa-envelope"></i> <span>Bashar.3baid@gmail.com</span>
+                    </a>
+                </div>
+                <p style="margin-top: 10px;"><i class="fas fa-map-marker-alt"></i> سوريا - دمشق</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 <strong>Best Of</strong>. <span data-i18n="footerRights">جميع الحقوق محفوظة.</span></p>
+        </div>
+    </footer>
+
+    <!-- ==========================================================================
+       FIREBASE SDKs
+       ========================================================================== -->
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-database-compat.js"></script>
+
+    <!-- ==========================================================================
+       JAVASCRIPT ENGINE
+       ========================================================================== -->
+    <script>
+        /* --------------------------------------------------------------------------
+           0. FIREBASE CONFIGURATION & REALTIME ADS SYSTEM
+           -------------------------------------------------------------------------- */
+        const firebaseConfig = {
+            apiKey: "AIzaSyDEwIjfnDGWX03FP6qV092yxnsCLh1r3TE",
+            authDomain: "bashharobaid.firebaseapp.com",
+            databaseURL: "https://bashharobaid.firebaseio.com",
+            projectId: "bashharobaid",
+            storageBucket: "bashharobaid.appspot.com",
+            messagingSenderId: "1064950257219",
+            appId: "1:1064950257219:web:a54b6fc03534fc4bff26f6",
+            measurementId: "G-G4QWKFZ0CL"
+        };
+
+        if (!firebase.apps.length) {
+            firebase.initializeApp(firebaseConfig);
+        }
+        const database = firebase.database();
+
+        // Realtime Database Advertisement Loader
+        function initHomeAdSystem() {
+            const adContainer = document.getElementById('homeAdContainer');
+            const adImg = document.getElementById('homeAdImg');
+            const adLink = document.getElementById('homeAdLink');
+            const adTitle = document.getElementById('homeAdTitle');
+
+            if (!adContainer || !adImg) return;
+
+            const adsRef = database.ref('ads/home');
+
+            adsRef.on('value', (snapshot) => {
+                try {
+                    const data = snapshot.val();
+                    if (data && data.active === true && data.imageUrl) {
+                        adImg.onload = () => {
+                            adContainer.classList.add('active');
+                        };
+                        adImg.onerror = () => {
+                            adContainer.classList.remove('active');
+                        };
+                        adImg.src = data.imageUrl;
+
+                        if (data.link && data.link.trim() !== '') {
+                            adLink.href = data.link;
+                            adLink.style.cursor = 'pointer';
+                            adLink.onclick = null;
+                        } else {
+                            adLink.removeAttribute('href');
+                            adLink.style.cursor = 'default';
+                            adLink.onclick = (e) => e.preventDefault();
+                        }
+
+                        if (data.title && data.title.trim() !== '') {
+                            adTitle.textContent = data.title;
+                            adTitle.style.display = 'inline-block';
+                        } else {
+                            adTitle.style.display = 'none';
+                        }
+                    } else {
+                        adContainer.classList.remove('active');
+                    }
+                } catch (e) {
+                    console.error('Error rendering Firebase Ad:', e);
+                    adContainer.classList.remove('active');
+                }
+            }, (error) => {
+                console.warn('Firebase Ad Listener Error:', error);
+                adContainer.classList.remove('active');
+            });
+        }
+
+        window.addEventListener('DOMContentLoaded', initHomeAdSystem);
+
+        /* --------------------------------------------------------------------------
+           1. LOADER DISMISSAL & NAVIGATION MENU TOGGLE
+           -------------------------------------------------------------------------- */
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                const loader = document.getElementById('loader');
+                if(loader) loader.classList.add('hidden');
+            }, 250);
+        });
+
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        if(menuToggle) {
+            menuToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+        }
+
+        // Close mobile menu when clicking any nav link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                if(navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                }
+            });
+        });
+
+        // Quick toolbar links: keep the pressed link highlighted in red
+        document.querySelectorAll('.top-quick-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.querySelectorAll('.top-quick-links a').forEach(item => item.classList.remove('active'));
+                link.classList.add('active');
+            });
+        });
+
+        /* --------------------------------------------------------------------------
+           2. NAVBAR FADE ON SCROLL & BACK TO TOP ENGINE
+           -------------------------------------------------------------------------- */
+        (() => {
+            const navbar = document.getElementById('mainNavbar');
+            const backToTopBtn = document.getElementById('backToTop');
+            let lastScrollY = window.scrollY;
+            let ticking = false;
+
+            function handleNavbarScroll() {
+                const currentScrollY = window.scrollY;
+
+                if (currentScrollY > lastScrollY && currentScrollY > 60) {
+                    navbar.classList.add('hidden');
+                } else {
+                    navbar.classList.remove('hidden');
+                }
+
+                if (currentScrollY > 400) {
+                    if(backToTopBtn) backToTopBtn.classList.add('show');
+                } else {
+                    if(backToTopBtn) backToTopBtn.classList.remove('show');
+                }
+
+                lastScrollY = currentScrollY;
+                ticking = false;
+            }
+
+            window.addEventListener('scroll', () => {
+                if (!ticking) {
+                    window.requestAnimationFrame(handleNavbarScroll);
+                    ticking = true;
+                }
+            }, { passive: true });
+        })();
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        /* --------------------------------------------------------------------------
+           3. ARABIC & ENGLISH TRANSLATION DICTIONARY
+           -------------------------------------------------------------------------- */
+        const translations = {
+            ar: {
+                navHome: "الرئيسية", navServices: "خدماتنا", navWorks: "أعمالنا", navWhyUs: "لماذا نحن", navProcess: "كيف نعمل", navContact: "تواصل معنا",
+                navOrderBtn: "اطلب مشروعك الآن", heroBadge: "وكالة رقمية Best Of", heroTitle: "حلول رقمية متكاملة <span>لأعمالك</span>",
+                heroSub: "تصميم مواقع • تطبيقات • تصميم • مونتاج. نوفر لك أفضل الأنظمة الإلكترونية والهويات الرقمية للنهوض بشركتك.",
+                heroBtnOrder: "اطلب مشروعك الآن", heroBtnWorks: "شاهد أعمالنا",
+                techTitle: "نستخدم أحدث التقنيات", techSub: "تظهر التقنيات بشكل متتابع لتأكيد الاعتمادية والسرعة في الأداء",
+                cat1: "برمجة وتطوير", cat2: "تصميم ومونتاج", cat3: "تطبيقات موبايل", cat4: "أدوات رقمية",
+                worksTitle: "أعمالنا", worksSub: "انقر على أي عمل لاستعراض التفاصيل الكاملة",
+                cardBtnDetails: '<i class="fas fa-arrow-left"></i> التفاصيل',
+                servicesTitle: "خدماتنا الرقمية", servicesSub: "نوفر كل ما تحتاجه لبناء حضور رقمي قوي متكامل مع Best Of",
+                s1Title: "تصميم وتطوير المواقع", s1Desc: "م مواقع حديثة وسريعة ومتجاوبة بالكامل مع كافة الشاشات والأجهزة.",
+                s2Title: "تطوير التطبيقات", s2Desc: "تطبيقات مخصصة وبديهية للأعمال والخدمات تلبي تطلعات عميلك.",
+                s3Title: "التصميم والهوية البصرية", s3Desc: "شعارات، براندينغ، وهويات بصرية متكاملة تعكس التميز الاحترافي.",
+                s4Title: "المونتاج والفيديوهات الإعلانية", s4Desc: "فيديوهات ترويجية واحترافية متلائمة مع منصات التواصل الاجتماعي.",
+                s5Title: "أنظمة الحجز والإدارة", s5Desc: "برمجيات متخصصة لتنظيم المواقيت والإشراف على المواعيد بمرونة.",
+                s6Title: "حلول رقمية مخصصة", s6Desc: "نبتكر وننفذ برمجيات متتقدمة مُصممة خصيصًا حسب احتياج مشروعك الفريد.",
+                orderNow: "اطلب الآن", whySub: "نضمن لك الجودة والابتكار في كل تفصيلة برمجية وبصرية",
+                w1Title: "جودة احترافية", w1Desc: "نضمن لك أعلى جودة في كل مرحلة من مراحل المشروع.",
+                w2Title: "أسعار مناسبة", w2Desc: "خطط مرنة تناسب جميع الميزانيات الاحترافية.",
+                w3Title: "دعم مستمر", w3Desc: "نقدم لك الدعم الفني في كل وقت بعد إطلاق المشروع.",
+                w4Title: "أداء عالٍ", w4Desc: "م مواقع سريعة ومتوافقة مع جميع الأجهزة الذكية.",
+                w5Title: "تصميم عصري", w5Desc: "تصاميم حديثة تعكس هوية مشروعك بأسلوب إبداعي.",
+                processTitle: "كيف نعمل؟", processSub: "خطوات واضحة وبسيطة لتحويل فكرتك إلى واقع",
+                p1Title: "تواصل معنا", p1Desc: "تخبرنا عن فكرتك ومتطلبات مشروعك الأولي.",
+                p2Title: "نفهم فكرتك", p2Desc: "نحلل احتياجاتك ونقدم الحلول والخطط المناسبة.",
+                p3Title: "نصمم ونطور", p3Desc: "نبدأ في التصميم والتطوير بأعلى المعايير.",
+                p4Title: "نطلق مشروعك", p4Desc: "نسلم المشروع ونبقى معك بالدعم والمتابعة.",
+                ctaTitle: "هل لديك فكرة مشروع؟", ctaSub: "دعنا نحولها إلى واقع رقمي مميز مع Best Of", ctaBtn: "اطلب مشروعك الآن",
+                featuresHead: "تفاصيل العمل المنفذ:", orderSimilar: "اطلب مشروعًا مشابهًا",
+                orderModalTitle: "طلب خدمة / مشروع جديد", orderModalSub: "أدخل بياناتك وسيتم التواصل معك مباشرة لمناقشة التفاصيل.",
+                labelName: "الاسم الكامل", labelPhone: "رقم الهاتف / الواتساب", labelType: "نوع الخدمة / المشروع", labelDesc: "وصف المشروع",
+                submitBtn: "إرسال الطلب الآن", successTitle: "تم استلام طلبك بنجاح!",
+                successSub: "شكرًا لتواصلك مع Best Of.<br>سيتم التواصل معك في أقرب وقت لمناقشة تفاصيل مشروعك.", okBtn: "حسنًا",
+                pwaTitle: "ثبّت Best Of على جهازك", pwaSub: "احصل على وصول أسرع إلى موقعنا مباشرة.", install: "تثبيت", notNow: "ليس الآن",
+                footerDesc: "وكالة رقمية تقدم حلولاً مبتكرة لأعمالك على الإنترنت بخبرة وجودة عالية.",
+                footerQuick: "روابط سريعة", footerServices: "خدماتنا", footerContact: "تواصل معنا", footerRights: "جميع الحقوق محفوظة."
+            },
+            en: {
+                navHome: "Home", navServices: "Services", navWorks: "Our Works", navWhyUs: "Why Us", navProcess: "Process", navContact: "Contact",
+                navOrderBtn: "Order Now", heroBadge: "Digital Agency Best Of", heroTitle: "Complete Digital Solutions For <span>Your Business</span>",
+                heroSub: "Web Design • Mobile Apps • Branding • Video Editing. Elevate your brand with Best Of.",
+                heroBtnOrder: "Order Project Now", heroBtnWorks: "View Our Works",
+                techTitle: "Our Tech Stack", techSub: "Sequential fade animations to demonstrate high-performance stability",
+                cat1: "Development", cat2: "Design & Editing", cat3: "Mobile Apps", cat4: "Digital Tools",
+                worksTitle: "Our Works", worksSub: "Click any card to explore full project details",
+                cardBtnDetails: 'Details <i class="fas fa-arrow-right"></i>',
+                servicesTitle: "Digital Services", servicesSub: "Everything you need to build a powerful presence with Best Of",
+                s1Title: "Web Development", s1Desc: "Modern, fast, and fully responsive web systems.",
+                s2Title: "App Development", s2Desc: "Intuitive mobile solutions tailored to your users.",
+                s3Title: "Branding & Identity", s3Desc: "Logos and complete visual brand designs.",
+                s4Title: "Video Editing", s4Desc: "High converting promo and marketing video motion.",
+                s5Title: "Booking Systems", s5Desc: "Custom software for appointment and client management.",
+                s6Title: "Custom Solutions", s6Desc: "Tailored software logic built around your goals.",
+                orderNow: "Order Now", whySub: "We ensure top quality and innovation in every single detail",
+                w1Title: "Top Quality", w1Desc: "High standards guaranteed across every phase.",
+                w2Title: "Fair Pricing", w2Desc: "Flexible plans suitable for all professional budgets.",
+                w3Title: "24/7 Support", w3Desc: "Continuous assistance long after project launch.",
+                w4Title: "High Performance", w4Desc: "Lightning fast speed optimized for mobile users.",
+                w5Title: "Modern Design", w5Desc: "Fresh aesthetics that highlight your brand vision.",
+                processTitle: "How We Work", processSub: "Simple 4-step execution plan",
+                p1Title: "1. Contact Us", p1Desc: "Share your initial ideas and vision.",
+                p2Title: "2. Conceptualize", p2Desc: "We analyze needs and craft the roadmap.",
+                p3Title: "3. Build & Design", p3Desc: "Development using modern high standards.",
+                p4Title: "4. Launch & Scale", p4Desc: "Delivery with ongoing technical backing.",
+                ctaTitle: "Have a Project Idea?", ctaSub: "Let's turn it into a digital reality with Best Of", ctaBtn: "Order Now",
+                featuresHead: "Work Executed Breakdown:", orderSimilar: "Request Similar Project",
+                orderModalTitle: "Request a Service / Project", orderModalSub: "Fill in your details and we will reach out immediately.",
+                labelName: "Full Name", labelPhone: "Phone / WhatsApp", labelType: "Service Type", labelDesc: "Project Description",
+                submitBtn: "Submit Order", successTitle: "Order Received!",
+                successSub: "Thank you for choosing Best Of.<br>We will contact you shortly to discuss your project.", okBtn: "Got it",
+                pwaTitle: "Install Best Of App", pwaSub: "Get fast instant access directly from your desktop or phone.", install: "Install", notNow: "Not Now",
+                footerDesc: "Full-service digital agency building modern custom systems.",
+                footerQuick: "Quick Links", footerServices: "Services", footerContact: "Contact Us", footerRights: "All rights reserved."
+            }
+        };
+
+        let currentLang = 'ar';
+
+        function toggleLanguage() {
+            currentLang = (currentLang === 'ar') ? 'en' : 'ar';
+            document.documentElement.lang = currentLang;
+            document.documentElement.dir = (currentLang === 'ar') ? 'rtl' : 'ltr';
+
+            document.getElementById('langBtn').innerHTML = `<i class="fas fa-globe"></i> ${currentLang === 'ar' ? 'English' : 'عربي'}`;
+
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[currentLang][key]) {
+                    el.innerHTML = translations[currentLang][key];
+                }
+            });
+        }
+
+        /* --------------------------------------------------------------------------
+           4. PROJECT DETAILS DATA
+           -------------------------------------------------------------------------- */
+        const projectsData = {
+            1: {
+                title: "صالون الملك",
+                category: "حجز مواعيد",
+                features: [
+                    "نظام حجز مواعيد للعملاء عبر الويب.",
+                    "تطبيق لاستلام وتنظيم الحجوزات المباشرة.",
+                    "لوحة إدارة متكاملة للمواعيد والموظفين.",
+                    "إدارة وتنظيم أوقات الدوام بدقة.",
+                    "متابعة وإدارة الطلبات والعملاء بسهولة."
+                ]
+            },
+            2: {
+                title: "مطعم الذوق",
+                category: "موقع مطعم",
+                features: [
+                    "واجهة جذابة لعرض قوائم الطعام والوجبات.",
+                    "نظام استقبال الطلبات المباشرة أونلاين.",
+                    "عرض الفروع والخرائط وساعات العمل.",
+                    "تصميم سريع ومتجاوب كلياً مع الجوال."
+                ]
+            },
+            3: {
+                title: "كافيه مودرن",
+                category: "موقع كافيه",
+                features: [
+                    "استعراض قائمة المشروبات والحلويات بأسلوب عصري.",
+                    "معرض صور عالي الجودة لأجواء الكافيه.",
+                    "إمكانية الحجز المسبق للطاولات."
+                ]
+            },
+            4: {
+                title: "عيادة دكتور بلس",
+                category: "حجز مواعيد",
+                features: [
+                    "حجز المواعيد الطبية بسهولة حسب اليوم والوقت.",
+                    "عرض الخدمات والأطباء والتخصصات.",
+                    "تنبيهات المواعيد وتأكيد الحجز."
+                ]
+            },
+            5: {
+                title: "متجر ستايل",
+                category: "متجر إلكتروني",
+                features: [
+                    "منصة عرض أزياء ومنتجات بتصنيفات متطورة.",
+                    "سلة تسوق خفيفة ونظام إرسال طلب مباشر.",
+                    "فلترة مبسطة وسريعة حسب المقاس والألوان."
+                ]
+            },
+            6: {
+                title: "الشركة العقارية",
+                category: "عرض عقارات",
+                features: [
+                    "استعراض العقارات الشاغرة للبيع والإيجار.",
+                    "فلترة البحث حسب المنطقة والسعر والنوع.",
+                    "نموذج حجز معاينة وتواصل مباشر مع العميل."
+                ]
+            }
+        };
+
+        /* --------------------------------------------------------------------------
+           5. UNIFIED INFINITE CAROUSEL ENGINE (PERFORMANCE OPTIMIZED)
+           -------------------------------------------------------------------------- */
+        const container = document.getElementById('worksContainer');
+        const track = document.getElementById('worksTrack');
+        
+        let isPausedForModal = false;
+        let isDragging = false;
+        let startX = 0;
+        let currentTranslate = 0;
+        let prevTranslate = 0;
+        let speed = 1.6;
+
+        const originalCards = Array.from(track.children);
+        originalCards.forEach(card => {
+            const clone = card.cloneNode(true);
+            track.appendChild(clone);
+        });
+
+        function getHalfWidth() {
+            return track.scrollWidth / 2;
+        }
+
+        function animateCarousel() {
+            if (!isPausedForModal && !isDragging) {
+                currentTranslate -= speed;
+                const halfWidth = getHalfWidth();
+                if (Math.abs(currentTranslate) >= halfWidth) {
+                    currentTranslate = 0;
+                }
+                setTrackPosition();
+            }
+            requestAnimationFrame(animateCarousel);
+        }
+
+        function setTrackPosition() {
+            track.style.transform = `translate3d(${currentTranslate}px, 0, 0)`;
+        }
+
+        container.addEventListener('pointerdown', (e) => {
+            startX = e.clientX;
+            isDragging = true;
+            prevTranslate = currentTranslate;
+            container.style.cursor = 'grabbing';
+        });
+
+        window.addEventListener('pointermove', (e) => {
+            if (!isDragging) return;
+            const currentX = e.clientX;
+            const diff = currentX - startX;
+            currentTranslate = prevTranslate + diff;
+
+            const halfWidth = getHalfWidth();
+            if (currentTranslate > 0) {
+                currentTranslate = -halfWidth;
+            } else if (Math.abs(currentTranslate) >= halfWidth) {
+                currentTranslate = 0;
+            }
+            setTrackPosition();
+        });
+
+        window.addEventListener('pointerup', () => {
+            if (!isDragging) return;
+            isDragging = false;
+            container.style.cursor = 'grab';
+        });
+
+        track.addEventListener('click', (e) => {
+            const card = e.target.closest('.work-card');
+            if (card) {
+                const id = card.getAttribute('data-id');
+                if (id) {
+                    openProjectModal(parseInt(id));
+                }
+            }
+        });
+
+        requestAnimationFrame(animateCarousel);
+
+        /* --------------------------------------------------------------------------
+           6. SMART ANTI-FAKE PHONE AND EMAIL VALIDATION ENGINE
+           -------------------------------------------------------------------------- */
+        const countryMap = [
+            { code: '+963', prefixes: ['09', '9639', '+9639'], name: '🇸🇾 سوريا', flag: '🇸🇾' },
+            { code: '+966', prefixes: ['05', '9665', '+9665'], name: '🇸🇦 السعودية', flag: '🇸🇦' },
+            { code: '+20', prefixes: ['01', '201', '+201'], name: '🇪🇬 مصر', flag: '🇪🇬' },
+            { code: '+961', prefixes: ['03', '70', '71', '76', '+961'], name: '🇱🇧 لبنان', flag: '🇱🇧' },
+            { code: '+962', prefixes: ['07', '+962'], name: '🇯🇴 الأردن', flag: '🇯🇴' },
+            { code: '+971', prefixes: ['05', '+971'], name: '🇦🇪 الإمارات', flag: '🇦🇪' },
+            { code: '+965', prefixes: ['05', '06', '09', '+965'], name: '🇰🇼 الكويت', flag: '🇰🇼' },
+            { code: '+974', prefixes: ['03', '05', '06', '07', '+974'], name: '🇶🇦 قطر', flag: '🇶🇦' }
+        ];
+
+        function detectCountrySmartly(val) {
+            val = val.trim();
+            const badge = document.getElementById('detectedCountryBadge');
+            const select = document.getElementById('countrySelect');
+
+            if (!val) {
+                badge.style.display = 'none';
+                return;
+            }
+
+            let found = null;
+            // التحقق الذكي التلقائي فور كتابة البداية (09 سوري، 05 سعودي، 01 مصري...)
+            if (val.startsWith('09') || val.startsWith('+963') || val.startsWith('963')) {
+                found = countryMap[0]; // Syria
+            } else if (val.startsWith('05') || val.startsWith('+966') || val.startsWith('966')) {
+                found = countryMap[1]; // KSA
+            } else if (val.startsWith('01') || val.startsWith('+20') || val.startsWith('20')) {
+                found = countryMap[2]; // Egypt
+            } else {
+                for (let item of countryMap) {
+                    if (item.prefixes.some(p => val.startsWith(p))) {
+                        found = item;
+                        break;
+                    }
+                }
+            }
+
+            if (found) {
+                select.value = found.code;
+                badge.innerHTML = `<i class="fas fa-check-circle"></i> تم التعرف: ${found.name}`;
+                badge.style.display = 'inline-flex';
+            } else {
+                badge.style.display = 'none';
+            }
+        }
+
+        function onCountrySelectChange() {
+            const badge = document.getElementById('detectedCountryBadge');
+            badge.style.display = 'none';
+        }
+
+        function appendEmailDomain(domain) {
+            const emailInput = document.getElementById('orderEmail');
+            let val = emailInput.value.trim();
+            if (val.includes('@')) {
+                val = val.split('@')[0];
+            }
+            emailInput.value = val + domain;
+            emailInput.focus();
+        }
+
+        // فحص ومنع الأرقام الوهمية والمتكررة
+        function validateRealPhoneNumber(phoneNum) {
+            const cleanDigits = phoneNum.replace(/\D/g, '');
+            if (cleanDigits.length < 7 || cleanDigits.length > 15) return false;
+
+            // كشف السلاسل المتكررة الوهمية (مثل 00000000, 11111111, 12345678)
+            const isAllSame = /^(\d)\1+$/.test(cleanDigits);
+            if (isAllSame) return false;
+
+            const sequentialPattern = "01234567890123456789";
+            if (sequentialPattern.includes(cleanDigits)) return false;
+
+            return true;
+        }
+
+        // فحص ومنع البريد الإلكتروني الوهمي أو المؤقت
+        function validateRealEmail(email) {
+            const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            if (!emailPattern.test(email)) return false;
+
+            const fakeEmailDomains = [
+                'mailinator.com', '10minutemail.com', 'tempmail.com', 'guerrillamail.com',
+                'sharklasers.com', 'yopmail.com', 'trashmail.com', 'dispostable.com',
+                'getnada.com', 'temp-mail.org', 'fakeinbox.com', 'throwawaymail.com'
+            ];
+
+            const domain = email.split('@')[1].toLowerCase();
+            if (fakeEmailDomains.includes(domain)) return false;
+
+            return true;
+        }
+
+        /* --------------------------------------------------------------------------
+           7. MODALS & UNIFIED FIREBASE DATABASE ORDERS ENGINE
+           -------------------------------------------------------------------------- */
+        let activeProjectTitle = '';
+
+        function openProjectModal(id) {
+            isPausedForModal = true;
+            const proj = projectsData[id] || projectsData[1];
+            activeProjectTitle = proj.title;
+
+            document.getElementById('projModalTitle').innerText = proj.title;
+            document.getElementById('projModalCategory').innerText = proj.category;
+
+            const list = document.getElementById('projModalFeatures');
+            list.innerHTML = '';
+            proj.features.forEach(f => {
+                const li = document.createElement('li');
+                li.innerHTML = `<i class="fas fa-check-circle"></i> ${f}`;
+                list.appendChild(li);
+            });
+
+            document.getElementById('projectModal').classList.add('active');
+        }
+
+        function closeProjectModal() {
+            document.getElementById('projectModal').classList.remove('active');
+            isPausedForModal = false;
+        }
+
+        function switchProjectToOrder() {
+            closeProjectModal();
+            openOrderModal(`مشروع مشابه لـ (${activeProjectTitle})`);
+        }
+
+        function openOrderModal(serviceType) {
+            isPausedForModal = true;
+
+            const phoneGroup = document.getElementById('phoneGroup');
+            const emailGroup = document.getElementById('emailGroup');
+            const typeGroup = document.getElementById('typeGroup');
+            const reportTypeGroup = document.getElementById('reportTypeGroup');
+            const heading = document.getElementById('orderModalHeading');
+            const subheading = document.getElementById('orderModalSubheading');
+            const labelNameText = document.getElementById('labelNameText');
+            const labelDescText = document.getElementById('labelDescText');
+            const orderPhone = document.getElementById('orderPhone');
+            const orderEmail = document.getElementById('orderEmail');
+            const orderDesc = document.getElementById('orderDesc');
+
+            document.getElementById('orderType').value = serviceType;
+
+            if (serviceType === 'إبلاغ') {
+                heading.innerText = 'إبلاغ عن مشكلة';
+                subheading.innerText = 'يرجى اختيار نوع المشكلة وكتابة التفاصيل ليصلنا إبلاغك مباشرة.';
+                labelNameText.innerText = 'اسمك الكريم';
+                labelDescText.innerText = 'ملاحظات وتفاصيل المشكلة';
+                orderDesc.placeholder = 'اكتب التفاصيل الكاملة للمشكلة هنا...';
+                
+                phoneGroup.style.display = 'none';
+                emailGroup.style.display = 'none';
+                typeGroup.style.display = 'none';
+                reportTypeGroup.style.display = 'block';
+                orderPhone.removeAttribute('required');
+                orderEmail.removeAttribute('required');
+            } else if (serviceType === 'تواصل مع فريق الدعم') {
+                heading.innerText = 'تواصل مع فريق الدعم';
+                subheading.innerText = 'يسعدنا مساعدتك، أدخل إيميلك الحقيقي ورسالتك وسنتواصل معك فوراً.';
+                labelNameText.innerText = 'الاسم الكامل';
+                labelDescText.innerText = 'الرسالة / الاستفسار بالتفصيل';
+                orderDesc.placeholder = 'اكتب رسالتك أو استفسارك بالتفصيل هنا...';
+                
+                // إظهار البريد الإلكتروني الحقيقي وإخفاء الهاتف
+                phoneGroup.style.display = 'none';
+                emailGroup.style.display = 'block';
+                typeGroup.style.display = 'none';
+                reportTypeGroup.style.display = 'none';
+                orderPhone.removeAttribute('required');
+                orderEmail.setAttribute('required', 'required');
+            } else {
+                heading.innerText = 'طلب خدمة / مشروع جديد';
+                subheading.innerText = 'أدخل بياناتك وسيتم التواصل معك مباشرة لمناقشة التفاصيل.';
+                labelNameText.innerText = 'الاسم الكامل';
+                labelDescText.innerText = 'وصف المشروع';
+                orderDesc.placeholder = 'اكتب تفاصيل مختصرة عن مشروعك...';
+                
+                phoneGroup.style.display = 'block';
+                emailGroup.style.display = 'none';
+                typeGroup.style.display = 'block';
+                reportTypeGroup.style.display = 'none';
+                orderPhone.setAttribute('required', 'required');
+                orderEmail.removeAttribute('required');
+            }
+
+            document.getElementById('orderModal').classList.add('active');
+        }
+
+        function closeOrderModal() {
+            document.getElementById('orderModal').classList.remove('active');
+            isPausedForModal = false;
+        }
+
+        function handleOrderSubmit(e) {
+            e.preventDefault();
+
+            const name = document.getElementById('orderName').value.trim();
+            const rawPhone = document.getElementById('orderPhone').value.trim();
+            const countryPrefix = document.getElementById('countrySelect').value;
+            const email = document.getElementById('orderEmail').value.trim();
+            const serviceType = document.getElementById('orderType').value.trim();
+            const description = document.getElementById('orderDesc').value.trim();
+            const reportCategory = document.getElementById('reportTypeSelect').value;
+
+            // التحقق الذكي من صحة البريد أو رقم الهاتف لمنع المدخلات الوهمية
+            if (serviceType === 'تواصل مع فريق الدعم') {
+                if (!validateRealEmail(email)) {
+                    alert('عذراً، يرجى أدخال بريد إلكتروني حقيقي وصحيح (مثال: gmail.com). الإيميلات الوهمية أو المؤقتة غير مقبولة.');
+                    return;
+                }
+            } else if (serviceType !== 'إبلاغ') {
+                if (!validateRealPhoneNumber(rawPhone)) {
+                    alert('عذراً، يرجى إدخال رقم هاتف حقيقي وصحيح مع مراعاة رمز الدولة.');
+                    return;
+                }
+            }
+
+            const submitBtn = document.getElementById('orderSubmitBtn');
+            const originalBtnText = submitBtn.innerHTML;
+            submitBtn.disabled = true;
+            submitBtn.innerText = 'جاري الإرسال...';
+
+            const now = new Date();
+            const hours = now.getHours();
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            const period = hours >= 12 ? 'م' : 'ص';
+            const formattedTime = `${hours % 12 || 12}:${minutes}:${seconds} ${period}`;
+            const formattedDate = `${now.getFullYear()}/${now.getMonth() + 1}/${now.getDate()}`;
+            const createdAtFormatted = `${formattedTime}، ${formattedDate}`;
+
+            // بناء كائن البيانات الموحد والمتوافق كلياً مع تطبيق الإدارة
+            const orderData = {
+                name: name,
+                serviceType: serviceType,
+                description: description,
+                status: "pending",
+                createdAt: createdAtFormatted,
+                timestamp: Date.now()
+            };
+
+            if (serviceType === 'تواصل مع فريق الدعم') {
+                orderData.email = email;
+            } else if (serviceType === 'إبلاغ') {
+                orderData.reportType = reportCategory;
+            } else {
+                const finalFullPhone = (countryPrefix !== 'OTHER' && !rawPhone.startsWith('+')) ? `${countryPrefix} ${rawPhone}` : rawPhone;
+                orderData.phone = finalFullPhone;
+                orderData.countryCode = countryPrefix;
+            }
+
+            // إرسال البيانات إلى Firebase
+            database.ref('orders').push(orderData).then(() => {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalBtnText;
+
+                closeOrderModal();
+
+                document.getElementById('orderName').value = '';
+                document.getElementById('orderPhone').value = '';
+                document.getElementById('orderEmail').value = '';
+                document.getElementById('orderDesc').value = '';
+                document.getElementById('detectedCountryBadge').style.display = 'none';
+
+                // تخصيص رسالة النجاح
+                const successTitle = document.getElementById('successTitle');
+                const successSub = document.getElementById('successSub');
+                if (serviceType === 'إبلاغ') {
+                    successTitle.innerText = 'تم إرسال الإبلاغ بنجاح!';
+                    successSub.innerHTML = 'شكرًا لك على إبلاغنا.<br>سيقوم فريق الدعم بمراجعة المشكلة وحلها فورًا.';
+                } else if (serviceType === 'تواصل مع فريق الدعم') {
+                    successTitle.innerText = 'تم استلام رسالتك!';
+                    successSub.innerHTML = 'شكرًا لتواصلك مع فريق الدعم في <strong>Best Of</strong>.<br>سنقوم بالرد على إيميلك الحقيقي في أقرب وقت.';
+                } else {
+                    successTitle.innerText = 'تم استلام طلبك بنجاح!';
+                    successSub.innerHTML = 'شكرًا لتواصلك مع <strong>Best Of</strong>.<br>سيتم التواصل معك في أقرب وقت لمناقشة تفاصيل مشروعك.';
+                }
+
+                setTimeout(() => {
+                    document.getElementById('successModal').classList.add('active');
+                }, 200);
+            }).catch((error) => {
+                console.error("Firebase Submit Error:", error);
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalBtnText;
+                alert("حدث خطأ أثناء إرسال الطلب، يرجى إعادة المحاولة.");
+            });
+        }
+
+        function closeSuccessModal() {
+            document.getElementById('successModal').classList.remove('active');
+            isPausedForModal = false;
+        }
+    </script>
+</body>
+</html>
